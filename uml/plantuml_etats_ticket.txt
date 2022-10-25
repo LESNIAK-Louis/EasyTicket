@@ -1,0 +1,10 @@
+@startuml 
+
+title Ticket 
+
+hide empty description
+[*] --> Ouvert : créer
+Résolu <-- Ouvert : clôturer car résolu
+Ouvert -> Insoluble : clôturer car insoluble
+
+@enduml 
