@@ -1,0 +1,20 @@
+@startuml 
+
+title Consulter les statistiques
+
+actor Administrateur as A
+
+participant EasyTicket as E 
+
+A -> E : informations d'authentification 
+E -> E : authentification de l'administrateur 
+
+alt authentification échouée 
+  E -> A : informations non valides 
+else authentification réussie 
+  E -> E : recherche des statistiques
+  E-> A : écran principal avec les statistiques
+ end 
+
+ 
+@enduml 
