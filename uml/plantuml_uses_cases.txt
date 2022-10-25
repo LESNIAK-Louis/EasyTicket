@@ -1,0 +1,13 @@
+@startuml
+
+Client -> (Poster un ticket)
+(Consulter l'historique) <- Client
+Client --> (Clôturer un ticket)
+Client --> (Répondre à un ticket)
+
+(Clôturer un ticket) <-- Employé
+(Répondre à un ticket) <-- Employé
+
+Administrateur --> (Consulter les statistiques)
+
+@enduml

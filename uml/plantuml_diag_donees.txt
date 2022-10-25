@@ -1,0 +1,43 @@
+@startuml
+
+class Utilisateur{
+- String login 
+- String nom
+- String prénom
+}
+
+class Employe extends Utilisateur{}
+
+class Ingenieur extends Employe{}
+
+class Technicien extends Employe{}
+
+class Client extends Utilisateur{}
+
+class Ticket{
+- int id
+- String catégorie
+- String logiciel
+- String dateCréation
+- String datePriseEnCharge
+- String dateCloture
+}
+
+class Message{
+- String contenu
+- String dateMessage
+}
+
+enum Statut{
+OUVERT
+RESOLU
+INSOLUBLE
+}
+
+Client --"*" Ticket
+Ticket -- "*" Message
+Statut "1"- Ticket
+Employe "1"-"*" Ticket
+Message --"1" Utilisateur
+
+@enduml

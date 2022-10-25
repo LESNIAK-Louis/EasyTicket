@@ -1,0 +1,22 @@
+@startuml
+
+title Créer un ticket (Annulation)
+
+actor Client as C
+participant EasyTicket as E
+
+C -> E : informations d'authentification
+E -> E : authentification de l'utilisateur
+alt authentification échouée
+  E -> C : informations non valides
+
+else authentification réussie
+  E -> E : recherche de l'historique des tickets du client
+  E-> C : écran principal avec l'historique des tickets
+  C -> E : créer un ticket
+  E -> C : écran Nouveau Ticket
+  C -> E : annuler
+  E -> C : écran principal avec l'historique des tickets
+end
+
+@enduml
