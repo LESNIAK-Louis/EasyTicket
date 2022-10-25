@@ -1,0 +1,23 @@
+@startuml 
+
+title Consulter l’historique des tickets
+
+actor Client as C 
+
+participant EasyTicket as E 
+
+C -> E : informations d'authentification 
+E -> E : authentification de l'utilisateur 
+
+alt authentification échouée 
+  E -> C : informations non valides 
+else authentification réussie 
+  E -> E : recherche de l'historique des tickets du client 
+  E-> C : écran principal avec l'historique des tickets 
+  C -> E : Clic sur un ticket clos
+  E -> E : chargement des informations du ticket
+  E -> C : affichage des informations du ticket
+ end 
+
+ 
+@enduml 

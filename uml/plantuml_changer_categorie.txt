@@ -1,0 +1,36 @@
+@startuml 
+
+  
+
+title Changer la catégorie 
+
+  
+
+actor Employé as C 
+
+participant EasyTicket as E 
+
+  
+
+C -> E : informations d'authentification 
+
+E -> E : authentification de l'employé 
+
+alt authentification échouée 
+
+  E -> C : informations non valides 
+
+else authentification réussie 
+  E -> E : recherche des tickets clients
+  E-> C : écran principal la liste des tickets à résoudre 
+  C -> E : clic sur un ticket à résoudre
+  E -> E : chargement des informations du ticket
+  E -> C : affichage des informations du ticket
+  C -> E : changement de la catégorie du ticket
+  E -> E : modification de la catégorie du ticket
+  E -> C : affichage des informations du ticket
+ end 
+
+  
+
+@enduml 
