@@ -2,7 +2,7 @@
 
 title Répondre à un ticket (Envoi)
 
-actor Client as C
+actor "Client/Employé" as C
 participant EasyTicket as E
 
 C -> E : informations d'authentification

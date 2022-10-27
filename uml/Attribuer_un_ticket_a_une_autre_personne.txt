@@ -1,0 +1,40 @@
+@startuml
+title Attribuer un ticket à une autre personne
+
+
+actor Employé as E
+
+participant EasyTicket as ET
+
+
+E -> ET: informations d'authentification
+
+ET-> ET: authentification de l'utilisateur
+
+alt authentification échouée
+
+  ET-> E: informations non valides
+
+
+else authentification réussie
+	
+  ET -> ET : recherche des tickets traités par l'employé
+  ET-> E : écran principal avec la liste des tickets en cours de traitement
+
+  E -> ET : choix d'un ticket
+  ET -> ET : chargement des informations du ticket
+  ET -> E : écran informations ticket
+
+  E-> ET: Demande d'attribution d'un nouvel employé
+
+  ET-> E: Affichage d'une boîte de dialogue pour la sélection de l'employé
+
+  E-> ET: Employé choisi
+  
+  ET -> ET : Mise à jour des informations du ticket
+  ET -> E : Ticket réattribué
+  ET -> E : Retour à l'écran principal
+
+  
+end
+@enduml

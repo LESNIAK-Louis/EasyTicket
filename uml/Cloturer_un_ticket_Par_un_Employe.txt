@@ -1,0 +1,43 @@
+@startuml
+title Clôturer un ticket (Par un Employé)
+
+
+actor Employé as E
+
+participant EasyTicket as ET
+
+
+E -> ET: informations d'authentification
+
+ET-> ET: authentification de l'utilisateur
+
+alt authentification échouée
+
+  ET-> E: informations non valides
+
+
+else authentification réussie
+
+  ET-> ET: recherche de l'historique des tickets en cours de résolution
+
+  ET-> E: Affichage sur l'écran des tickets ouverts
+
+  E-> ET: Choix du ticket à clôturer
+
+  ET-> ET: Chargement des informations du ticket
+
+   ET-> E: affichage des informations du ticket
+   
+   E -> ET: clôturer le ticket
+   
+   ET -> E: demande du motif de clôture
+
+   E-> ET : Motif et validation de la clôture du ticket
+
+  ET-> ET: Clôture du ticket
+
+  ET-> E: Ticket clôturé
+
+  
+end
+@enduml

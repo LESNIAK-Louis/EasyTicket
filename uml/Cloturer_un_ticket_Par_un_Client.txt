@@ -1,0 +1,42 @@
+@startuml
+
+
+title Clôturer un ticket (Par un client)
+
+
+actor Client as C
+
+participant EasyTicket as E
+
+
+C -> E : informations d'authentification
+
+E -> E : authentification de l'utilisateur
+
+alt authentification échouée
+
+  E -> C : informations non valides
+
+
+else authentification réussie
+
+  E -> E : recherche de l'historique des tickets du client
+
+  E-> C : écran principal avec l'historique des tickets
+
+  C -> E : choix d'un ticket
+
+  E -> E : chargement des informations du ticket
+
+  E -> C : écran informations ticket
+
+  C -> E : demande de cloture
+
+  E -> E : clôture du ticket
+
+  E -> C : ticket résolu
+
+end
+
+
+@enduml
