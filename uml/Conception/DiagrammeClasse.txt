@@ -1,0 +1,62 @@
+@startuml
+
+class GestionnaireUtilisateurs{
+Utilisateur getUtilisateur(String login)
+}
+
+class GestionnaireTickets{
+Ticket[] getTickets()
+Ticket getTicket(int id)
+}
+
+class GestionnaireMessages{
+Message[] getMessages()
+void ajouterMessage(String msg)
+}
+
+class GestionnaireDialogue{
+}
+
+class Utilisateur{
+- String login 
+- String nom
+- String prénom
+}
+
+class Employe extends Utilisateur{}
+
+class Ingenieur extends Employe{}
+
+class Technicien extends Employe{}
+
+class Client extends Utilisateur{}
+
+class Ticket{
+- int id
+- String catégorie
+- String logiciel
+- String dateCréation
+- String datePriseEnCharge
+- String dateCloture
+}
+
+class Message{
+- String contenu
+- String dateMessage
+}
+
+enum Statut{
+OUVERT
+RESOLU
+INSOLUBLE
+}
+
+Ticket -- "1" GestionnaireMessages
+Statut "1"- Ticket
+Utilisateur --"1" GestionnaireTickets
+Message --"1" Utilisateur
+GestionnaireUtilisateurs -"*" Utilisateur
+GestionnaireMessages -"*" Message
+GestionnaireTickets -"*" Ticket
+GestionnaireUtilisateurs "1"-- GestionnaireDialogue
+@enduml
