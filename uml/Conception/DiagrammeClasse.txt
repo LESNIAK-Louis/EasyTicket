@@ -1,37 +1,51 @@
 @startuml
 
 class GestionnaireUtilisateurs{
+GestionnaireUtilisateurs()
 Utilisateur getUtilisateur(String login)
 }
 
 class GestionnaireTickets{
+GestionnaireTickets()
 Ticket[] getTickets()
 Ticket getTicket(int id)
 }
 
 class GestionnaireMessages{
+GestionnaireMessages()
 Message[] getMessages()
 void ajouterMessage(String msg)
 }
 
 class GestionnaireDialogue{
+GestionnaireDialogue()
 }
 
 class Utilisateur{
+Utilisateur(String login, String nom, String prenom)
 - String login 
 - String nom
-- String prénom
+- String prenom
 }
 
-class Employe extends Utilisateur{}
+class Employe extends Utilisateur{ 
+Employe(String login, String nom, String prenom)
+}
 
-class Ingenieur extends Employe{}
+class Ingenieur extends Employe{
+Ingenieur(String login, String nom, String prenom)
+}
 
-class Technicien extends Employe{}
+class Technicien extends Employe{
+Technicien(String login, String nom, String prenom)
+}
 
-class Client extends Utilisateur{}
+class Client extends Utilisateur{
+Client(String login, String nom, String prenom)
+}
 
 class Ticket{
+Ticket(int id, String catégorie,  String logiciel)
 - int id
 - String catégorie
 - String logiciel
@@ -41,6 +55,7 @@ class Ticket{
 }
 
 class Message{
+Message(String contenu)
 - String contenu
 - String dateMessage
 }
@@ -51,6 +66,8 @@ RESOLU
 INSOLUBLE
 }
 
+
+Ticket -- "2" Utilisateur
 Ticket -- "1" GestionnaireMessages
 Statut "1"- Ticket
 Utilisateur --"1" GestionnaireTickets
