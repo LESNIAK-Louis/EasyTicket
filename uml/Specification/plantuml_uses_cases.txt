@@ -7,6 +7,8 @@ Client --> (Répondre à un ticket)
 
 (Clôturer un ticket) <-- Employé
 (Répondre à un ticket) <-- Employé
+(Changer la catégorie) <- Employé
+Employé -> (Attribuer le ticket à une autre personne)
 
 Administrateur --> (Consulter les statistiques)
 

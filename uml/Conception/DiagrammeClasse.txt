@@ -28,27 +28,32 @@ abstract class Utilisateur{
 - String nom
 - String prenom
 Utilisateur(String login, String nom, String prenom)
-{abstract} boolean estUnClient()
-{abstract} boolean estUnIngenieur()
-{abstract} boolean estUnTechnicien()
+boolean estUnClient()
+boolean estUnEmploye()
+boolean estUnIngenieur()
+boolean estUnTechnicien()
 }
 
 abstract class Employe extends Utilisateur{ 
 Employe(String login, String nom, String prenom)
+boolean estUnEmploye()
 }
 
 class Ingenieur extends Employe{
 Ingenieur(String login, String nom, String prenom)
+boolean estUnIngenieur()
 }
 
 class Technicien extends Employe{
 Technicien(String login, String nom, String prenom)
+boolean estUnTechnicien()
 }
 
 class Client extends Utilisateur{
 Client(String login, String nom, String prenom)
-void creerTicket(String titre, String categorie)
-void creerTicket(String titre, String categorie, String logiciel)
+boolean estUnClient()
+void creerTicket(String titre, String categorie, String message)
+void creerTicket(String titre, String categorie, String logiciel, String message)
 }
 
 class Ticket{
@@ -61,6 +66,7 @@ class Ticket{
 - String dateCloture
 Ticket(String titre, String catégorie)
 Ticket(String titre, String catégorie,  String logiciel)
+void ajouterMessage(String msg)
 }
 
 class Message{

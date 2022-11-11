@@ -1,0 +1,59 @@
+@startuml 
+
+ 
+
+title Créer un ticket
+
+ 
+
+actor Client as C 
+
+participant GestionnaireDialogue as GD 
+
+participant GestionnaireUtilisateur as GU 
+
+participant "c:Client" as CL 
+
+participant GestionnaireTicket as GT 
+
+participant Ticket as T 
+
+C -> GD : login
+GD -> GU : c = getUtilisateur(login)
+alt u = null
+  GD -> C : informations non valides
+else u != null
+  GD -> CL : tickets = getTickets()
+  CL -> GT : getTickets()
+  GD -> C : liste des tickets
+
+  C -> GD : créer un ticket
+  GD -> C : affichage écran Nouveau Ticket
+	C -> GD : titre, categorie, logiciel, message
+  GD -> CL : b = creerTicket(titre,categorie,logiciel, message)
+ 
+ 
+  alt b = false 
+
+  GD -> C : champs non valides 
+
+ 
+
+  else b = true  
+
+  CL -> GT : ajouterTicket(titre,categorie,logiciel, message)
+  GT -> T : ajouterMessage(message)
+
+  GD -> C : envoi réussi 
+	GD -> C : écran principal
+  GD -> CL : tickets = getTickets()
+  CL -> GT : getTickets()
+  GD -> C : liste des tickets
+
+  end 
+
+end 
+
+ 
+
+@enduml 

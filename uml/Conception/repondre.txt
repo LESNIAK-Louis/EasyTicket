@@ -1,0 +1,41 @@
+@startuml
+
+title Répondre à un ticket
+
+actor "Client/Employé" as C
+participant GestionnaireDialogue as GD
+participant GestionnaireUtilisateurs as GU
+participant "u:Utilisateur" as U
+participant GestionnaireTickets as GT
+participant "t:Ticket" as T
+participant GestionnaireMessages as GM
+
+C -> GD : login
+GD -> GU : u = getUtilisateur(login)
+alt u = null
+  GD -> C : informations non valides
+else u != null
+  GD -> U : tickets = getTickets()
+  U -> GT : getTickets()
+  GD -> C : liste des tickets
+  
+  C -> GD : choix d'un ticket t
+  GD -> T : messages = getMessages()
+  T -> GM : getMessages()
+  GD -> C : liste des messages
+  
+  C -> GD : contenuMessage
+  GD -> T : b = ajouterMessage(contenuMessage)
+  T -> GM : ajouter(contenuMessage)
+  
+  alt b = false
+    GD -> C : erreur lors de l'envoi du message
+  else
+    GD -> C : message envoyé
+    GD -> T : messages = getMessages()
+    T -> GM : getMessages()
+    GD -> C : liste des messages
+  end
+end
+
+@enduml
