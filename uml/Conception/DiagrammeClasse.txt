@@ -9,11 +9,13 @@ class GestionnaireTickets{
 GestionnaireTickets()
 Ticket[] getTickets()
 Ticket getTicket(int id)
+void ajouterTicket(Ticket t)
 }
 
 class GestionnaireMessages{
 GestionnaireMessages()
 Message[] getMessages()
+Message getMessage(int id)
 void ajouterMessage(String msg)
 }
 
@@ -21,14 +23,17 @@ class GestionnaireDialogue{
 GestionnaireDialogue()
 }
 
-class Utilisateur{
-Utilisateur(String login, String nom, String prenom)
+abstract class Utilisateur{
 - String login 
 - String nom
 - String prenom
+Utilisateur(String login, String nom, String prenom)
+{abstract} boolean estUnClient()
+{abstract} boolean estUnIngenieur()
+{abstract} boolean estUnTechnicien()
 }
 
-class Employe extends Utilisateur{ 
+abstract class Employe extends Utilisateur{ 
 Employe(String login, String nom, String prenom)
 }
 
@@ -42,22 +47,27 @@ Technicien(String login, String nom, String prenom)
 
 class Client extends Utilisateur{
 Client(String login, String nom, String prenom)
+void creerTicket(String titre, String categorie)
+void creerTicket(String titre, String categorie, String logiciel)
 }
 
 class Ticket{
-Ticket(int id, String catégorie,  String logiciel)
 - int id
+- String titre
 - String catégorie
 - String logiciel
 - String dateCréation
 - String datePriseEnCharge
 - String dateCloture
+Ticket(String titre, String catégorie)
+Ticket(String titre, String catégorie,  String logiciel)
 }
 
 class Message{
-Message(String contenu)
+- int id
 - String contenu
 - String dateMessage
+Message(String contenu)
 }
 
 enum Statut{
@@ -66,14 +76,25 @@ RESOLU
 INSOLUBLE
 }
 
+class FabriqueIdentifiant{
+- int idTicket
+- int idMessage
+- {static} FabriqueIdentifiant instance = new FabriqueIdentifiant()
+- FabriqueIdentifiant()
+{static} FabriqueIdentifiant getInstance()
+void resetIdTicket()
+void resetIdMessage()
+}
+
 
 Ticket -- "2" Utilisateur
 Ticket -- "1" GestionnaireMessages
 Statut "1"- Ticket
-Utilisateur --"1" GestionnaireTickets
+Utilisateur -"1" GestionnaireTickets
 Message --"1" Utilisateur
 GestionnaireUtilisateurs -"*" Utilisateur
 GestionnaireMessages -"*" Message
 GestionnaireTickets -"*" Ticket
 GestionnaireUtilisateurs "1"-- GestionnaireDialogue
+Utilisateur "1"--- GestionnaireDialogue
 @enduml
