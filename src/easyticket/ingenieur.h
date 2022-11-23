@@ -2,8 +2,9 @@
 #define INGENIEUR_H
 
 #include <QObject>
+#include "employe.h"
 
-class Ingenieur : public QObject, public Employe
+class Ingenieur :  public Employe
 {
     Q_OBJECT
 public:
@@ -12,7 +13,6 @@ public:
 
     Ingenieur(std::string login, std::string nom, std::string prenom); 
     bool estUnIngenieur()const;
-
     ~Ingenieur();
 signals:
 

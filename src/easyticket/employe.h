@@ -2,8 +2,9 @@
 #define EMPLOYE_H
 
 #include <QObject>
+#include "utilisateur.h"
 
-class Employe : public QObject,public Utilisateur
+class Employe :public Utilisateur
 {
     Q_OBJECT
 public:

@@ -10,9 +10,9 @@ public:
     explicit Utilisateur(QObject *parent = nullptr);
 
     Utilisateur(std::string login, std::string nom, std::string prenom);
-    virtual void estUnClient() const = 0;
-    virtual void estUnEmploye() const = 0;
-    virtual void estUnIngenieur() const = 0;
+    virtual bool estUnClient() const = 0;
+    virtual bool estUnEmploye() const = 0;
+    virtual bool estUnIngenieur() const = 0;
     virtual ~Utilisateur();
 
 private:

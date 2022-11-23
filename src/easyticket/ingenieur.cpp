@@ -1,13 +1,11 @@
 #include "ingenieur.h"
 
-Ingenieur::Ingenieur(QObject *parent) : QObject(parent)
+Ingenieur::Ingenieur(QObject *parent) : Employe(parent)
 {
 
 
-
-
 }
-Ingenieur(std::String login, std::string nom, std::string prenom):Personnage(login,nom,prenom){}
+Ingenieur::Ingenieur(std::string login, std::string nom, std::string prenom):Employe(login,nom,prenom){}
 
 
 bool Ingenieur::estUnIngenieur() const{
