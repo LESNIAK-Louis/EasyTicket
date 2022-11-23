@@ -10,9 +10,8 @@ public:
     explicit Employe(QObject *parent = nullptr);
 
 
-
     Employe(std::string login, std::string nom, std::string prenom);
-     boolean estUnEmploye() const;
+    bool estUnEmploye() const;
     ~Employe();
 
 signals:

@@ -7,11 +7,10 @@ class Ingenieur : public QObject, public Employe
 {
     Q_OBJECT
 public:
-
-
     explicit Ingenieur(QObject *parent = nullptr);
 
-    Ingenieur(std::string login, std::string nom, std::string prenom);
+
+    Ingenieur(std::string login, std::string nom, std::string prenom); 
     bool estUnIngenieur()const;
 
     ~Ingenieur();
