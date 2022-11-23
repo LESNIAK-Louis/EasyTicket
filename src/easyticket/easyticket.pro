@@ -18,28 +18,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-<<<<<<< HEAD
     employe.cpp \
     ingenieur.cpp \
-=======
     login.cpp \
->>>>>>> 0327b7e8dc0f614c9647309cdd3c519bd4b1e200
     main.cpp \
     mainwindow.cpp \
     technicien.cpp \
     utilisateur.cpp
 
 HEADERS += \
-<<<<<<< HEAD
     employe.h \
     ingenieur.h \
     mainwindow.h \
     technicien.h \
-    utilisateur.h
-=======
+    utilisateur.h\
     login.h \
     mainwindow.h
->>>>>>> 0327b7e8dc0f614c9647309cdd3c519bd4b1e200
 
 FORMS += \
     login.ui \
