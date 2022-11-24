@@ -27,9 +27,10 @@ SOURCES += \
     mainwindow.cpp \
     technicien.cpp \
     ticket.cpp \
-    utilisateur.cpp \
     ecranprincipal.cpp \
-    ecranprincipal.cpp
+    ecranprincipal.cpp \
+    utilisateur.cpp \
+    creationticket.cpp
 
 HEADERS += \
     client.h \
@@ -47,7 +48,8 @@ HEADERS += \
 FORMS += \
     login.ui \
     mainwindow.ui \
-    ecranprincipal.ui
+    ecranprincipal.ui \
+    creationticket.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -18,5 +18,5 @@ void Login::on_boutonLogin_clicked()
 {
     MainWindow* mainWindow = (MainWindow*)(this->parent());
     mainWindow->setNom(ui->champLogin->text());
-    mainWindow->AfficherEcranPrincipal();
+    mainWindow->afficherEcranPrincipal();
 }

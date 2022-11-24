@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "login.h"
 #include "ecranprincipal.h"
+#include "creationticket.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,13 +18,15 @@ public:
     MainWindow(QWidget *parent = nullptr);
     QString getNom();
     void setNom(QString nom);
-    void AfficherEcranPrincipal();
+    void afficherEcranPrincipal();
+    void afficherCreationTicket();
     ~MainWindow();
 
 private:
     Ui::MainWindow *ui;
     Login *login;
     EcranPrincipal *ecranPrincipal;
+    CreationTicket *creationTicket;
     QString nom;
 
 };

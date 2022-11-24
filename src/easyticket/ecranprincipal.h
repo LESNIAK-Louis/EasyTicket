@@ -15,6 +15,9 @@ public:
     explicit EcranPrincipal(QWidget *parent = nullptr);
     ~EcranPrincipal();
 
+private slots:
+    void on_pushButtonCreationTicket_clicked();
+
 private:
     Ui::EcranPrincipal *ui;
 };

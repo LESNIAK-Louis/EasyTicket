@@ -1,12 +1,6 @@
 #include "technicien.h"
 
-Technicien::Technicien(QObject *parent) : Employe(parent)
-{
-
-}
-
-Technicien::Technicien(std::string login, std::string nom, std::string prenom):Employe(login,nom,prenom){}
-
+Technicien::Technicien(QString login, QString nom, QString prenom):Employe(login,nom,prenom){}
 
 bool Technicien::estUnTechnicien() const{
     return true;
