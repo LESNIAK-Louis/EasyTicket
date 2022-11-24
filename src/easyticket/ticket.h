@@ -11,7 +11,7 @@ public:
     void ajouterMessage(QString msg);
      ~Ticket();
 private:
-    QString  id;
+    int  id;
     QString titre;
     QString categorie;
     QString logiciel;

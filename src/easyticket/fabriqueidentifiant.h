@@ -17,9 +17,9 @@ private:
 public:
       static FabriqueIdentifiant* getInstance()
       {
-          if(instancePtr == NULL)
-              this->instance = FabriqueIdentifiant();
-          return instancePtr;
+          if(instance == NULL)
+              instance = new FabriqueIdentifiant();
+          return instance;
       }
 
       void resetIdTicket()

@@ -32,7 +32,8 @@ SOURCES += \
     ticket.cpp \
     ecranprincipal.cpp \
     utilisateur.cpp \
-    creationticket.cpp
+    creationticket.cpp \
+    message.cpp
 
 HEADERS += \
     client.h \
