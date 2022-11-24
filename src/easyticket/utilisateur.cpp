@@ -1,9 +1,14 @@
 #include "utilisateur.h"
 
-Utilisateur::Utilisateur(QString m_login, QString m_nom, QString m_prenom){
-    this->login = m_login;
-    this->nom = m_nom;
-    this->prenom = m_prenom;
+Utilisateur::Utilisateur(QObject *parent) : QObject(parent)
+{
+
+}
+
+Utilisateur::Utilisateur(std::string m_login,std::string m_nom,std::string m_prenom){
+login = m_login;
+nom = m_nom;
+prenom = m_prenom;
 }
 
 Utilisateur::~Utilisateur()

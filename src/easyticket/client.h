@@ -1,15 +1,19 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
+#include <QObject>
 #include "utilisateur.h"
 
 class Client : public Utilisateur
 {
+    Q_OBJECT
 public:
-    Client(QString login, QString nom, QString prenom);
+    explicit Client(QObject *parent = nullptr);
+
+    Client(std::string login, std::string nom, std::string prenom);
     bool estUnClient();
-    void creerTicket(QString titre, QString categorie, QString message);
-    //void creerTicket(QString titre, QString categorie, QString logiciel, QString message);
+    void creerTicket(std::string titre, std::string categorie, std::string message);
+    //void creerTicket(std::string titre, std::string categorie, std::string logiciel, std::string message);
     ~Client();
 signals:
 

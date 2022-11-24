@@ -1,23 +1,34 @@
 #ifndef TICKET_H
 #define TICKET_H
 
-#include <QString>
+#include <QObject>
 
-class Ticket
+class Ticket : public QObject
 {
+    Q_OBJECT
 public:
-    Ticket(QString titre, QString categorie);
-    Ticket(QString titre, QString categorie,  QString logiciel);
-    void ajouterMessage(QString msg);
+    explicit Ticket(QObject *parent = nullptr);
+
+    Ticket(std::string titre, std::string categorie);
+    Ticket(std::string titre, std::string categorie,  std::string logiciel);
+    void ajouterMessage(std::string msg);
+    int getID(){return id;}
+
      ~Ticket();
 private:
-    QString  id;
-    QString titre;
-    QString categorie;
-    QString logiciel;
-    QString dateCreation;
-    QString datePriseEnCharge;
-    QString dateCloture;
+
+    int id;
+    std::string titre;
+    std::string categorie;
+    std::string logiciel;
+    std::string dateCreation;
+    std::string datePriseEnCharge;
+    std::string dateCloture;
+
+
+
+signals:
+
 };
 
 #endif // TICKET_H

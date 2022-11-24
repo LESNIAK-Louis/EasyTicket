@@ -2,22 +2,28 @@
 #define GESTIONNAIRETICKETS_H
 
 #include <QObject>
-#include <map>
+#include <QMap>
 #include "ticket.h"
 
-class GestionnaireTickets
-{
-public:
-    GestionnaireTickets();
+using namespace std;
 
-    std::map<int,Ticket*> getTickets();
+class GestionnaireTickets : public QObject
+{
+    Q_OBJECT
+public:
+    explicit GestionnaireTickets(QObject *parent = nullptr);
+    GestionnaireTickets();
+    QMap<int,Ticket*> getTickets();
     Ticket* getTicket(int id);
     void ajouterTicket(Ticket* t);
 
     ~GestionnaireTickets();
 
 private:
-    std::map<int ,Ticket*> gestionnaireTickets;
+    QMap<int ,Ticket*> gt1;
+
+signals:
+
 };
 
 #endif // GESTIONNAIRETICKETS_H

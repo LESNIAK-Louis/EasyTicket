@@ -1,6 +1,12 @@
 #include "ingenieur.h"
 
-Ingenieur::Ingenieur(QString login, QString nom, QString prenom):Employe(login,nom,prenom){}
+Ingenieur::Ingenieur(QObject *parent) : Employe(parent)
+{
+
+
+}
+Ingenieur::Ingenieur(std::string login, std::string nom, std::string prenom):Employe(login,nom,prenom){}
+
 
 bool Ingenieur::estUnIngenieur() const{
     return true;
