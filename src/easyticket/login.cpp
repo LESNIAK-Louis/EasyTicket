@@ -1,12 +1,12 @@
 #include "login.h"
 #include "ui_login.h"
+#include "mainwindow.h"
 
 Login::Login(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Login)
 {
     ui->setupUi(this);
-
 }
 
 Login::~Login()
@@ -16,5 +16,7 @@ Login::~Login()
 
 void Login::on_boutonLogin_clicked()
 {
-    ui->label->setText(ui->champLogin->text());
+    MainWindow* mainWindow = (MainWindow*)(this->parent());
+    mainWindow->setNom(ui->champLogin->text());
+    mainWindow->AfficherEcranPrincipal();
 }
