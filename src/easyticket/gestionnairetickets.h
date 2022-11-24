@@ -22,17 +22,24 @@ public:
     GestionnaireTickets();
 
     /**
+     * @brief Getter de la QMap des tickets
+     * @return Tickets
+     */
+    QMap<int, Ticket*> getTickets();
+    /**
+     * @brief Ajouter un ticket au gestionnaire de tickets
+     * @param titre Titre
+     * @param categorie Categorie
+     * @param logiciel Logiciel
+     * @param message Message
+     */
+    void ajouterTicket(QString titre, QString categorie, QString logiciel, QString message);
+    /**
      * @brief Getter d'un ticket via son identifiant
      * @param id
      * @return Ticket correspondant à l'id, NULL sinon
      */
     Ticket* getTicket(int id);
-
-    /**
-     * @brief Ajouter un ticket au gestionnaire de tickets
-     * @param ticket à ajouter
-     */
-    void ajouterTicket(Ticket* ticket);
 
     /**
       * @brief Destructeur du gestionnaire de tickets

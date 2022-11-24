@@ -47,6 +47,7 @@ private:
      * @brief date de cloture du ticket
      */
     QString dateCloture;
+    GestionnaireMessages* gm;
 
 public:
     /**

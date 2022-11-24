@@ -20,6 +20,14 @@ public:
      * @return vrai si la l'utilisateur est enregistrer
      */
     bool tentativeConnexion(QString login);
+    /**
+     * @brief Crée un ticket
+     * @param titre Titre
+     * @param categorie Categorie
+     * @param logiciel Logiciel
+     * @param message Message
+     */
+    void creerTicket(QString titre, QString categorie,  QString logiciel, QString message);
 
     /**
      * @brief retourne un utilisateur

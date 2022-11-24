@@ -2,6 +2,8 @@
 #define ECRANPRINCIPAL_H
 
 #include <QWidget>
+#include <QListWidgetItem>
+#include "utilisateur.h"
 
 namespace Ui {
 class EcranPrincipal;
@@ -20,6 +22,8 @@ public:
      * @param retourne un Qwidget
      */
     explicit EcranPrincipal(QWidget *parent = nullptr);
+    void chargerTickets(Utilisateur* utilisateur);
+
     ~EcranPrincipal();
 
 private slots:
@@ -28,6 +32,8 @@ private slots:
      * @brief fonction qui creer un ticket quand son bouton equivalent est clické
      */
     void on_pushButtonCreationTicket_clicked();
+
+    void on_listeTickets_itemClicked(QListWidgetItem *item);
 
 private:
     /**

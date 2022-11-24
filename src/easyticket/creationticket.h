@@ -26,6 +26,9 @@ public:
       */
     ~CreationTicket();
 
+private slots:
+    void on_comboBoxResultat_accepted();
+
 private:
     Ui::CreationTicket *ui;
 };

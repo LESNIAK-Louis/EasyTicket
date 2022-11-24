@@ -7,7 +7,9 @@
  * @brief c'est la superclasse de toutes types de personnes (employé, tecnhicien, ingenieur, client)
  */
 class Utilisateur {
+
 protected:
+
     /**
      * @brief login d'un utilisateur
      */
@@ -26,7 +28,7 @@ protected:
     /**
     * @brief gestionnaireTickets des utilisateur
     */
-    GestionnaireTickets gestionnaireTickets;
+    GestionnaireTickets* gestionnaireTickets;
 
     /**
     * @brief Constructeur
@@ -49,7 +51,13 @@ public:
     QString getPrenom() { return prenom; }
 
     /**
-     * @brief retourne vrai si c'est un client
+     * @brief return les tickets de l'utilisateur
+     * @return tickets
+     */
+    QMap<int, Ticket*> getTickets() { return gestionnaireTickets->getTickets(); }
+
+    /**
+     * @brief return vrai si c'est un client
      * @return valeur du bool
      */
     bool estUnClient() const { return false; }

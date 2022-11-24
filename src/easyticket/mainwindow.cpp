@@ -14,6 +14,11 @@ void MainWindow::afficherEcranPrincipal(){
     delete login;
     ecranPrincipal = new EcranPrincipal(this);
     ecranPrincipal->show();
+    mettreAJourEcranPrincipal();
+}
+
+void MainWindow::mettreAJourEcranPrincipal(){
+    ecranPrincipal->chargerTickets(gd->getUtilisateur());
 }
 
 void MainWindow::afficherCreationTicket(){

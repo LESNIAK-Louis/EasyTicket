@@ -56,6 +56,10 @@ public:
      */
     void afficherEcranPrincipal();
     /**
+     * @brief Mets à jour l'écran principal de commandes
+     */
+    void mettreAJourEcranPrincipal();
+    /**
      * @brief Affiche le Dialog de la création d'un ticket
      */
     void afficherCreationTicket();

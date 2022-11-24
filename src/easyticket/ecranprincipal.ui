@@ -52,6 +52,16 @@
     <string>Créer un ticket</string>
    </property>
   </widget>
+  <widget class="QListWidget" name="listeTickets">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>90</y>
+     <width>611</width>
+     <height>192</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

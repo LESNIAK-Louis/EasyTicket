@@ -104,7 +104,7 @@
     <string>Nouveau ticket</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBoxCatgorie">
+  <widget class="QComboBox" name="comboBoxCategorie">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -114,7 +114,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="champTitre">
    <property name="geometry">
     <rect>
      <x>60</x>
@@ -137,7 +137,7 @@
     <string>Nouveau ticket</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="textEdit">
+  <widget class="QTextEdit" name="champMessage">
    <property name="geometry">
     <rect>
      <x>10</x>

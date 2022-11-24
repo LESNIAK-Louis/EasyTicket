@@ -3,7 +3,7 @@
 
 Message::Message(QString contenu)
 {
-    contenu = contenu;
+    this->contenu = contenu;
     FabriqueIdentifiant *fi = fi->getInstance();
     id = fi->getIdMessage();
 }

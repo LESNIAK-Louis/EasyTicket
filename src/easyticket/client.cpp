@@ -7,11 +7,15 @@ Client::Client(QString login, QString nom, QString prenom):Utilisateur(login,nom
 bool Client::estUnClient(){
     return true;
 }
-//clieent doit connaitre ticket ?
-void Client::creerTicket(QString titre, QString categorie, QString message){
-//Ticket t1 = new Ticket (...);
-//getionnaireTicket.ajouter(t1);
 
+void Client::creerTicket(QString titre, QString categorie, QString message){
+
+    creerTicket(titre, categorie, "", message);
+}
+
+void Client::creerTicket(QString titre, QString categorie, QString logiciel, QString message){
+
+    gestionnaireTickets->ajouterTicket(titre, categorie, logiciel, message);
 }
 
 
