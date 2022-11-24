@@ -9,6 +9,7 @@ public:
     GestionnaireDialogue();
 
     bool tentativeConnexion(QString login);
+    Utilisateur* getUtilisateur() { return utilisateurActuel; }
 
     ~GestionnaireDialogue();
 

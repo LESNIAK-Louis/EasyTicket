@@ -4,15 +4,9 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    gd = new GestionnaireDialogue();
     login = new Login(this);
-}
-
-QString MainWindow::getNom(){
-    return this->nom;
-}
-
-void MainWindow::setNom(QString nom){
-    this->nom = nom;
 }
 
 void MainWindow::afficherEcranPrincipal(){

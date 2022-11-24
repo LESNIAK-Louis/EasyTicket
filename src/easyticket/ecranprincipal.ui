@@ -18,12 +18,12 @@
     <rect>
      <x>160</x>
      <y>0</y>
-     <width>261</width>
+     <width>411</width>
      <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>sfsdfs</string>
+    <string>Bienvenue</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">

@@ -9,7 +9,8 @@ EcranPrincipal::EcranPrincipal(QWidget *parent) :
     ui(new Ui::EcranPrincipal)
 {
     ui->setupUi(this);
-    ui->labelNom->setText("Bienvenue : "+((MainWindow*)(this->parent()))->getNom());
+    Utilisateur* u = ((MainWindow*)(this->parent()))->getGD()->getUtilisateur();
+    ui->labelNom->setText("Bienvenue " + u->getPrenom() + " " + u->getNom());
 }
 
 void EcranPrincipal::on_pushButtonCreationTicket_clicked(){

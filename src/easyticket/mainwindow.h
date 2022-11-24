@@ -5,6 +5,7 @@
 #include "ecranprincipal.h"
 #include "login.h"
 #include "creationticket.h"
+#include "gestionnairedialogue.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -16,8 +17,7 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
-    QString getNom();
-    void setNom(QString nom);
+    GestionnaireDialogue* getGD() const { return gd; }
     void afficherEcranPrincipal();
     void afficherCreationTicket();
     ~MainWindow();
@@ -27,7 +27,7 @@ private:
     Login *login;
     EcranPrincipal *ecranPrincipal;
     CreationTicket *creationTicket;
-    QString nom;
+    GestionnaireDialogue *gd;
 
 };
 #endif // MAINWINDOW_H

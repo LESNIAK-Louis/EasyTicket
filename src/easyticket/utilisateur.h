@@ -8,6 +8,9 @@ protected:
     Utilisateur(QString login, QString nom, QString prenom);
 
 public:
+    QString getNom() { return nom; }
+    QString getPrenom() { return prenom; }
+
     bool estUnClient() const { return false; }
     bool estUnEmploye() const { return false; }
     bool estUnIngenieur() const { return false; }

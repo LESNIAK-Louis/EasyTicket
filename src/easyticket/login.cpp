@@ -16,7 +16,12 @@ Login::~Login()
 
 void Login::on_boutonLogin_clicked()
 {
-    MainWindow* mainWindow = (MainWindow*)(this->parent());
-    mainWindow->setNom(ui->champLogin->text());
-    mainWindow->afficherEcranPrincipal();
+    GestionnaireDialogue* gd = ((MainWindow*)(this->parent()))->getGD();
+    bool b = gd->tentativeConnexion(ui->champLogin->text());
+    if(b){
+        ((MainWindow*)(this->parent()))->afficherEcranPrincipal();
+    }else{
+        ui->labelErreur->setText("Erreur : utilisateur inconnu");
+        ui->labelErreur->setStyleSheet("QLabel { color : red; }");
+    }
 }
