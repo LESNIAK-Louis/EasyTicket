@@ -29,7 +29,6 @@ SOURCES += \
     technicien.cpp \
     ticket.cpp \
     ecranprincipal.cpp \
-    ecranprincipal.cpp \
     utilisateur.cpp \
     creationticket.cpp
 
@@ -45,7 +44,8 @@ HEADERS += \
     utilisateur.h\
     login.h \
     mainwindow.h \
-    ecranprincipal.h
+    ecranprincipal.h \
+    creationticket.h
 
 FORMS += \
     login.ui \
