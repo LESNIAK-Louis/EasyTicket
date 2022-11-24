@@ -20,8 +20,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     client.cpp \
     employe.cpp \
+    gestionnairedialogue.cpp \
     gestionnairetickets.cpp \
     gestionnaireutilisateurs.cpp \
+    gestionnairemessages.cpp \
     ingenieur.cpp \
     login.cpp \
     main.cpp \
@@ -35,8 +37,10 @@ SOURCES += \
 HEADERS += \
     client.h \
     employe.h \
+    gestionnairedialogue.h \
     gestionnairetickets.h \
     gestionnaireutilisateurs.h \
+    gestionnairemessages.h \
     ingenieur.h \
     mainwindow.h \
     technicien.h \
