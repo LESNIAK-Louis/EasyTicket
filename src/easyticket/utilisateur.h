@@ -8,9 +8,9 @@ protected:
     Utilisateur(QString login, QString nom, QString prenom);
 
 public:
-    virtual bool estUnClient() const = 0;
-    virtual bool estUnEmploye() const = 0;
-    virtual bool estUnIngenieur() const = 0;
+    bool estUnClient() const { return false; }
+    bool estUnEmploye() const { return false; }
+    bool estUnIngenieur() const { return false; }
 
     ~Utilisateur();
 
