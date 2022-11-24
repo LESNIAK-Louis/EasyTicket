@@ -13,8 +13,8 @@ public:
     Client(std::string login, std::string nom, std::string prenom);
     bool estUnClient();
     void creerTicket(std::string titre, std::string categorie, std::string message);
-    void creerTicket(std::string titre, std::string categorie, std::string logiciel, std::string message);
- ~Client();
+    //void creerTicket(std::string titre, std::string categorie, std::string logiciel, std::string message);
+    ~Client();
 signals:
 
 };

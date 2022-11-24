@@ -11,3 +11,7 @@ Ingenieur::Ingenieur(std::string login, std::string nom, std::string prenom):Emp
 bool Ingenieur::estUnIngenieur() const{
     return true;
 }
+
+Ingenieur::~Ingenieur()
+{
+}

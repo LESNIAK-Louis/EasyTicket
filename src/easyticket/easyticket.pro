@@ -26,7 +26,9 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     technicien.cpp \
-    utilisateur.cpp
+    utilisateur.cpp \
+    ecranprincipal.cpp \
+    ecranprincipal.cpp
 
 HEADERS += \
     client.h \
@@ -37,11 +39,13 @@ HEADERS += \
     technicien.h \
     utilisateur.h\
     login.h \
-    mainwindow.h
+    mainwindow.h \
+    ecranprincipal.h
 
 FORMS += \
     login.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    ecranprincipal.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

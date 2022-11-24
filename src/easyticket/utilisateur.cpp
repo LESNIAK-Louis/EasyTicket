@@ -10,3 +10,7 @@ login = m_login;
 nom = m_nom;
 prenom = m_prenom;
 }
+
+Utilisateur::~Utilisateur()
+{
+}

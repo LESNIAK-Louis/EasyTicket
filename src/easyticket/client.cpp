@@ -10,12 +10,17 @@ Client::Client(std::string login, std::string nom, std::string prenom):Utilisate
 
 }
 
-Client::estUnClient(){
+bool Client::estUnClient(){
     return true;
 }
 //clieent doit connaitre ticket ?
-Client::creerTicket(std::string titre, std::string categorie, std::string message){
+void Client::creerTicket(std::string titre, std::string categorie, std::string message){
 //Ticket t1 = new Ticket (...);
 //getionnaireTicket.ajouter(t1);
 
+}
+
+
+Client::~Client()
+{
 }

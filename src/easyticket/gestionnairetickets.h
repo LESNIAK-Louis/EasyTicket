@@ -11,6 +11,7 @@ class GestionnaireTickets : public QObject
     Q_OBJECT
 public:
     explicit GestionnaireTickets(QObject *parent = nullptr);
+    ~GestionnaireTickets();
 
 private:
     //remplacer int par ticket apres la creation de la classe Ticket

@@ -11,3 +11,7 @@ Technicien::Technicien(std::string login, std::string nom, std::string prenom):E
 bool Technicien::estUnTechnicien() const{
     return true;
 }
+
+Technicien::~Technicien()
+{
+}
