@@ -12,23 +12,57 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
+/**
+ * @brief Fenêtre de démarrage de l'interface graphique
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-public:
-    MainWindow(QWidget *parent = nullptr);
-    GestionnaireDialogue* getGD() const { return gd; }
-    void afficherEcranPrincipal();
-    void afficherCreationTicket();
-    ~MainWindow();
-
 private:
+    /**
+     * @brief l'UI de la MainWindow
+     */
     Ui::MainWindow *ui;
+    /**
+     * @brief Widget login
+     */
     Login *login;
+    /**
+     * @brief Ecran Principal des commandes
+     */
     EcranPrincipal *ecranPrincipal;
+    /**
+     * @brief Dialog à remplir lors de la création d'un ticket
+     */
     CreationTicket *creationTicket;
+    /**
+     * @brief Gestion dudialogue entre l'UI et les données
+     */
     GestionnaireDialogue *gd;
 
+public:
+    /**
+     * @brief Constructeur de la MainWindow
+     */
+    MainWindow(QWidget *parent = nullptr);
+    /**
+     * @brief Constructeur de la MainWindow
+     * @return gd Le gestionnaire de dialogue
+     */
+    inline GestionnaireDialogue* getGD() const { return gd; }
+    /**
+     * @brief Affiche l'écran principal de commandes
+     */
+    void afficherEcranPrincipal();
+    /**
+     * @brief Affiche le Dialog de la création d'un ticket
+     */
+    void afficherCreationTicket();
+
+    /**
+     * @brief Destructeur de la MainWindow
+     */
+    ~MainWindow();
 };
 #endif // MAINWINDOW_H

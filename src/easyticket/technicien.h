@@ -10,7 +10,7 @@ class Technicien : public Employe
 {
 public:
     /**
-     * @brief constucteur d'un Technicien
+     * @brief Constucteur d'un Technicien
      * @param login  d'un Technicien
      * @param nom d'un Technicien
      * @param prenom d'un Technicien
