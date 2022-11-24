@@ -1,30 +1,23 @@
 #include "gestionnairetickets.h"
-#include <QMap>
+#include <map>
 
 using namespace std;
-
-GestionnaireTickets::GestionnaireTickets(QObject *parent) : QObject(parent)
-{
-
-}
 
 GestionnaireTickets::GestionnaireTickets(){
 }
 
 
 
-QMap<int,Ticket*> GestionnaireTickets::getTickets(){
+map<int,Ticket*> GestionnaireTickets::getTickets(){
 
-    return gt1;
+    return gestionnaireTickets;
 }
 
 Ticket* GestionnaireTickets::getTicket(int id){
-     return gt1.value(id);
-
+    return NULL;
 }
 
 void GestionnaireTickets::ajouterTicket(Ticket* t){
-    gt1.insert(t->getID(),t);
 }
 
 GestionnaireTickets::~GestionnaireTickets()

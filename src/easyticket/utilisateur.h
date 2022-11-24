@@ -1,29 +1,24 @@
 #ifndef UTILISATEUR_H
 #define UTILISATEUR_H
 
-#include <QObject>
 #include "gestionnairetickets.h"
 
- class Utilisateur : public QObject
-{
-    Q_OBJECT
-public:
-    explicit Utilisateur(QObject *parent = nullptr);
+class Utilisateur {
+protected:
+    Utilisateur(QString login, QString nom, QString prenom);
 
-    Utilisateur(std::string login, std::string nom, std::string prenom);
-    virtual bool estUnClient() const = 0;
-    virtual bool estUnEmploye() const = 0;
-    virtual bool estUnIngenieur() const = 0;
-    virtual ~Utilisateur();
+public:
+    bool estUnClient() const { return false; }
+    bool estUnEmploye() const { return false; }
+    bool estUnIngenieur() const { return false; }
+
+    ~Utilisateur();
 
 private:
-    std::string login;
-    std::string nom;
-    std::string prenom;
-    GestionnaireTickets gt1;
-
-signals:
-
+    QString login;
+    QString nom;
+    QString prenom;
+    GestionnaireTickets gestionnaireTickets;
 };
 
 #endif // UTILISATEUR_H
