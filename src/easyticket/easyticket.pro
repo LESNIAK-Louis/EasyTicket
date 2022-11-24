@@ -21,6 +21,7 @@ SOURCES += \
     client.cpp \
     employe.cpp \
     gestionnairetickets.cpp \
+    gestionnaireutilisateurs.cpp \
     ingenieur.cpp \
     login.cpp \
     main.cpp \
@@ -35,6 +36,7 @@ HEADERS += \
     client.h \
     employe.h \
     gestionnairetickets.h \
+    gestionnaireutilisateurs.h \
     ingenieur.h \
     mainwindow.h \
     technicien.h \
