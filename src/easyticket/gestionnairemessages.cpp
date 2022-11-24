@@ -17,4 +17,7 @@ void GestionnaireMessages::ajouterMessage(Message* mes){
 
 GestionnaireMessages::~GestionnaireMessages(){
 
+    foreach(Message* m, messages.values()){
+        delete m;
+    }
 }

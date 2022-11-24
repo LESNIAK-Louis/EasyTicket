@@ -10,4 +10,5 @@ Utilisateur::Utilisateur(QString m_login, QString m_nom, QString m_prenom){
 
 Utilisateur::~Utilisateur()
 {
+    delete gestionnaireTickets;
 }

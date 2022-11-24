@@ -28,4 +28,5 @@ void Ticket::ajouterMessage(QString msg){
 
 Ticket::~Ticket(){
 
+    delete gm;
 }

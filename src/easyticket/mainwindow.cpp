@@ -28,6 +28,7 @@ void MainWindow::afficherCreationTicket(){
 
 MainWindow::~MainWindow()
 {
+    delete gd;
     delete login;
     delete ecranPrincipal;
     delete ui;

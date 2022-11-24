@@ -22,4 +22,7 @@ void GestionnaireTickets::ajouterTicket(QString titre, QString categorie, QStrin
 
 GestionnaireTickets::~GestionnaireTickets()
 {
+    foreach(Ticket* t, tickets.values()){
+        delete t;
+    }
 }
