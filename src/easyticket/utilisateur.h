@@ -4,10 +4,10 @@
 #include "gestionnairetickets.h"
 
 /**
- * @brief c'est la superclasse Superclasse de toutes types de personnes( employé, tecnhicien,ingenieur, client)
+ * @brief c'est la superclasse de toutes types de personnes (employé, tecnhicien, ingenieur, client)
  */
 class Utilisateur {
-private:
+protected:
     /**
      * @brief login d'un utilisateur
      */
@@ -28,26 +28,28 @@ private:
     */
     GestionnaireTickets gestionnaireTickets;
 
-protected:
+    /**
+    * @brief Constructeur
+    */
     Utilisateur(QString login, QString nom, QString prenom);
 
 public:
 
     /**
-     * @brief return le nom de l'utilisateur
+     * @brief retourne le nom de l'utilisateur
      * @return nom
      */
     QString getNom() { return nom; }
 
 
     /**
-     * @brief return le prenom de l'utilisateur
+     * @brief retourne le prenom de l'utilisateur
      * @return prenom
      */
     QString getPrenom() { return prenom; }
 
     /**
-     * @brief return vrai si c'est un client
+     * @brief retourne vrai si c'est un client
      * @return valeur du bool
      */
     bool estUnClient() const { return false; }
@@ -65,7 +67,7 @@ public:
     bool estUnIngenieur() const { return false; }
 
     /**
-     * destructeur de l'objet
+     * destructeur de l'Utilisateur
      */
     ~Utilisateur();
 };

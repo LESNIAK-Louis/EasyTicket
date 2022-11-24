@@ -4,7 +4,7 @@
 #include "employe.h"
 
 /**
- * @brief la classe qui represente un employée
+ * @brief la classe qui represente un ingénieur
  */
 class Ingenieur :  public Employe
 {
