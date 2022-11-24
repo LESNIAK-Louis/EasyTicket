@@ -2,6 +2,7 @@
 #define UTILISATEUR_H
 
 #include <QObject>
+#include "gestionnairetickets.h"
 
  class Utilisateur : public QObject
 {
@@ -19,7 +20,7 @@ private:
     std::string login;
     std::string nom;
     std::string prenom;
-    //GestionnaireTickets gt;
+    GestionnaireTickets gt1;
 
 signals:
 

@@ -26,6 +26,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     technicien.cpp \
+    ticket.cpp \
     utilisateur.cpp \
     ecranprincipal.cpp \
     ecranprincipal.cpp
@@ -37,6 +38,7 @@ HEADERS += \
     ingenieur.h \
     mainwindow.h \
     technicien.h \
+    ticket.h \
     utilisateur.h\
     login.h \
     mainwindow.h \
