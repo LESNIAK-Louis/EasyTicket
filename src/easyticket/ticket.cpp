@@ -1,22 +1,17 @@
 #include "ticket.h"
 
-Ticket::Ticket(QObject *parent) : QObject(parent)
-{
-
-}
-
-Ticket::Ticket(std::string mtitre, std::string mcategorie){
+Ticket::Ticket(QString mtitre, QString mcategorie){
     titre = mtitre;
     categorie = mcategorie;
 }
 
-Ticket::Ticket(std::string mtitre, std::string mcategorie, std::string mlogiciel){
+Ticket::Ticket(QString mtitre, QString mcategorie, QString mlogiciel){
     titre = mtitre;
     categorie = mcategorie;
     logiciel =  mcategorie;
 }
 
-void Ticket::ajouterMessage(std::string msg){
+void Ticket::ajouterMessage(QString msg){
 
 }
 

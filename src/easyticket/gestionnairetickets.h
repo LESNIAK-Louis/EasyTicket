@@ -5,25 +5,19 @@
 #include <map>
 #include "ticket.h"
 
-using namespace std;
-
-class GestionnaireTickets : public QObject
+class GestionnaireTickets
 {
-    Q_OBJECT
 public:
-    explicit GestionnaireTickets(QObject *parent = nullptr);
     GestionnaireTickets();
-    map<int,Ticket*> getTickets();
+
+    std::map<int,Ticket*> getTickets();
     Ticket* getTicket(int id);
     void ajouterTicket(Ticket* t);
 
     ~GestionnaireTickets();
 
 private:
-    map<int ,Ticket*> gt1;
-
-signals:
-
+    std::map<int ,Ticket*> gestionnaireTickets;
 };
 
 #endif // GESTIONNAIRETICKETS_H

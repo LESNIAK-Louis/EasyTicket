@@ -4,7 +4,6 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
     login = new Login(this);
 }
 
@@ -16,11 +15,16 @@ void MainWindow::setNom(QString nom){
     this->nom = nom;
 }
 
-void MainWindow::AfficherEcranPrincipal(){
+void MainWindow::afficherEcranPrincipal(){
 
     delete login;
     ecranPrincipal = new EcranPrincipal(this);
     ecranPrincipal->show();
+}
+
+void MainWindow::afficherCreationTicket(){
+    creationTicket = new CreationTicket(this);
+    creationTicket->show();
 }
 
 MainWindow::~MainWindow()
