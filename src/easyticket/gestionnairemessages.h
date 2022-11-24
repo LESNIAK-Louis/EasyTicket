@@ -2,24 +2,23 @@
 #define GESTIONNAIREMESSAGES_H
 
 #include <QObject>
+#include <QMap>
 #include "message.h"
-#include "QMap"
 
-class GestionnaireMessages : public QObject
+
+class GestionnaireMessages
 {
-    Q_OBJECT
+private:
+    QMap<int,Message*> messages;
+
 public:
-    explicit GestionnaireMessages(QObject *parent = nullptr);
     GestionnaireMessages();
+
     QMap<int,Message*> getMessages();
     Message* getMessage(int id);
     void ajouterMessage(Message* mes);
 
-private:
-
-QMap<int,Message*> gm1;
-signals:
-
+    ~GestionnaireMessages();
 };
 
 #endif // GESTIONNAIREMESSAGES_H

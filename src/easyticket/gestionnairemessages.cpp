@@ -1,18 +1,20 @@
 #include "gestionnairemessages.h"
-#include "QMap"
-
 
 GestionnaireMessages::GestionnaireMessages(){
 
 }
 
 Message* GestionnaireMessages::getMessage(int id){
-    return gm1.value(id);
+    return messages.value(id);
 }
 
 QMap<int,Message*> GestionnaireMessages::getMessages(){
-    return gm1;
+    return messages;
 }
 void GestionnaireMessages::ajouterMessage(Message* mes){
-    gm1.insert(mes->getId(),mes);
+    messages.insert(mes->getId(), mes);
+}
+
+GestionnaireMessages::~GestionnaireMessages(){
+
 }

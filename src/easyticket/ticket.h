@@ -2,6 +2,7 @@
 #define TICKET_H
 
 #include <QString>
+#include "gestionnairemessages.h"
 
 enum statutTicket {
     OUVERT = 1,
@@ -19,7 +20,6 @@ private:
     QString dateCreation;
     QString datePriseEnCharge;
     QString dateCloture;
-
 
 public:
     Ticket(QString titre, QString categorie);

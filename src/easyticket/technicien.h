@@ -10,8 +10,6 @@ public:
 
     bool estUnTechnicien() const;
     ~Technicien();
-signals:
-
 };
 
 #endif // TECHNICIEN_H

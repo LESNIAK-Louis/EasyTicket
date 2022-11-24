@@ -9,8 +9,6 @@ public:
     Ingenieur(QString login, QString nom, QString prenom);
     bool estUnIngenieur() const;
     ~Ingenieur();
-signals:
-
 };
 
 #endif // INGENIEUR_H

@@ -9,9 +9,6 @@ public:
     Employe(QString login, QString nom, QString prenom);
     bool estUnEmploye() const;
     ~Employe();
-
-signals:
-
 };
 
 #endif // EMPLOYE_H

@@ -7,14 +7,15 @@
 
 class GestionnaireUtilisateurs
 {
+private:
+    QMap<QString,Utilisateur*> utilisateurs;
+
 public:
     GestionnaireUtilisateurs();
+
     Utilisateur* getUtilisateur(QString login);
 
     ~GestionnaireUtilisateurs();
-
-private:
-    QMap<QString,Utilisateur*> utilisateurs;
 };
 
 #endif // GESTIONNAIREUTILISATEURS_H
