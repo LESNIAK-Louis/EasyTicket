@@ -32,7 +32,8 @@ SOURCES += \
     ticket.cpp \
     ecranprincipal.cpp \
     utilisateur.cpp \
-    creationticket.cpp
+    creationticket.cpp \
+    message.cpp
 
 HEADERS += \
     client.h \
@@ -49,7 +50,9 @@ HEADERS += \
     login.h \
     mainwindow.h \
     ecranprincipal.h \
-    creationticket.h
+    creationticket.h \
+    fabriqueidentifiant.h \
+    message.h
 
 FORMS += \
     login.ui \

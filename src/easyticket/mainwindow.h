@@ -5,6 +5,7 @@
 #include "ecranprincipal.h"
 #include "login.h"
 #include "creationticket.h"
+#include "fabriqueidentifiant.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
