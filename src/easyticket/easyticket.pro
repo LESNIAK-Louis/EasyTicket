@@ -23,6 +23,7 @@ SOURCES += \
     gestionnairedialogue.cpp \
     gestionnairetickets.cpp \
     gestionnaireutilisateurs.cpp \
+    gestionnairemessages.cpp \
     ingenieur.cpp \
     login.cpp \
     main.cpp \
@@ -39,6 +40,7 @@ HEADERS += \
     gestionnairedialogue.h \
     gestionnairetickets.h \
     gestionnaireutilisateurs.h \
+    gestionnairemessages.h \
     ingenieur.h \
     mainwindow.h \
     technicien.h \
