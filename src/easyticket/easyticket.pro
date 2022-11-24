@@ -51,7 +51,8 @@ HEADERS += \
     mainwindow.h \
     ecranprincipal.h \
     creationticket.h \
-    fabriqueidentifiant.h
+    fabriqueidentifiant.h \
+    message.h
 
 FORMS += \
     login.ui \
