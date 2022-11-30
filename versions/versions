@@ -4,4 +4,5 @@ Historique des versions
 1b : Ecran de création d'un ticket
 1c : Vérification des informations utilisateurs lors de la connexion
 1d : Création effective du ticket lors du clic sur le bouton OK et mise à jour de la liste des tickets (documentation valide à partir d'ici)
-1e : affichage de la date et statuts des tickets et seul un client peut créer des tickets 
+1e : Affichage de la date et statuts des tickets et seul un client peut créer des tickets
+1f : Affichage des messages du ticket lors du clic sur un ticket de la liste
