@@ -19,11 +19,22 @@ public:
     Employe(QString login, QString nom, QString prenom);
 
     /**
-     * @brief retourne vreai si c'est un employé
+     * @brief retourne vrai si l'utilisateur est un employé
      * @return valeur du bool
      */
-    bool estUnEmploye() const;
+    inline bool estUnEmploye() const {return true;}
 
+    /**
+     * @brief retourne vrai si l'utilisateur est un ingénieur
+     * @return valeur du bool
+     */
+    virtual inline bool estUnIngenieur() const = 0;
+
+    /**
+     * @brief retourne vrai si l'utilisateur est un technicien
+     * @return valeur du bool
+     */
+    virtual inline bool estUnTechnicien() const = 0;
 
     /**
      * @brief Destructeur d'Employe

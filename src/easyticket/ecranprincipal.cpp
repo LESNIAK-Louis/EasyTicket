@@ -11,6 +11,7 @@ EcranPrincipal::EcranPrincipal(QWidget *parent) :
     ui->setupUi(this);
     Utilisateur* u = ((MainWindow*)(this->parent()))->getGD()->getUtilisateur();
     ui->labelNom->setText("Bienvenue " + u->getPrenom() + " " + u->getNom());
+    ui->pushButtonCreationTicket->setVisible(u->estUnClient());
 }
 
 void EcranPrincipal::chargerTickets(Utilisateur* utilisateur){
@@ -22,7 +23,9 @@ void EcranPrincipal::chargerTickets(Utilisateur* utilisateur){
 
         ui->listeTickets->addItem(new QListWidgetItem(QString::number(t->getId()) + "\t" +
                                                       t->getTitre() + "\t" +
-                                                      t->getCategorie() + "\t"));
+                                                      t->getStatut() + "\t" +
+                                                      t->getCategorie() + "\t" +
+                                                      t->getDateDerniereModification() + "\t"));
     }
 }
 

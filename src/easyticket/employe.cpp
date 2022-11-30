@@ -4,12 +4,6 @@ Employe::Employe(QString m_login, QString m_nom, QString m_prenom):Utilisateur(m
 
 }
 
-
-bool Employe::estUnEmploye() const{
-   return true;
-}
-
-
 Employe::~Employe()
 {
 }

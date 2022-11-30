@@ -3,6 +3,9 @@
 
 #include "utilisateur.h"
 #include "client.h"
+#include "technicien.h"
+#include "ingenieur.h"
+#include "employe.h"
 #include <QMap>
 
 /**

@@ -4,10 +4,6 @@
 Client::Client(QString login, QString nom, QString prenom):Utilisateur(login,nom,prenom){
 }
 
-bool Client::estUnClient(){
-    return true;
-}
-
 void Client::creerTicket(QString titre, QString categorie, QString message){
 
     creerTicket(titre, categorie, "", message);

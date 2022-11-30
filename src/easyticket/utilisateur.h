@@ -57,22 +57,29 @@ public:
     QMap<int, Ticket*> getTickets() { return gestionnaireTickets->getTickets(); }
 
     /**
-     * @brief return vrai si c'est un client
+     * @brief retourne vrai si l'utilisateur est un client
      * @return valeur du bool
      */
-    bool estUnClient() const { return false; }
+    virtual inline bool estUnClient() const = 0;
 
     /**
-    * @brief retourne vrai si c'est employé
-    * @return valeur du bool
-    */
-    bool estUnEmploye() const { return false; }
-
-    /**
-     * @brief retourne vrai si c'est un ingenieur
+     * @brief retourne vrai si l'utilisateur est un employé
      * @return valeur du bool
      */
-    bool estUnIngenieur() const { return false; }
+    virtual inline bool estUnEmploye() const = 0;
+
+    /**
+     * @brief retourne vrai si l'utilisateur est un ingénieur
+     * @return valeur du bool
+     */
+    virtual inline bool estUnIngenieur() const = 0;
+
+    /**
+     * @brief retourne vrai si l'utilisateur est un technicien
+     * @return valeur du bool
+     */
+    virtual inline bool estUnTechnicien() const = 0;
+
 
     /**
      * destructeur de l'Utilisateur

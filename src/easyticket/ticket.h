@@ -19,6 +19,7 @@ enum statutTicket {
 class Ticket
 {
 private:
+
     /**
      * @brief identifiant du ticket
      */
@@ -44,10 +45,21 @@ private:
      */
     QString datePriseEnCharge;
     /**
+     * @brief date de la dernière modification du ticket
+     */
+    QString dateDerniereModification;
+    /**
      * @brief date de cloture du ticket
      */
     QString dateCloture;
+    /**
+     * @brief gestionnaire des messages du ticket
+     */
     GestionnaireMessages* gm;
+    /**
+     * @brief statut du ticket
+     */
+    statutTicket statut;
 
 public:
     /**
@@ -97,10 +109,38 @@ public:
     */
     inline QString getDatePriseEnCharge() const { return datePriseEnCharge; }
     /**
+    * @brief Getter de la date de dernière modification du ticket
+    * @return dateDerniereModification
+    */
+    inline QString getDateDerniereModification() const { return dateDerniereModification; }
+    /**
     * @brief Getter de la date de cloture du ticket
     * @return dateCloture
     */
     inline QString getDateCloture() const { return dateCloture; }
+    /**
+    * @brief Getter du statut du ticket
+    * @return statut en QString
+    */
+    inline QString getStatut() {
+        switch(statut){
+            case OUVERT:
+                return "OUVERT";
+            break;
+            case RESOLU:
+                return "RESOLU";
+               break;
+            case INSOLUBLE:
+                return "INSOLUBLE";
+                break;
+            default:
+                return "ERROR";
+            break;
+        }
+        }
+
+
+
 
     /**
     * @brief Setter de l'id du ticket
@@ -133,10 +173,20 @@ public:
     */
     inline void setDatePriseEnCharge(QString datePriseEnCharge) { this->datePriseEnCharge = datePriseEnCharge; }
     /**
+    * @brief Setter de la date de la dernière modification du ticket
+    * @param dateDerniereModification Date de dernière modification du ticket
+    */
+    inline void setDateDerniereModification(QString dateDerniereModification) { this->dateDerniereModification = dateDerniereModification; }
+    /**
     * @brief Setter de la date de cloture du ticket
     * @param dateCloture Date de cloture du ticket
     */
     inline void setDateCloture(QString dateCloture) { this->dateCloture = dateCloture; }
+    /**
+    * @brief Setter du statut du ticket
+    * @param statut
+    */
+    inline void setStatut(statutTicket statut) { this->statut = statut; }
 
     /**
     * @brief Ajoute une message au ticket

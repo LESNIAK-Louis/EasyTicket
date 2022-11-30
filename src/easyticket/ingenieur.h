@@ -19,10 +19,29 @@ public:
     Ingenieur(QString login, QString nom, QString prenom);
 
     /**
-     * @brief retourne vrai si c'est un ingenieur
+     * @brief retourne vrai si l'utilisateur est un employé
      * @return valeur du bool
      */
-    bool estUnIngenieur() const;
+    inline bool estUnEmploye() const {return true;}
+
+    /**
+     * @brief retourne vrai si  si l'utilisateur est un ingénieur
+     * @return valeur du bool
+     */
+    inline bool estUnIngenieur() const {return true;}
+
+    /**
+     * @brief retourne vrai s si l'utilisateur est un client
+     * @return valeur du bool
+     */
+    inline bool estUnClient() const {return false;}
+
+    /**
+     * @brief retourne vrai si  si l'utilisateur est un technicien
+     * @return valeur du bool
+     */
+    inline bool estUnTechnicien() const {return false;}
+
 
     /**
      * @brief destructeur pour la classe
