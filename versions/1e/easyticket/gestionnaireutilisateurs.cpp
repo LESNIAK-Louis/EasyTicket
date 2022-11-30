@@ -1,5 +1,6 @@
 #include "gestionnaireutilisateurs.h"
 
+
 GestionnaireUtilisateurs::GestionnaireUtilisateurs()
 {
     utilisateurs.insert("louis", new Client("louis", "Lesniak", "Louis"));

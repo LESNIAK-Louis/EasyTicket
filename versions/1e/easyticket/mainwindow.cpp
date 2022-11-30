@@ -26,21 +26,10 @@ void MainWindow::afficherCreationTicket(){
     creationTicket->show();
 }
 
-
-void MainWindow::afficherTicket(Ticket* ticket){
-
-    detailsTicket = new DetailsTicket(this);
-    detailsTicket->show();
-    detailsTicket->chargerMessages(ticket);
-
-}
-
 MainWindow::~MainWindow()
 {
     delete gd;
     delete login;
-    delete creationTicket;
-    delete detailsTicket;
     delete ecranPrincipal;
     delete ui;
 }

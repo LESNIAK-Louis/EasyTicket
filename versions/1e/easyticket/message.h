@@ -22,18 +22,13 @@ private:
      * @brief date de la création du message
      */
     QString dateMessage;
-    /**
-     * @brief rédacteur du message
-     */
-    QString* redacteur;
 
 public:
     /**
      * @brief Constructeur d'un Message
      * @param contenu Contenu textuel du message
-     * @param redacteur Rédacteur du message
      */
-    Message(QString contenu, QString* redacteur);
+    Message(QString contenu);
 
     /**
      * @brief Getter de l'identifiant du message
@@ -50,12 +45,6 @@ public:
      * @return dateMessage
      */
     inline QString getDateMessage() const { return dateMessage; }
-
-    /**
-     * @brief Getter du rédacteur du message
-     * @return redacteur
-     */
-    inline QString* getRedacteur() const { return redacteur; }
 
     /**
      * @brief Setter de l'identifiant du message

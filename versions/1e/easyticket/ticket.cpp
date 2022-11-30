@@ -27,13 +27,14 @@ Ticket::Ticket(QString mtitre, QString mcategorie, QString mlogiciel){
     gm = new GestionnaireMessages();
 }
 
-void Ticket::ajouterMessage(QString msg, QString redacteur){
+void Ticket::ajouterMessage(QString msg){
 
-    gm->ajouterMessage(new Message(msg, redacteur));
+    gm->ajouterMessage(new Message(msg));
 }
-
 
 Ticket::~Ticket(){
 
     delete gm;
 }
+
+

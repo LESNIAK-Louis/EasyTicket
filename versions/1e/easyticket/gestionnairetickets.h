@@ -32,9 +32,8 @@ public:
      * @param categorie Categorie
      * @param logiciel Logiciel
      * @param message Message
-     * @param redacteur Redacteur
      */
-    void ajouterTicket(QString titre, QString categorie, QString logiciel, QString message, QString redacteur);
+    void ajouterTicket(QString titre, QString categorie, QString logiciel, QString message);
     /**
      * @brief Getter d'un ticket via son identifiant
      * @param id

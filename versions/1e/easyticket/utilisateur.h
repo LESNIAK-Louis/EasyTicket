@@ -80,6 +80,7 @@ public:
      */
     virtual inline bool estUnTechnicien() const = 0;
 
+
     /**
      * destructeur de l'Utilisateur
      */

@@ -19,6 +19,7 @@ enum statutTicket {
 class Ticket
 {
 private:
+
     /**
      * @brief identifiant du ticket
      */
@@ -55,7 +56,6 @@ private:
      * @brief gestionnaire des messages du ticket
      */
     GestionnaireMessages* gm;
-
     /**
      * @brief statut du ticket
      */
@@ -118,7 +118,6 @@ public:
     * @return dateCloture
     */
     inline QString getDateCloture() const { return dateCloture; }
-
     /**
     * @brief Getter du statut du ticket
     * @return statut en QString
@@ -138,12 +137,10 @@ public:
                 return "ERROR";
             break;
         }
-    }
-    /**
-    * @brief Récupère la liste des messages
-    * @return messages du ticket
-    */
-    QMap<int, Message*> getMessages() const { return gm->getMessages(); }
+        }
+
+
+
 
     /**
     * @brief Setter de l'id du ticket
@@ -190,6 +187,7 @@ public:
     * @param statut
     */
     inline void setStatut(statutTicket statut) { this->statut = statut; }
+
     /**
     * @brief Ajoute une message au ticket
     * @param msg Message à ajouter

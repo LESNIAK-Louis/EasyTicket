@@ -42,6 +42,7 @@ public:
      */
     inline bool estUnTechnicien() const {return false;}
 
+
     /**
      * @brief destructeur pour la classe
      */

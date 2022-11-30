@@ -17,7 +17,6 @@ void GestionnaireDialogue::creerTicket(QString titre, QString categorie,  QStrin
     ((Client*)utilisateurActuel)->creerTicket(titre, categorie, logiciel, message);
 }
 
-
 GestionnaireDialogue::~GestionnaireDialogue(){
 
     delete gu;

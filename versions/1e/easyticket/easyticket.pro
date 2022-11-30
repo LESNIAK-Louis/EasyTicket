@@ -19,7 +19,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     client.cpp \
-    detailsticket.cpp \
     employe.cpp \
     gestionnairedialogue.cpp \
     gestionnairetickets.cpp \
@@ -29,7 +28,6 @@ SOURCES += \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
-    messageinfosticket.cpp \
     technicien.cpp \
     ticket.cpp \
     ecranprincipal.cpp \
@@ -40,7 +38,6 @@ SOURCES += \
 
 HEADERS += \
     client.h \
-    detailsticket.h \
     employe.h \
     gestionnairedialogue.h \
     gestionnairetickets.h \
@@ -48,7 +45,6 @@ HEADERS += \
     gestionnairemessages.h \
     ingenieur.h \
     mainwindow.h \
-    messageinfosticket.h \
     technicien.h \
     ticket.h \
     utilisateur.h\
@@ -61,12 +57,10 @@ HEADERS += \
     utilitaires.h
 
 FORMS += \
-    detailsticket.ui \
     login.ui \
     mainwindow.ui \
     ecranprincipal.ui \
-    creationticket.ui \
-    messageinfosticket.ui
+    creationticket.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

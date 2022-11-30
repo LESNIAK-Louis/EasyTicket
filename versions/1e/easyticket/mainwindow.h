@@ -5,7 +5,6 @@
 #include "ecranprincipal.h"
 #include "login.h"
 #include "creationticket.h"
-#include "detailsticket.h"
 #include "fabriqueidentifiant.h"
 #include "gestionnairedialogue.h"
 
@@ -38,11 +37,7 @@ private:
      */
     CreationTicket *creationTicket;
     /**
-     * @brief Dialog à remplir lors de l'affichage des infos d'un ticket
-     */
-    DetailsTicket *detailsTicket;
-    /**
-     * @brief Gestion du dialogue entre l'UI et les données
+     * @brief Gestion dudialogue entre l'UI et les données
      */
     GestionnaireDialogue *gd;
 
@@ -68,12 +63,6 @@ public:
      * @brief Affiche le Dialog de la création d'un ticket
      */
     void afficherCreationTicket();
-
-    /**
-     * @brief Affiche les informations d'un ticket
-     * @param ticket Ticket à afficher
-     */
-    void afficherTicket(Ticket* ticket);
 
     /**
      * @brief Destructeur de la MainWindow

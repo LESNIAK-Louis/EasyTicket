@@ -41,7 +41,5 @@ EcranPrincipal::~EcranPrincipal(){
 
 void EcranPrincipal::on_listeTickets_itemClicked(QListWidgetItem *item)
 {
-    int index = ui->listeTickets->row(item);
-    MainWindow* mainWindow = (MainWindow*)(this->parent());
-    mainWindow->afficherTicket(mainWindow->getGD()->getUtilisateur()->getTickets().value(index));
+
 }

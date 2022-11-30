@@ -11,7 +11,7 @@ void Client::creerTicket(QString titre, QString categorie, QString message){
 
 void Client::creerTicket(QString titre, QString categorie, QString logiciel, QString message){
 
-    gestionnaireTickets->ajouterTicket(titre, categorie, logiciel, message, QString(getPrenom() + " " + getNom()));
+    gestionnaireTickets->ajouterTicket(titre, categorie, logiciel, message);
 }
 
 
