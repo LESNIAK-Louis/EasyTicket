@@ -35,7 +35,7 @@ public:
      * @param statut statut à mettre
      * @param motif motif de cloture
      */
-    void cloturerTicket(int id, statutTicket statut, QString motif);
+    void cloturerTicket(Ticket* ticket, QString statut, QString motif);
 
     /**
      * @brief retourne un utilisateur

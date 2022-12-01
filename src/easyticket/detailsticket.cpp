@@ -1,27 +1,33 @@
 #include "detailsticket.h"
 #include "ui_detailsticket.h"
 #include "mainwindow.h"
+#include "motifcloture.h"
 
 #include <QScrollBar>
 
-DetailsTicket::DetailsTicket(QWidget *parent) :
+DetailsTicket::DetailsTicket(QWidget *parent, Ticket* ticket) :
     QDialog(parent),
     ui(new Ui::DetailsTicket)
 {
     ui->setupUi(this);
     ui->scrollAreaWidgetContents->setLayout(ui->zoneMessagesLayout);
+    this->ticket = ticket;
+    chargerMessages();
 }
 
-void DetailsTicket::chargerMessages(Ticket* ticket){
-
-    this->ticket = ticket;
-
+void DetailsTicket::chargerMessages(){
     ui->labelTitre->setText(ticket->getTitre());
     ui->labelID->setText("ID\n" + QString::number(ticket->getId()));
-    ui->labelStatut->setText("Statut\n" + ticket->getStatut());
+    ui->labelStatut->setText("Statut\n" + ticket->getStatutString());
     ui->labelDate->setText("Créé le\n" + ticket->getDateCreation());
     ui->labelCategorie->setText("Catégorie\n" + ticket->getCategorie());
     ui->labelLogiciel->setText("Logiciel\n" + ticket->getLogiciel());
+
+    if(ticket->getStatut() != OUVERT){
+        ui->boutonCloturer->setEnabled(false);
+        ui->inputReponse->setEnabled(false);
+        ui->boutonEnvoyer->setEnabled(false);
+    }
 
     QMap<int, Message*> messages = ticket->getMessages();
 
@@ -45,21 +51,21 @@ void DetailsTicket::chargerMessages(Ticket* ticket){
 
 void DetailsTicket::on_boutonEnvoyer_clicked()
 {
-    GestionnaireDialogue* gd = ((MainWindow*)(this->parent()))->getGD();
+    GestionnaireDialogue* gd = ((MainWindow*)(this->parent()->parent()))->getGD();
 
     if(ui->inputReponse->toPlainText() != ""){
         ticket->ajouterMessage(ui->inputReponse->toPlainText(),
                                gd->getUtilisateur()->getPrenom() + " " +
                                gd->getUtilisateur()->getNom());
 
-        chargerMessages(this->ticket);
+        chargerMessages();
         ui->inputReponse->clear();
     }
 }
 
-void EcranPrincipal::on_pushButtonBoutonCloturer_clicked(){
-    MainWindow* mainWindow = (MainWindow*)(this->parent());
-    mainWindow->afficherMotifCloture();
+void DetailsTicket::on_boutonCloturer_clicked(){
+    MotifCloture* motifCloture = new MotifCloture(this, this->ticket);
+    motifCloture->exec();
 }
 
 DetailsTicket::~DetailsTicket()

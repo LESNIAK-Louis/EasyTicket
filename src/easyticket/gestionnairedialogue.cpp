@@ -13,12 +13,19 @@ bool GestionnaireDialogue::tentativeConnexion(QString login){
 }
 
 void GestionnaireDialogue::creerTicket(QString titre, QString categorie, QString logiciel, QString message){
-
     ((Client*)utilisateurActuel)->creerTicket(titre, categorie, logiciel, message);
 }
 
-void GestionnaireDialogue::cloturerTicket(int id, statutTicket statut, QString motif){
-    ((Utilisateur*)utilisateurActuel)->cloturerTicket(id);
+void GestionnaireDialogue::cloturerTicket(Ticket* ticket, QString statut, QString motif){
+    statutTicket statutT;
+    if(statut == "RESOLU")
+        statutT = RESOLU;
+    else if(statut == "INSOLUBLE")
+        statutT = INSOLUBLE;
+    else
+        statutT = OUVERT;
+
+    ((Utilisateur*)utilisateurActuel)->cloturerTicket(ticket, statutT, motif);
 }
 
 

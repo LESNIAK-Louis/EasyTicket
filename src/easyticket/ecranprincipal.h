@@ -27,7 +27,7 @@ public:
      * @brief Charge les tickets de l'utilisateur et les affiche à l'écran
      * @param utilisateur Utilisateur dont on veut charger les tickets
      */
-    void chargerTickets(Utilisateur* utilisateur);
+    void chargerTickets();
 
     ~EcranPrincipal();
 
@@ -45,6 +45,7 @@ private:
      * @brief interface de l'ecran principale
      */
     Ui::EcranPrincipal *ui;
+    Utilisateur* utilisateur;
 };
 
 #endif // ECRANPRINCIPAL_H

@@ -8,6 +8,7 @@
 #include "detailsticket.h"
 #include "fabriqueidentifiant.h"
 #include "gestionnairedialogue.h"
+#include "motifcloture.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -30,18 +31,6 @@ private:
      */
     Login *login;
     /**
-     * @brief Ecran Principal des commandes
-     */
-    EcranPrincipal *ecranPrincipal;
-    /**
-     * @brief Dialog à remplir lors de la création d'un ticket
-     */
-    CreationTicket *creationTicket;
-    /**
-     * @brief Dialog à remplir lors de l'affichage des infos d'un ticket
-     */
-    DetailsTicket *detailsTicket;
-    /**
      * @brief Gestion du dialogue entre l'UI et les données
      */
     GestionnaireDialogue *gd;
@@ -56,30 +45,6 @@ public:
      * @return gd Le gestionnaire de dialogue
      */
     inline GestionnaireDialogue* getGD() const { return gd; }
-    /**
-     * @brief Affiche l'écran principal de commandes
-     */
-    void afficherEcranPrincipal();
-    /**
-     * @brief Mets à jour l'écran principal de commandes
-     */
-    void mettreAJourEcranPrincipal();
-    /**
-     * @brief Affiche le Dialog de la création d'un ticket
-     */
-    void afficherCreationTicket();
-
-    /**
-     * @brief Affiche les informations d'un ticket
-     * @param ticket Ticket à afficher
-     */
-    void afficherTicket(Ticket* ticket);
-
-    /**
-     * @brief Affiche la dialog box de cloture d'un ticket
-     * @param ticket Ticket à afficher
-     */
-    void afficherMotifCloture(Ticket* ticket);
 
     /**
      * @brief Destructeur de la MainWindow

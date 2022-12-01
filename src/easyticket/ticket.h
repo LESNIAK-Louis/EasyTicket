@@ -121,9 +121,15 @@ public:
 
     /**
     * @brief Getter du statut du ticket
+    * @return statut
+    */
+    inline statutTicket getStatut() const{ return statut; }
+
+    /**
+    * @brief Getter du statut du ticket
     * @return statut en QString
     */
-    inline QString getStatut() {
+    inline QString getStatutString() {
         switch(statut){
             case OUVERT:
                 return "OUVERT";
@@ -196,7 +202,7 @@ public:
     * @param msg motif de cloture
     * @param redacteur nom de l'utilisateur qui cloture le ticket
     */
-    void cloturerTicket(statutTicket statut, QString msg, QString redacteur)
+    void cloturerTicket(statutTicket statut, QString msg, QString redacteur);
     /**
     * @brief Ajoute une message au ticket
     * @param msg Message à ajouter

@@ -1,5 +1,6 @@
 #include "creationticket.h"
 #include "ui_creationticket.h"
+#include "ecranprincipal.h"
 #include "mainwindow.h"
 
 CreationTicket::CreationTicket(QWidget *parent) :
@@ -26,9 +27,9 @@ CreationTicket::~CreationTicket()
 
 void CreationTicket::on_comboBoxResultat_accepted()
 {
-    GestionnaireDialogue* gd = ((MainWindow*)(this->parent()))->getGD();
+    GestionnaireDialogue* gd = ((MainWindow*)(this->parent()->parent()))->getGD();
     gd->creerTicket(ui->champTitre->text(), ui->comboBoxCategorie->currentText(),
                     ui->comboBoxLogiciel->currentText(), ui->champMessage->toPlainText());
-    ((MainWindow*)(this->parent()))->mettreAJourEcranPrincipal();
+    ((EcranPrincipal*)(this->parent()))->chargerTickets();
 
 }

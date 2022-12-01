@@ -1,6 +1,8 @@
 #include "ecranprincipal.h"
 #include "ui_ecranprincipal.h"
 #include "mainwindow.h"
+#include "detailsticket.h"
+#include "creationticket.h"
 
 #include <QMessageBox>
 
@@ -9,12 +11,13 @@ EcranPrincipal::EcranPrincipal(QWidget *parent) :
     ui(new Ui::EcranPrincipal)
 {
     ui->setupUi(this);
-    Utilisateur* u = ((MainWindow*)(this->parent()))->getGD()->getUtilisateur();
-    ui->labelNom->setText("Bienvenue " + u->getPrenom() + " " + u->getNom());
-    ui->pushButtonCreationTicket->setVisible(u->estUnClient());
+    utilisateur = ((MainWindow*)(this->parent()))->getGD()->getUtilisateur();
+    ui->labelNom->setText("Bienvenue " + utilisateur->getPrenom() + " " + utilisateur->getNom());
+    ui->pushButtonCreationTicket->setVisible(utilisateur->estUnClient());
+    //chargerTickets();
 }
 
-void EcranPrincipal::chargerTickets(Utilisateur* utilisateur){
+void EcranPrincipal::chargerTickets(){
 
     QMap<int, Ticket*> tickets = utilisateur->getTickets();
 
@@ -23,15 +26,15 @@ void EcranPrincipal::chargerTickets(Utilisateur* utilisateur){
 
         ui->listeTickets->addItem(new QListWidgetItem(QString::number(t->getId()) + "\t" +
                                                       t->getTitre() + "\t" +
-                                                      t->getStatut() + "\t" +
+                                                      t->getStatutString() + "\t" +
                                                       t->getCategorie() + "\t" +
                                                       t->getDateDerniereModification() + "\t"));
     }
 }
 
 void EcranPrincipal::on_pushButtonCreationTicket_clicked(){
-    MainWindow* mainWindow = (MainWindow*)(this->parent());
-    mainWindow->afficherCreationTicket();
+    CreationTicket* creationTicket = new CreationTicket(this);
+    creationTicket->exec();
 }
 
 
@@ -42,6 +45,6 @@ EcranPrincipal::~EcranPrincipal(){
 void EcranPrincipal::on_listeTickets_itemClicked(QListWidgetItem *item)
 {
     int index = ui->listeTickets->row(item);
-    MainWindow* mainWindow = (MainWindow*)(this->parent());
-    mainWindow->afficherTicket(mainWindow->getGD()->getUtilisateur()->getTickets().value(index));
+    DetailsTicket* detailsTicket = new DetailsTicket(this, utilisateur->getTickets().value(index));
+    detailsTicket->exec();
 }

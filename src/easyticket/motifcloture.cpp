@@ -1,23 +1,34 @@
 #include "motifcloture.h"
 #include "ui_motifcloture.h"
+#include "ecranprincipal.h"
+#include "detailsticket.h"
+#include "mainwindow.h"
 
-motifCloture::motifCloture(QWidget *parent) :
+MotifCloture::MotifCloture(QWidget *parent, Ticket* ticket) :
     QDialog(parent),
-    ui(new Ui::motifCloture)
+    ui(new Ui::MotifCloture)
 {
     ui->setupUi(this);
-}
-
-
-void CreationTicket::on_comboBoxStatut_accepted()
-{
-    GestionnaireDialogue* gd = ((MainWindow*)(this->parent()))->getGD();
-    gd->cloturerTicket(ui-> ,ui->champMessage->toPlainText());
-    ((MainWindow*)(this->parent()))->mettreAJourEcranPrincipal();
+    this->ticket = ticket;
+    ui->comboBoxStatut->addItem("RESOLU");
+    ui->comboBoxStatut->addItem("INSOLUBLE");
 
 }
 
-motifCloture::~motifCloture()
+MotifCloture::~MotifCloture()
 {
     delete ui;
+}
+
+void MotifCloture::on_comboBoxResultat_accepted()
+{
+    DetailsTicket* detailTicket = (DetailsTicket*)this->parent();
+    EcranPrincipal* ecranPrincipal = (EcranPrincipal*)(detailTicket->parent());
+    MainWindow* mainWindow = (MainWindow*)ecranPrincipal->parent();
+
+    GestionnaireDialogue* gd = mainWindow->getGD();
+    gd->cloturerTicket(ticket, ui->comboBoxStatut->currentText() , ui->champMessage->toPlainText());
+    ecranPrincipal->chargerTickets();
+    detailTicket->chargerMessages();
+
 }

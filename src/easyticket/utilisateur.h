@@ -87,6 +87,14 @@ public:
     virtual inline bool estUnTechnicien() const = 0;
 
     /**
+     * @brief Permet a l'utilisateur de clôre un ticket
+     * @param ticket
+     * @param statut
+     * @param motif
+     */
+    void cloturerTicket(Ticket* ticket, statutTicket statut, QString motif);
+
+    /**
      * destructeur de l'Utilisateur
      */
     ~Utilisateur();

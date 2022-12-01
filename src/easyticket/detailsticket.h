@@ -20,18 +20,19 @@ public:
     /**
      * @brief constructeur de la classe
      * @param parent parent
+     * @param ticket
      */
-    explicit DetailsTicket(QWidget *parent = nullptr);
+    explicit DetailsTicket(QWidget *parent = nullptr, Ticket* ticket = nullptr);
     ~DetailsTicket();
 
     /**
      * @brief Affiche les messages correspondants au ticket
-     * @param ticket Ticket
      */
-    void chargerMessages(Ticket* ticket);
+    void chargerMessages();
 
 private slots:
     void on_boutonEnvoyer_clicked();
+    void on_boutonCloturer_clicked();
 
 private:
     Ui::DetailsTicket *ui;
