@@ -11,8 +11,8 @@ Message* GestionnaireMessages::getMessage(int id){
 QMap<int,Message*> GestionnaireMessages::getMessages(){
     return messages;
 }
-void GestionnaireMessages::ajouterMessage(Message* mes){
-    messages.insert(mes->getId(), mes);
+void GestionnaireMessages::ajouterMessage(Message* msg){
+    messages.insert(msg->getId(), msg);
 }
 
 GestionnaireMessages::~GestionnaireMessages(){

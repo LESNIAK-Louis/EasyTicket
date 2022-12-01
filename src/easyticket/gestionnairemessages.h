@@ -38,7 +38,7 @@ public:
      * @brief ajoute un messages dans son gestionnaire
      * @param message a ajouter
      */
-    void ajouterMessage(Message* mes);
+    void ajouterMessage(Message* msg);
 
     /**
       * destructeur de la classe

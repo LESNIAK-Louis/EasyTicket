@@ -8,8 +8,7 @@
  */
 class Employe : public Utilisateur
 {
-public:
-
+protected:
     /**
      * @brief Construction d'un employé
      * @param login d'un employé
@@ -18,6 +17,7 @@ public:
      */
     Employe(QString login, QString nom, QString prenom);
 
+public:
     /**
      * @brief retourne vrai si l'utilisateur est un employé
      * @return valeur du bool
