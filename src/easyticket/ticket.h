@@ -191,11 +191,20 @@ public:
     */
     inline void setStatut(statutTicket statut) { this->statut = statut; }
     /**
+    * @brief Cloture le ticket
+    * @param statut Statut à mettre
+    * @param msg motif de cloture
+    * @param redacteur nom de l'utilisateur qui cloture le ticket
+    */
+    void cloturerTicket(statutTicket statut, QString msg, QString redacteur)
+    /**
     * @brief Ajoute une message au ticket
     * @param msg Message à ajouter
     * @param redacteur Nom du rédacteur du message
     */
     void ajouterMessage(QString msg, QString redacteur);
+
+
 
      ~Ticket();
 

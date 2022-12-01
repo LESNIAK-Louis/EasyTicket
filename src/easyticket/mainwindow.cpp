@@ -35,6 +35,10 @@ void MainWindow::afficherTicket(Ticket* ticket){
 
 }
 
+void MainWindow::afficherMotifCloture(){
+
+}
+
 MainWindow::~MainWindow()
 {
     delete gd;

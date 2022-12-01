@@ -33,6 +33,12 @@ void Ticket::ajouterMessage(QString msg, QString redacteur){
     gm->ajouterMessage(new Message(msg, redacteur));
 }
 
+void Ticket::cloturerTicket(statutTicket statut, QString msg, QString redacteur){
+    setStatut(statut);
+    setDateDerniereModification(getDateEtHeureActuelle());
+    setDateCloture(getDateEtHeureActuelle());
+    gm->ajouterMessage(new Message(msg, redacteur));
+}
 
 Ticket::~Ticket(){
 

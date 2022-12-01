@@ -76,6 +76,12 @@ public:
     void afficherTicket(Ticket* ticket);
 
     /**
+     * @brief Affiche la dialog box de cloture d'un ticket
+     * @param ticket Ticket à afficher
+     */
+    void afficherMotifCloture(Ticket* ticket);
+
+    /**
      * @brief Destructeur de la MainWindow
      */
     ~MainWindow();

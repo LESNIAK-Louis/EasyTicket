@@ -12,9 +12,13 @@ bool GestionnaireDialogue::tentativeConnexion(QString login){
     return utilisateurActuel != NULL;
 }
 
-void GestionnaireDialogue::creerTicket(QString titre, QString categorie,  QString logiciel, QString message){
+void GestionnaireDialogue::creerTicket(QString titre, QString categorie, QString logiciel, QString message){
 
     ((Client*)utilisateurActuel)->creerTicket(titre, categorie, logiciel, message);
+}
+
+void GestionnaireDialogue::cloturerTicket(int id, statutTicket statut, QString motif){
+    ((Utilisateur*)utilisateurActuel)->cloturerTicket(id);
 }
 
 

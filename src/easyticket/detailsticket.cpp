@@ -33,6 +33,11 @@ void DetailsTicket::chargerMessages(Ticket* ticket){
     }
 }
 
+void EcranPrincipal::on_pushButtonBoutonCloturer_clicked(){
+    MainWindow* mainWindow = (MainWindow*)(this->parent());
+    mainWindow->afficherMotifCloture();
+}
+
 DetailsTicket::~DetailsTicket()
 {
     QLayoutItem *child;

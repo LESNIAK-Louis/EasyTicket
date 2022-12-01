@@ -30,6 +30,14 @@ public:
     void creerTicket(QString titre, QString categorie,  QString logiciel, QString message);
 
     /**
+     * @brief Cloture un ticket
+     * @param id id du ticket
+     * @param statut statut à mettre
+     * @param motif motif de cloture
+     */
+    void cloturerTicket(int id, statutTicket statut, QString motif);
+
+    /**
      * @brief retourne un utilisateur
      * @return utilisateur
      */

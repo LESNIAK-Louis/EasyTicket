@@ -36,7 +36,8 @@ SOURCES += \
     utilisateur.cpp \
     creationticket.cpp \
     message.cpp \
-    utilitaires.cpp
+    utilitaires.cpp \
+    motifcloture.cpp
 
 HEADERS += \
     client.h \
@@ -58,7 +59,8 @@ HEADERS += \
     creationticket.h \
     fabriqueidentifiant.h \
     message.h \
-    utilitaires.h
+    utilitaires.h \
+    motifcloture.h
 
 FORMS += \
     detailsticket.ui \
@@ -66,7 +68,8 @@ FORMS += \
     mainwindow.ui \
     ecranprincipal.ui \
     creationticket.ui \
-    messageinfosticket.ui
+    messageinfosticket.ui \
+    motifcloture.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

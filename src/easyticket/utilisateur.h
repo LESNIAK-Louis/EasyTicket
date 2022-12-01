@@ -57,6 +57,12 @@ public:
     QMap<int, Ticket*> getTickets() { return gestionnaireTickets->getTickets(); }
 
     /**
+     * @brief return les tickets de l'utilisateur
+     * @return tickets
+     */
+    inline Ticket* getTicket(int id) { return getTickets().value(id); }
+
+    /**
      * @brief retourne vrai si l'utilisateur est un client
      * @return valeur du bool
      */
