@@ -1,0 +1,123 @@
+@startuml
+
+static class Utilitaires{
+{static} String getDateEtHeureActuelle()
+{static} String getDateActuelle()
+}
+
+class GestionnaireUtilisateurs{
+GestionnaireUtilisateurs()
+Utilisateur getUtilisateur(String login)
+}
+
+class GestionnaireTickets{
+GestionnaireTickets()
+QMap<int, Ticket> getTickets()
+Ticket getTicket(int id)
+void ajouterTicket(String titre, String categorie, String logiciel, String message, String redacteur)
+}
+
+class GestionnaireMessages{
+GestionnaireMessages()
+QMap<int, Message> getMessages()
+Message getMessage(int id)
+void ajouterMessage(String msg)
+}
+
+class GestionnaireDialogue{
+GestionnaireDialogue()
+bool tentativeConnexion(QString login)
+void creerTicket(String titre, String categorie,  String logiciel, String message)
+}
+
+abstract class Utilisateur{
+# String login 
+# String nom
+# String prenom
+# Utilisateur(String login, String nom, String prenom)
+{abstract} bool estUnClient()
+{abstract} bool estUnEmploye()
+{abstract} bool estUnIngenieur()
+{abstract} bool estUnTechnicien()
+QMap<int, Ticket> getTickets() 
+}
+
+abstract class Employe extends Utilisateur{ 
+# Employe(String login, String nom, String prenom)
+bool estUnEmploye()
+{abstract} bool estUnIngenieur()
+{abstract} bool estUnTechnicien()
+}
+
+class Ingenieur extends Employe{
+Ingenieur(String login, String nom, String prenom)
+bool estUnTechnicien()
+bool estUnIngenieur()
+}
+
+class Technicien extends Employe{
+Technicien(String login, String nom, String prenom)
+bool estUnTechnicien()
+bool estUnIngenieur()
+}
+
+class Client extends Utilisateur{
+Client(String login, String nom, String prenom)
+bool estUnClient()
+bool estUnEmploye()
+bool estUnIngenieur()
+bool estUnTechnicien()
+void creerTicket(String titre, String categorie, String message)
+void creerTicket(String titre, String categorie, String logiciel, String message)
+}
+
+class Ticket{
+- int id
+- String titre
+- String catégorie
+- String logiciel
+- String dateCréation
+- String datePriseEnCharge
+- String dateDerniereModification
+- String dateCloture
+Ticket(String titre, String catégorie)
+Ticket(String titre, String catégorie,  String logiciel)
+QMap<int, Message> getMessages()
+void ajouterMessage(String msg, String redacteur)
+}
+
+class Message{
+- int id
+- String contenu
+- String dateMessage
+- String redacteur
+Message(String contenu, String redacteur)
+}
+
+enum Statut{
+OUVERT
+RESOLU
+INSOLUBLE
+}
+
+class FabriqueIdentifiant{
+- int idTicket
+- int idMessage
+- {static} FabriqueIdentifiant instance
+--
+- FabriqueIdentifiant()
+{static} FabriqueIdentifiant getInstance()
+void resetIdTicket()
+void resetIdMessage()
+}
+
+
+Ticket - "1" GestionnaireMessages
+Statut "1"- Ticket
+Utilisateur -"1" GestionnaireTickets
+GestionnaireUtilisateurs -"*" Utilisateur
+GestionnaireMessages -"*" Message
+GestionnaireTickets --"*" Ticket
+GestionnaireDialogue -"1" GestionnaireUtilisateurs
+GestionnaireDialogue -"1" Utilisateur
+@enduml
