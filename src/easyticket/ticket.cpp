@@ -5,6 +5,7 @@
 Ticket::Ticket(QString mtitre, QString mcategorie){
     titre = mtitre;
     categorie = mcategorie;
+    logiciel = QString("Non renseigné");
     FabriqueIdentifiant *fi = fi->getInstance();
     id = fi->getIdTicket();
     dateCreation = getDateEtHeureActuelle();
@@ -17,7 +18,7 @@ Ticket::Ticket(QString mtitre, QString mcategorie){
 Ticket::Ticket(QString mtitre, QString mcategorie, QString mlogiciel){
     titre = mtitre;
     categorie = mcategorie;
-    logiciel =  mcategorie;
+    logiciel =  mlogiciel;
     FabriqueIdentifiant *fi = fi->getInstance();
     id = fi->getIdTicket();
     dateCreation = getDateEtHeureActuelle();

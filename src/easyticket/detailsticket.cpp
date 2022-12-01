@@ -11,6 +11,11 @@ DetailsTicket::DetailsTicket(QWidget *parent) :
 void DetailsTicket::chargerMessages(Ticket* ticket){
 
     ui->labelTitre->setText(ticket->getTitre());
+    ui->labelID->setText("ID\n" + QString::number(ticket->getId()));
+    ui->labelStatut->setText("Statut\n" + ticket->getStatut());
+    ui->labelDate->setText("Créé le\n" + ticket->getDateCreation());
+    ui->labelCategorie->setText("Catégorie\n" + ticket->getCategorie());
+    ui->labelLogiciel->setText("Logiciel\n" + ticket->getLogiciel());
 
     QMap<int, Message*> messages = ticket->getMessages();
 
