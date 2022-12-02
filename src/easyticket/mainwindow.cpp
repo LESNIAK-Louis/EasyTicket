@@ -5,7 +5,16 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 {
     ui->setupUi(this);
 
+    setAttribute(Qt::WA_DeleteOnClose);
+    this->setFixedSize(this->width(),this->height());
+    setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
+    setWindowTitle("EasyTicket");
+
     gd = new GestionnaireDialogue();
+    loginPage();
+}
+
+void MainWindow::loginPage(){
     login = new Login(this);
 }
 

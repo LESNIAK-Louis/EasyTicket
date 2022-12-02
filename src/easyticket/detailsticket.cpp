@@ -10,6 +10,12 @@ DetailsTicket::DetailsTicket(QWidget *parent, Ticket* ticket) :
     ui(new Ui::DetailsTicket)
 {
     ui->setupUi(this);
+
+    setAttribute(Qt::WA_DeleteOnClose);
+    this->setFixedSize(this->width(),this->height());
+    setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
+    setWindowTitle("Détails du ticket");
+
     ui->scrollAreaWidgetContents->setLayout(ui->zoneMessagesLayout);
     this->ticket = ticket;
     chargerMessages();

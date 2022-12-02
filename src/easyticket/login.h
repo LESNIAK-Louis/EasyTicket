@@ -2,6 +2,7 @@
 #define LOGIN_H
 
 #include <QWidget>
+#include  "ecranprincipal.h"
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class Login;
@@ -20,6 +21,10 @@ private:
      * @brief L'UI du Widget Login
      */
     Ui::Login *ui;
+    /**
+     * @brief Widget EcranPrincipal
+     */
+    EcranPrincipal* ecranPrincipal;
 
 public:
     /**

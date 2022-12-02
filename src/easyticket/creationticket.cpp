@@ -8,7 +8,11 @@ CreationTicket::CreationTicket(QWidget *parent) :
     ui(new Ui::CreationTicket)
 {
     ui->setupUi(this);
+
+    setAttribute(Qt::WA_DeleteOnClose);
     this->setFixedSize(this->width(),this->height());
+    setWindowFlags(this->windowFlags() | Qt::MSWindowsFixedSizeDialogHint);
+    setWindowTitle("Création d'un ticket");
 
     ui->comboBoxCategorie->addItem("Bug");
     ui->comboBoxCategorie->addItem("Question");
@@ -31,5 +35,4 @@ void CreationTicket::on_comboBoxResultat_accepted()
     gd->creerTicket(ui->champTitre->text(), ui->comboBoxCategorie->currentText(),
                     ui->comboBoxLogiciel->currentText(), ui->champMessage->toPlainText());
     ((EcranPrincipal*)(this->parent()))->chargerTickets();
-
 }

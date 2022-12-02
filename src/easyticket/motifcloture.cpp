@@ -9,6 +9,12 @@ MotifCloture::MotifCloture(QWidget *parent, Ticket* ticket) :
     ui(new Ui::MotifCloture)
 {
     ui->setupUi(this);
+
+    setAttribute(Qt::WA_DeleteOnClose);
+    this->setFixedSize(this->width(),this->height());
+    setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
+    setWindowTitle("Clôture du ticket");
+
     this->ticket = ticket;
     ui->comboBoxStatut->addItem("RESOLU");
     ui->comboBoxStatut->addItem("INSOLUBLE");

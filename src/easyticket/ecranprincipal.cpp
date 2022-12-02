@@ -11,6 +11,11 @@ EcranPrincipal::EcranPrincipal(QWidget *parent) :
     ui(new Ui::EcranPrincipal)
 {
     ui->setupUi(this);
+
+    setAttribute(Qt::WA_DeleteOnClose);
+    ((MainWindow*)(this->parent()))->setFixedSize(this->width(),this->height());
+    setWindowFlags(this->windowFlags() | Qt::MSWindowsFixedSizeDialogHint);
+
     utilisateur = ((MainWindow*)(this->parent()))->getGD()->getUtilisateur();
     ui->labelNom->setText("Bienvenue " + utilisateur->getPrenom() + " " + utilisateur->getNom());
     ui->pushButtonCreationTicket->setVisible(utilisateur->estUnClient());
@@ -39,6 +44,7 @@ void EcranPrincipal::on_pushButtonCreationTicket_clicked(){
 
 
 EcranPrincipal::~EcranPrincipal(){
+    delete utilisateur;
     delete ui;
 }
 

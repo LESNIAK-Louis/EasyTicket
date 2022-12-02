@@ -9,6 +9,8 @@ Login::Login(QWidget *parent) :
     ui(new Ui::Login)
 {
     ui->setupUi(this);
+    ((MainWindow*)(this->parent()))->setFixedSize(this->width(),this->height());
+    setWindowFlags(this->windowFlags()| Qt::MSWindowsFixedSizeDialogHint);
 }
 
 Login::~Login()
@@ -21,12 +23,12 @@ void Login::on_boutonLogin_clicked()
     GestionnaireDialogue* gd = ((MainWindow*)(this->parent()))->getGD();
     bool b = gd->tentativeConnexion(ui->champLogin->text());
     if(b){
-        EcranPrincipal* ecranPrincipal = new EcranPrincipal((MainWindow*)this->parent());
+        ecranPrincipal = new EcranPrincipal((MainWindow*)this->parent());
         ecranPrincipal->show();
         ecranPrincipal->chargerTickets();
+        delete this;
     }else{
         ui->labelErreur->setText("Erreur : utilisateur inconnu");
         ui->labelErreur->setStyleSheet("QLabel { color : red; }");
-        qDebug("sdsf");
     }
 }
