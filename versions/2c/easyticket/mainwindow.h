@@ -47,11 +47,6 @@ public:
     inline GestionnaireDialogue* getGD() const { return gd; }
 
     /**
-     * @brief Affiche la page de login
-     */
-    void loginPage();
-
-    /**
      * @brief Destructeur de la MainWindow
      */
     ~MainWindow();

@@ -32,6 +32,7 @@ public:
 
 private slots:
     void on_boutonEnvoyer_clicked();
+    void on_boutonModifierCateg_clicked();
     void on_boutonCloturer_clicked();
 
 private:

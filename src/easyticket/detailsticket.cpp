@@ -29,6 +29,14 @@ void DetailsTicket::chargerMessages(){
     ui->labelCategorie->setText("Catégorie\n" + ticket->getCategorie());
     ui->labelLogiciel->setText("Logiciel\n" + ticket->getLogiciel());
 
+    if(((EcranPrincipal*)this->parent())->getUtilisateur()->estUnEmploye())
+    {
+        ui->boutonModifierCateg->setVisible(true);
+    }
+    else{
+        ui->boutonModifierCateg->setVisible(false);
+    }
+
     if(ticket->getStatut() != OUVERT){
         ui->boutonCloturer->setEnabled(false);
         ui->inputReponse->setEnabled(false);
@@ -53,6 +61,11 @@ void DetailsTicket::chargerMessages(){
         ui->zoneMessages->verticalScrollBar()->setValue(
                             ui->zoneMessages->verticalScrollBar()->maximum());
     }
+}
+
+void DetailsTicket::on_boutonModifierCateg_clicked()
+{
+
 }
 
 void DetailsTicket::on_boutonEnvoyer_clicked()
