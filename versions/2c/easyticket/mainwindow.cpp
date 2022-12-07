@@ -11,17 +11,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     setWindowTitle("EasyTicket");
 
     gd = new GestionnaireDialogue();
-    loginPage();
-}
-
-void MainWindow::loginPage(){
     login = new Login(this);
 }
 
 MainWindow::~MainWindow()
 {
     delete gd;
-    delete login;
     delete ui;
 }
 
