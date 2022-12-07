@@ -34,6 +34,18 @@ public:
     explicit Login(QWidget *parent = nullptr);
 
     /**
+     * @brief Getter du login
+     * @return ui->champLogin->text()
+     */
+    QString const getLogin();
+
+    /**
+     * @brief Getter du login
+     * @return ui->champMdp->text()
+     */
+    QString const getPassword();
+
+    /**
      * @brief Destructeur du Widget Login
      */
     ~Login();

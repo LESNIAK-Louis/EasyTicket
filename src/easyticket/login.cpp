@@ -13,6 +13,10 @@ Login::Login(QWidget *parent) :
     setWindowFlags(this->windowFlags()| Qt::MSWindowsFixedSizeDialogHint);
 }
 
+QString const Login::getLogin(){ return this->ui->champLogin->text(); }
+
+QString const Login::getPassword(){ return this->ui->champMdp->text(); }
+
 Login::~Login()
 {
     delete ui;
@@ -21,7 +25,7 @@ Login::~Login()
 void Login::on_boutonLogin_clicked()
 {
     GestionnaireDialogue* gd = ((MainWindow*)(this->parent()))->getGD();
-    bool b = gd->tentativeConnexion(ui->champLogin->text());
+    bool b = gd->tentativeConnexion(getLogin());
     if(b){
         ecranPrincipal = new EcranPrincipal((MainWindow*)this->parent());
         ecranPrincipal->show();
