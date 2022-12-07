@@ -29,6 +29,12 @@ public:
      */
     void chargerTickets();
 
+    /**
+     * @brief Getter de l'utilisateur
+     * @return utilisateur
+     */
+    inline Utilisateur* getUtilisateur() const {return utilisateur;}
+
     ~EcranPrincipal();
 
 private slots:

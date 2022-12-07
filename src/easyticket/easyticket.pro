@@ -20,6 +20,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     client.cpp \
     detailsticket.cpp \
+    dialogcombobox.cpp \
     employe.cpp \
     erreur.cpp \
     gestionnairedialogue.cpp \
@@ -43,6 +44,7 @@ SOURCES += \
 HEADERS += \
     client.h \
     detailsticket.h \
+    dialogcombobox.h \
     employe.h \
     erreur.h \
     gestionnairedialogue.h \
@@ -66,6 +68,7 @@ HEADERS += \
 
 FORMS += \
     detailsticket.ui \
+    dialogcombobox.ui \
     erreur.ui \
     login.ui \
     mainwindow.ui \

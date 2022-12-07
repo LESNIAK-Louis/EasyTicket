@@ -44,7 +44,7 @@
     <rect>
      <x>0</x>
      <y>59</y>
-     <width>133</width>
+     <width>131</width>
      <height>411</height>
     </rect>
    </property>
@@ -85,8 +85,14 @@ Ouvert</string>
     <item>
      <widget class="QLabel" name="labelCategorie">
       <property name="text">
-       <string>Catégorie
-Question</string>
+       <string>Catégorie</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="boutonModifierCateg">
+      <property name="text">
+       <string>Modifier Catégorie</string>
       </property>
      </widget>
     </item>
