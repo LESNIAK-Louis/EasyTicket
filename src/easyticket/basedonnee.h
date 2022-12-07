@@ -21,8 +21,6 @@ public:
      */
     void creerTableUtilisateur();
 
-
-
     /**
      * @brief fonction qui creer la table Ticket
      */
@@ -46,7 +44,7 @@ public:
      * @param contenu du message
      * @param date du Message
      */
-    void ajouterMessage(const int id, const QString contenu, const QString dateMessage,const QString idTicket );
+    void ajouterMessage(Message * m );
 
     /**
      * @brief fonction qui rajoute un ticket dans sa table

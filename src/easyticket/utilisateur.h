@@ -16,6 +16,12 @@ protected:
     QString login;
 
     /**
+     * @brief password d'un utilisateur
+     */
+    QString password;
+
+
+    /**
      * @brief nom d'un utilisateur
      */
     QString nom;
@@ -36,6 +42,18 @@ protected:
     Utilisateur(QString login, QString nom, QString prenom);
 
 public:
+
+    /**
+    * @brief retourne le login de l'utilisateur
+    * @return nom
+    */
+   QString  getLogin(){return login;}
+
+   /**
+   * @brief retourne le mot de passe de l'utilisateur
+   * @return nom
+   */
+   QString  getPassword(){return password; }
 
     /**
      * @brief retourne le nom de l'utilisateur
