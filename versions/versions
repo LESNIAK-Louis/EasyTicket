@@ -11,3 +11,4 @@ Historique des versions
 2a : Ajout de la possibilité de clôturer un ticket et modification de la hiérarchie des fenêtres de l'UI
 2b : Affichage d'un message d'erreur lors de la création d'un ticket avec des informations manquantes
 2c : Ajout du champ mot de passe dans login (juste pour la partie graphique)
+2d : Un employé peut maintenant modifier un ticket de catégorie
