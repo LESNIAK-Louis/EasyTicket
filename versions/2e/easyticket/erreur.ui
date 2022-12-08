@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>DialogComboBox</class>
- <widget class="QDialog" name="DialogComboBox">
+ <class>Erreur</class>
+ <widget class="QDialog" name="Erreur">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>329</width>
-    <height>152</height>
+    <width>316</width>
+    <height>231</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,30 +16,30 @@
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>120</y>
-     <width>166</width>
-     <height>25</height>
+     <x>10</x>
+     <y>180</y>
+     <width>261</width>
+     <height>32</height>
     </rect>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>
    <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+    <set>QDialogButtonBox::Ok</set>
    </property>
   </widget>
-  <widget class="QLabel" name="labelChoix">
+  <widget class="QLabel" name="labelErreur">
    <property name="geometry">
     <rect>
-     <x>9</x>
-     <y>9</y>
-     <width>301</width>
-     <height>41</height>
+     <x>10</x>
+     <y>20</y>
+     <width>291</width>
+     <height>151</height>
     </rect>
    </property>
    <property name="text">
-    <string>Choose </string>
+    <string>Erreur</string>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -54,23 +54,13 @@
     <set>Qt::NoTextInteraction</set>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBoxChoix">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>70</y>
-     <width>301</width>
-     <height>25</height>
-    </rect>
-   </property>
-  </widget>
  </widget>
  <resources/>
  <connections>
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>DialogComboBox</receiver>
+   <receiver>Erreur</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -86,7 +76,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>DialogComboBox</receiver>
+   <receiver>Erreur</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
