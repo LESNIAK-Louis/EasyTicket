@@ -17,6 +17,7 @@ EcranPrincipal::EcranPrincipal(QWidget *parent) :
     utilisateur = ((MainWindow*)(this->parent()))->getGD()->getUtilisateur();
     ui->labelNom->setText("Bienvenue " + utilisateur->getPrenom() + " " + utilisateur->getNom());
     ui->pushButtonCreationTicket->setVisible(utilisateur->estUnClient());
+
     //chargerTickets();
 }
 

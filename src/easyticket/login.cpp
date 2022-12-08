@@ -30,7 +30,7 @@ void Login::on_boutonLogin_clicked()
         ecranPrincipal = new EcranPrincipal((MainWindow*)this->parent());
         ecranPrincipal->show();
         ecranPrincipal->chargerTickets();
-        delete this;
+        this->hide();
     }else{
         ui->labelErreur->setText("Erreur : utilisateur inconnu");
         ui->labelErreur->setStyleSheet("QLabel { color : red; }");
