@@ -28,10 +28,10 @@ int main(int argc, char *argv[])
     BaseDonnee * bd = new BaseDonnee();
 
    // bd->ajouterUtilisateur(abou);
-    bd->ajouterTicket(t2);
-  //  bd->ajouterMessage(m);
+   // bd->ajouterTicket(t2);
+    //bd->ajouterMessage(m);
    // bd->modifierTicket(t);
-    bd->RecupererUtilisateur("aboubacar","aboubacar",abou);
+    bd->RecupererUtilisateur("abc","abc",abou);
 
     return a.exec();
 

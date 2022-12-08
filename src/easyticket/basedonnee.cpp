@@ -144,7 +144,8 @@ void BaseDonnee::RecupererUtilisateur(const QString login,const QString mdp, Uti
         if(role == "Ingénieur") u = new Ingenieur(loginR,nomR,prenomR);
         if(role == "Client") u = new Client(loginR,nomR,prenomR);
         if(role == "Technicien") u = new Technicien(loginR,nomR,prenomR);
-}
+
+        }
         else{
             qDebug() << "utilisateur introuvable";
 
