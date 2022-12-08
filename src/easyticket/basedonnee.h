@@ -5,6 +5,8 @@
 #include <QObject>
 #include <QString>
 #include "utilisateur.h"
+#include "client.h"
+#include "employe.h"
 #include "ticket.h"
 #include "message.h"
 
@@ -72,7 +74,7 @@ public:
      */
     void modifierTicket(Ticket * t);
 
-    void RecupererUtilisateur(Utilisateur * u);
+    void RecupererUtilisateur(const QString login,const QString mdp, Utilisateur* u);
 
     void RecupererTicket();
 

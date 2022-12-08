@@ -1,8 +1,9 @@
 #include "message.h"
 #include "fabriqueidentifiant.h"
 #include "utilitaires.h"
+#include "ticket.h"
 
-Message::Message(QString contenu, QString redacteur)
+Message::Message(QString contenu, QString redacteur, Ticket* ticket)
 {
     this->contenu = contenu;
     FabriqueIdentifiant *fi = fi->getInstance();
@@ -10,6 +11,7 @@ Message::Message(QString contenu, QString redacteur)
 
     this->redacteur = redacteur;
     this->dateMessage = getDateEtHeureActuelle();
+    this->ticket = ticket;
 }
 
 Message::~Message(){

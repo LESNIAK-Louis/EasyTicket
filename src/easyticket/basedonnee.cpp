@@ -84,7 +84,7 @@ void BaseDonnee::ajouterTicket( Ticket * t){
     q.addBindValue(t->getDatePriseEnCharge());
     q.addBindValue(t->getDateCloture());
     q.addBindValue(t->getClient()->getLogin());
-    q.addBindValue(t->getClient()->getEmploye());
+    q.addBindValue(t->getEmploye()->getLogin());
 
    bool result = q.exec();
     if(!result){
@@ -121,7 +121,7 @@ void BaseDonnee::modifierTicket(Ticket * t){
          }
 }
 
-void BaseDonnee::RecupererUtilisateur(const QString login,const QString mdp, Utilisateur * u){
+void BaseDonnee::RecupererUtilisateur(const QString login,const QString mdp, Utilisateur* u){
 
     q.prepare("Select  u.login, u.mpd "
               "From User u"
@@ -130,10 +130,10 @@ void BaseDonnee::RecupererUtilisateur(const QString login,const QString mdp, Uti
     q.addBindValue(mdp);
     bool result = q.exec();
     if(result){
-        role = q.value(4).toString();
-        if()
+        QString role = q.value(4).toString();
+        //if()
 
-        u = new Utilisateur()
+        //u = new Utilisateur()
     }
 
 

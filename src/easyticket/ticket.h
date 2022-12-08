@@ -4,6 +4,9 @@
 #include <QString>
 #include "gestionnairemessages.h"
 
+class Client;
+class Employe;
+
 /**
 * @brief Enumération du status d'un Ticket
 */
@@ -61,21 +64,33 @@ private:
      */
     statutTicket statut;
 
+    /**
+     * @brief client qui a déposé le ticket
+     */
+    Client* client;
+
+    /**
+     * @brief employé qui prend en charge le ticket
+     */
+    Employe* employe;
+
 public:
     /**
     * @brief Constructeur d'un Ticket
     * @param titre Titre du ticket
     * @param categorie Catégorie du ticket
+    * @param client Client qui dépose le ticket
     */
-    Ticket(QString titre, QString categorie);
+    Ticket(QString titre, QString categorie, Client* client);
 
     /**
     * @brief Constructeur d'un Ticket
     * @param titre Titre du ticket
     * @param categorie Catégorie du ticket
     * @param logiciel Logiciel concerné par le ticket
+    * @param client Client qui dépose le ticket
     */
-    Ticket(QString titre, QString categorie,  QString logiciel);
+    Ticket(QString titre, QString categorie,  QString logiciel, Client* client);
 
 
     /**
@@ -152,6 +167,18 @@ public:
     QMap<int, Message*> getMessages() const { return gm->getMessages(); }
 
     /**
+    * @brief Getter du client qui a déposé le ticket
+    * @return client
+    */
+    inline Client* getClient() const { return client; }
+
+    /**
+    * @brief Getter de l'employé qui prend en charge le ticket
+    * @return employe
+    */
+    inline Employe* getEmploye() const { return employe; }
+
+    /**
     * @brief Setter de l'id du ticket
     * @param id identifiant ticket
     */
@@ -210,6 +237,11 @@ public:
     * @param statut
     */
     inline void setStatut(statutTicket statut) { this->statut = statut; }
+    /**
+    * @brief Setter de l'employé qui prend en charge le ticket
+    * @param employe Employé qui prend en charge le ticket
+    */
+    inline void setEmploye(Employe* employe) { this->employe = employe; }
     /**
     * @brief Cloture le ticket
     * @param statut Statut à mettre

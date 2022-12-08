@@ -42,6 +42,12 @@ public:
     inline bool estUnTechnicien() const {return true;}
 
     /**
+     * @brief retourne une QString avec le rôle de l'utilisateur
+     * @return rôle de l'utilisateur
+     */
+    inline QString getRole() const { return "Technicien"; }
+
+    /**
      * @brief destructeur de la classe
      */
     ~Technicien();
