@@ -4,7 +4,7 @@ BaseDonnee::BaseDonnee(){
 
     //mise en place d'un SGBD SQLITE
     db.setHostName("localhost");
-    db.setDatabaseName("baseDonneEasyTicket");
+    db.setDatabaseName("test");
     db.setUserName("guest");
     db.setPassword("1234");
     db.open();
@@ -18,9 +18,9 @@ BaseDonnee::BaseDonnee(){
         << db.lastError();
     }else{
 
-    creerTableUtilisateur();
-    creerTableTicket();
-    creerTableMessages();
+   // creerTableUtilisateur();
+   // creerTableTicket();
+   // creerTableMessages();
 }
 
 }
@@ -125,7 +125,7 @@ void BaseDonnee::modifierTicket(Ticket * t){
 void BaseDonnee::RecupererUtilisateur(const QString login,const QString mdp, Utilisateur* u){
 
     //Recuperation de L'user dans la BDD via le login et mdp saisit
-    q.exec("Select  u.login, u.password, u.prenom, u.nom, u.role "
+    q.prepare("Select  u.login, u.password, u.prenom, u.nom, u.role "
               "From User u "
               "where u.login=? and u.password=? ");
 
@@ -135,7 +135,7 @@ void BaseDonnee::RecupererUtilisateur(const QString login,const QString mdp, Uti
     //instancie l'utilisateur en fonction de son role
     if(result){
 
-        q.next();
+        if(q.next()){
         QString loginR = q.value(0).toString();
         QString prenomR =  q.value(2).toString();
         QString nomR =  q.value(3).toString();
@@ -144,7 +144,11 @@ void BaseDonnee::RecupererUtilisateur(const QString login,const QString mdp, Uti
         if(role == "Ingénieur") u = new Ingenieur(loginR,nomR,prenomR);
         if(role == "Client") u = new Client(loginR,nomR,prenomR);
         if(role == "Technicien") u = new Technicien(loginR,nomR,prenomR);
+}
+        else{
+            qDebug() << "utilisateur introuvable";
 
+        }
 
     }else {
         qDebug() << q.lastError();
