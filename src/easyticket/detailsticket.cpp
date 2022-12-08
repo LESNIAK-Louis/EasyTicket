@@ -2,6 +2,7 @@
 #include "ui_detailsticket.h"
 #include "mainwindow.h"
 #include "motifcloture.h"
+#include "dialogcombobox.h"
 
 #include <QScrollBar>
 
@@ -65,7 +66,17 @@ void DetailsTicket::chargerMessages(){
 
 void DetailsTicket::on_boutonModifierCateg_clicked()
 {
+    DialogCombobox* dialog = new DialogComboBox(this);
+    dialog->addItem("OUVERT");
+    dialog->addItem("RESOLU");
+    dialog->addItem("INSOLUBLE");
+    dialog->setTitle("Choisissez une catégorie");
+    dialog->exec();
 
+    ticket->setCategorieString(dialog->getStringResult());
+    ui->labelChoix->setText("Choisissez une catégorie à affecter au ticket");
+
+    delete dialog;
 }
 
 void DetailsTicket::on_boutonEnvoyer_clicked()

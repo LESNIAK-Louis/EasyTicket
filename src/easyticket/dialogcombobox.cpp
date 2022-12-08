@@ -6,6 +6,25 @@ DialogComboBox::DialogComboBox(QWidget *parent) :
     ui(new Ui::DialogComboBox)
 {
     ui->setupUi(this);
+
+    this->setFixedSize(this->width(),this->height());
+    setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
+}
+
+void DialogComboBox::addItem(QString item) const{
+    ui->comboBoxChoix->addItem(item);
+}
+
+void DialogComboBox::on_comboBoxChoix_accepted(){
+    this->result = ui->comboBoxChoix->currentText();
+}
+
+void DialogComboBox::setTitle(QString string){
+    setWindowTitle(string);
+}
+
+void DialogComboBox::setMessage(QString string){
+    ui->labelChoix->setText(string);
 }
 
 DialogComboBox::~DialogComboBox()

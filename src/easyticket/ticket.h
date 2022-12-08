@@ -166,6 +166,20 @@ public:
     * @param categorie Catégorie du ticket
     */
     inline void setCategorie(QString categorie) { this->categorie = categorie; }
+
+    /**
+    * @brief Setter de la catégorie du ticket, s'occupe de la conversion QString en enum
+    * @param categorie en QString - chaines gérées : "RESOLU", "INSOLUBLE", le reste -> "OUVERT"
+    */
+    inline void setCategorieString(QString categorie) {
+        if (categorie == "RESOLU")
+            this->categorie = RESOLU;
+        else if (categorie == "INSOLUBLE")
+            this->categorie = INSOLUBLE;
+        else
+            this->categorie = OUVERT;
+    }
+
     /**
     * @brief Setter du logiciel concerné par le ticket
     * @param logiciel Logiciel concerné par le ticket
