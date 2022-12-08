@@ -9,6 +9,8 @@
 #include "employe.h"
 #include "ticket.h"
 #include "message.h"
+#include "ingenieur.h"
+#include "technicien.h"
 
 /**
  * @brief Class qui gere la creation de la basse de donnée et les requetes
@@ -60,9 +62,6 @@ public:
      * @param dateCloture
      */
     void ajouterTicket(Ticket * t);
-
-   //-------------fonction a completer si utile
-    //-------------------------------------
 
     /**
      * @brief fonction qui modifier un Ticket dans sa table

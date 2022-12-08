@@ -29,7 +29,8 @@ BaseDonnee::BaseDonnee(){
 void BaseDonnee::creerTableUtilisateur(){
 
 
-bool result = q.exec("CREATE TABLE IF NOT EXISTS User (login TEXT(10)  primary key, password TEXT(20),prenom text(20), nom text(20),role text(20) );");
+bool result = q.exec("CREATE TABLE IF NOT EXISTS User (login TEXT(10)  primary key, password TEXT(20),"
+                     "prenom text(20), nom text(20),role text(20) );");
 if (!result ){
     qDebug() << "erreur de creation de la table User "
                << q.lastError();
@@ -84,7 +85,7 @@ void BaseDonnee::ajouterTicket( Ticket * t){
     q.addBindValue(t->getDatePriseEnCharge());
     q.addBindValue(t->getDateCloture());
     q.addBindValue(t->getClient()->getLogin());
-    q.addBindValue(t->getEmploye()->getLogin());
+    q.addBindValue("");
 
    bool result = q.exec();
     if(!result){
@@ -123,20 +124,32 @@ void BaseDonnee::modifierTicket(Ticket * t){
 
 void BaseDonnee::RecupererUtilisateur(const QString login,const QString mdp, Utilisateur* u){
 
-    q.prepare("Select  u.login, u.mpd "
-              "From User u"
-              "where u.login = ? and u.mdp =?");
+    //Recuperation de L'user dans la BDD via le login et mdp saisit
+    q.exec("Select  u.login, u.password, u.prenom, u.nom, u.role "
+              "From User u "
+              "where u.login=? and u.password=? ");
+
     q.addBindValue(login);
     q.addBindValue(mdp);
     bool result = q.exec();
+    //instancie l'utilisateur en fonction de son role
     if(result){
+
+        q.next();
+        QString loginR = q.value(0).toString();
+        QString prenomR =  q.value(2).toString();
+        QString nomR =  q.value(3).toString();
         QString role = q.value(4).toString();
-        //if()
 
-        //u = new Utilisateur()
+        if(role == "Ingénieur") u = new Ingenieur(loginR,nomR,prenomR);
+        if(role == "Client") u = new Client(loginR,nomR,prenomR);
+        if(role == "Technicien") u = new Technicien(loginR,nomR,prenomR);
+
+
+    }else {
+        qDebug() << q.lastError();
+        qDebug() << "Mission echoué";
     }
-
-
 }
 
 

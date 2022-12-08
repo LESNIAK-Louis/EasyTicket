@@ -19,12 +19,14 @@ Ticket::Ticket(QString mtitre, QString mcategorie, Client* client){
 }
 
 Ticket::Ticket(QString mtitre, QString mcategorie, QString mlogiciel, Client* client){
+
     titre = mtitre;
     categorie = mcategorie;
     logiciel =  mlogiciel;
     FabriqueIdentifiant *fi = fi->getInstance();
     id = fi->getIdTicket();
     dateCreation = getDateEtHeureActuelle();
+
     dateDerniereModification = dateCreation;
     statut = OUVERT;
     this->client = client;
