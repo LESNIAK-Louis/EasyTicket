@@ -2,6 +2,7 @@
 #define GESTIONNAIREDIALOGUE_H
 
 #include "gestionnaireutilisateurs.h"
+#inclue "basedonnee.h"
 
 /**
  * @brief classe qui permet l'interraction client et GUI
@@ -21,11 +22,17 @@ public:
     inline GestionnaireUtilisateurs* getGestionnaireUtilisateur() const { return gu; }
 
     /**
-     * @brief verifie si le penom saisit se trouve dans la listes des utilisateurs
+     * @brief tente de récupérer les informations d'un utilisateur depuis la base de données
      * @param login du client/employé
-     * @return vrai si la l'utilisateur est enregistrer
+     * @param mdp mot de passe
+     * @return vrai si les infos de connexion sont correctes
      */
-    bool tentativeConnexion(QString login);
+    bool tentativeConnexion(QString login, QString mdp);
+    /**
+     * @brief charge les tickets d'un utilisateur depuis la base de données
+     * @param u Utilisateur
+     */
+    void chargerTickets(Utilisateur* u);
     /**
      * @brief Crée un ticket
      * @param titre Titre
@@ -55,6 +62,10 @@ public:
     ~GestionnaireDialogue();
 
 private:
+    /**
+     * @brief Accès à la base de données
+     */
+    BaseDonnee* bd;
     /**
      * @brief gestionnaire utilisateur
      */

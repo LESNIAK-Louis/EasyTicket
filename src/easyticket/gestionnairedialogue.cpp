@@ -5,11 +5,19 @@ GestionnaireDialogue::GestionnaireDialogue()
     gu = new GestionnaireUtilisateurs();
 }
 
-bool GestionnaireDialogue::tentativeConnexion(QString login){
+bool GestionnaireDialogue::tentativeConnexion(QString login, QString mdp){
 
-    utilisateurActuel = gu->getUtilisateur(login);
+    bd->recupererUtilisateur(login, mdp, utilisateurActuel);
+        if(utilisateurActuel != NULL){
+            gu->ajouterUtilisateur(utilisateurActuel);
+        }
 
     return utilisateurActuel != NULL;
+}
+
+void GestionnaireDialogue::chargerTickets(Utilisateur* u){
+
+    //bd->recupererTickets();
 }
 
 void GestionnaireDialogue::creerTicket(QString titre, QString categorie, QString logiciel, QString message){

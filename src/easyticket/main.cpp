@@ -32,7 +32,6 @@ int main(int argc, char *argv[])
    //  bd->ajouterMessage(m);
    // bd->modifierTicket(t);
     bd->RecupererUtilisateur("aboubacar","aboubacar",abou);*/
->>>>>>> 3a4e7dec0e20f686594c098d591d222e83a85825
 
     return a.exec();
 }

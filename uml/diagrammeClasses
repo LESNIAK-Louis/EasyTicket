@@ -1,20 +1,48 @@
 @startuml
 
+class FabriqueIdentifiant{
+- int idTicket
+- int idMessage
+- {static} FabriqueIdentifiant instance
+--
+- FabriqueIdentifiant()
+{static} FabriqueIdentifiant getInstance()
+void resetIdTicket()
+void resetIdMessage()
+}
+
 static class Utilitaires{
 {static} String getDateEtHeureActuelle()
 {static} String getDateActuelle()
 }
 
+class BaseDonnee{
+- QSqlDatabase db;
+- QSqlQuery q;
+--
+void creerTableUtilisateur()
+void creerTableTicket()
+void creerTableMessages();
+void ajouterUtilisateur(Utilisateur * u)
+void ajouterMessage(Message * m)
+void ajouterTicket(Ticket * t)
+void modifierTicket(Ticket * t)
+void recupererUtilisateur(const QString login,const QString mdp, Utilisateur* u)
+void recupererTicket()
+void deconnection()
+}
+
 class GestionnaireUtilisateurs{
 GestionnaireUtilisateurs()
 Utilisateur getUtilisateur(String login)
+QMap<QString,Utilisateur*> getUtilisateurs()
 }
 
 class GestionnaireTickets{
 GestionnaireTickets()
 QMap<int, Ticket> getTickets()
 Ticket getTicket(int id)
-void ajouterTicket(String titre, String categorie, String logiciel, String message, String redacteur)
+void ajouterTicket(QString titre, QString categorie, QString logiciel, QString message, Client* redacteur)
 }
 
 class GestionnaireMessages{
@@ -26,8 +54,11 @@ void ajouterMessage(String msg)
 
 class GestionnaireDialogue{
 GestionnaireDialogue()
+GestionnaireUtilisateurs* getGestionnaireUtilisateur()
 bool tentativeConnexion(QString login)
 void creerTicket(String titre, String categorie,  String logiciel, String message)
+void cloturerTicket(Ticket* ticket, QString statut, QString motif)
+Utilisateur* getUtilisateur()
 }
 
 abstract class Utilisateur{
@@ -39,6 +70,7 @@ abstract class Utilisateur{
 {abstract} bool estUnEmploye()
 {abstract} bool estUnIngenieur()
 {abstract} bool estUnTechnicien()
+{abstract} String getRole()
 QMap<int, Ticket> getTickets() 
 }
 
@@ -47,18 +79,25 @@ abstract class Employe extends Utilisateur{
 bool estUnEmploye()
 {abstract} bool estUnIngenieur()
 {abstract} bool estUnTechnicien()
+{abstract} String getRole()
 }
 
 class Ingenieur extends Employe{
 Ingenieur(String login, String nom, String prenom)
 bool estUnTechnicien()
 bool estUnIngenieur()
+bool estUnEmploye()
+bool estUnClient()
+QString getRole()
 }
 
 class Technicien extends Employe{
 Technicien(String login, String nom, String prenom)
 bool estUnTechnicien()
 bool estUnIngenieur()
+bool estUnEmploye()
+bool estUnClient()
+QString getRole()
 }
 
 class Client extends Utilisateur{
@@ -69,20 +108,22 @@ bool estUnIngenieur()
 bool estUnTechnicien()
 void creerTicket(String titre, String categorie, String message)
 void creerTicket(String titre, String categorie, String logiciel, String message)
+QString getRole()
 }
 
 class Ticket{
 - int id
 - String titre
-- String catégorie
+- String catÃ©gorie
 - String logiciel
-- String dateCréation
+- String dateCrÃ©ation
 - String datePriseEnCharge
 - String dateDerniereModification
 - String dateCloture
-Ticket(String titre, String catégorie)
-Ticket(String titre, String catégorie,  String logiciel)
+Ticket(String titre, String catÃ©gorie, Client* client)
+Ticket(String titre, String catÃ©gorie,  String logiciel, Client* client)
 QMap<int, Message> getMessages()
+void cloturerTicket(statutTicket statut, QString msg, QString redacteur)
 void ajouterMessage(String msg, String redacteur)
 }
 
@@ -100,24 +141,16 @@ RESOLU
 INSOLUBLE
 }
 
-class FabriqueIdentifiant{
-- int idTicket
-- int idMessage
-- {static} FabriqueIdentifiant instance
---
-- FabriqueIdentifiant()
-{static} FabriqueIdentifiant getInstance()
-void resetIdTicket()
-void resetIdMessage()
-}
-
-
-Ticket - "1" GestionnaireMessages
+BaseDonnee "1"-- GestionnaireDialogue 
+Ticket --"1" GestionnaireMessages
+Utilisateur "2"- Ticket
+Message --"1" Ticket
 Statut "1"- Ticket
 Utilisateur -"1" GestionnaireTickets
 GestionnaireUtilisateurs -"*" Utilisateur
-GestionnaireMessages -"*" Message
+GestionnaireMessages --"*" Message
 GestionnaireTickets --"*" Ticket
 GestionnaireDialogue -"1" GestionnaireUtilisateurs
 GestionnaireDialogue -"1" Utilisateur
 @enduml
+
