@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     w.show();
 
 
-
+/*
     //test BDD
     Ingenieur * abou ;
     Client * alpha =  new Client("client","asd","xcvx");
@@ -29,10 +29,9 @@ int main(int argc, char *argv[])
 
    // bd->ajouterUtilisateur(abou);
     bd->ajouterTicket(t2);
-  //  bd->ajouterMessage(m);
+   //  bd->ajouterMessage(m);
    // bd->modifierTicket(t);
-    bd->RecupererUtilisateur("aboubacar","aboubacar",abou);
+    bd->RecupererUtilisateur("aboubacar","aboubacar",abou);*/
 
     return a.exec();
-
 }
