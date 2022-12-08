@@ -41,6 +41,12 @@ public:
     */
    inline bool estUnTechnicien() const {return false;}
 
+   /**
+    * @brief retourne une QString avec le rôle de l'utilisateur
+    * @return rôle de l'utilisateur
+    */
+   inline QString getRole() const { return "Client"; }
+
     /**
      * @brief createur d'un ticket sans categorie definie
      * @param login d'un client

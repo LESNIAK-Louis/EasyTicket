@@ -3,6 +3,7 @@
 
 #include <QString>
 
+class Ticket;
 /**
  * @brief Classe d'un Message
  */
@@ -26,14 +27,19 @@ private:
      * @brief rédacteur du message
      */
     QString redacteur;
+    /**
+     * @brief ticket auquel appartient le message
+     */
+    Ticket* ticket;
 
 public:
     /**
      * @brief Constructeur d'un Message
      * @param contenu Contenu textuel du message
      * @param redacteur Rédacteur du message
+     * @param ticket Ticket auquel appartient le message
      */
-    Message(QString contenu, QString redacteur);
+    Message(QString contenu, QString redacteur, Ticket* ticket);
 
     /**
      * @brief Getter de l'identifiant du message
@@ -56,6 +62,12 @@ public:
      * @return redacteur
      */
     inline QString getRedacteur() const { return redacteur; }
+
+    /**
+     * @brief Getter du ticket auquel appartient le message
+     * @return ticket
+     */
+    inline Ticket* getTicket() const { return ticket; }
 
     /**
      * @brief Setter de l'identifiant du message

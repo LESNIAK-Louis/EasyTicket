@@ -4,6 +4,8 @@
 #include <QMap>
 #include "ticket.h"
 
+class Client;
+
 /**
  * @brief Gestionnaire des tickets concernés par un utilisateur
  */
@@ -34,7 +36,7 @@ public:
      * @param message Message
      * @param redacteur Redacteur
      */
-    void ajouterTicket(QString titre, QString categorie, QString logiciel, QString message, QString redacteur);
+    void ajouterTicket(QString titre, QString categorie, QString logiciel, QString message, Client* redacteur);
     /**
      * @brief Getter d'un ticket via son identifiant
      * @param id

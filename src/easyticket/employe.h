@@ -37,6 +37,12 @@ public:
     virtual inline bool estUnTechnicien() const = 0;
 
     /**
+     * @brief retourne une QString avec le rôle de l'utilisateur
+     * @return rôle de l'utilisateur
+     */
+    virtual inline QString getRole() const = 0;
+
+    /**
      * @brief Destructeur d'Employe
      */
     ~Employe();
