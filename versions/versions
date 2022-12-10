@@ -13,3 +13,4 @@ Historique des versions
 2c : Ajout du champ mot de passe dans login (juste pour la partie graphique)
 2d : Un employé peut maintenant modifier un ticket de catégorie
 2e : Un employé peut maintenant attribuer un ticket à un autre employé
+2f : Sauvegarde des données dans la base de données
