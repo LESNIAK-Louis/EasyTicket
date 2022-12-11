@@ -163,7 +163,7 @@ void BaseDonnee::modifierTicket(Ticket * t){
 Utilisateur* BaseDonnee::recupererUtilisateur(const QString login,const QString mdp){
     QSqlQuery q;
 
-    Utilisateur* u;
+    Utilisateur* u = NULL;
     //Recuperation de L'user dans la BDD via le login et mdp saisit
     q.prepare("Select *"
               "From Utilisateurs u "
@@ -233,6 +233,44 @@ Utilisateur* BaseDonnee::recupererUtilisateur(const QString login){
     return u;
 }
 
+void BaseDonnee::recupererEmployes(Utilisateur* utilisateur, GestionnaireUtilisateurs* gu){
+
+    Utilisateur* u = NULL;
+    if(utilisateur->estUnEmploye()){
+         QSqlQuery q;
+        q.prepare("Select *"
+                  "From Utilisateurs u "
+                  "where u.login is not ? and u.role=? or u.role=?");
+
+        q.addBindValue(utilisateur->getLogin());
+        q.addBindValue("Ingénieur");
+        q.addBindValue("Technicien");
+        bool result = q.exec();
+
+        if(result){
+
+            while(q.next()){
+                QString loginR = q.value(0).toString();
+                QString nomR =  q.value(2).toString();
+                QString prenomR =  q.value(3).toString();
+                QString role = q.value(4).toString();
+
+                if(gu->getUtilisateur(loginR) == NULL)
+                {
+                    if(role == "Ingénieur") u = new Ingenieur(loginR,nomR,prenomR);
+                    else if(role == "Technicien") u = new Technicien(loginR,nomR,prenomR);
+
+
+                    gu->ajouterUtilisateur(u);
+                }
+        }
+        }else {
+            qDebug() << q.lastError();
+            qDebug() << "Mission echoué";
+        }
+    }
+}
+
 GestionnaireTickets* BaseDonnee::recupererTickets(Utilisateur* u, GestionnaireUtilisateurs* gu){
     QSqlQuery q;
 
@@ -272,14 +310,20 @@ GestionnaireTickets* BaseDonnee::recupererTickets(Utilisateur* u, GestionnaireUt
             if(loginClient == u->getLogin()){
                 client = (Client*)u;
                 if(loginEmploye != NULL){
-                    employe = (Employe*)recupererUtilisateur(loginEmploye);
-                    gu->ajouterUtilisateur(employe);
+                    if(gu->getUtilisateur(loginEmploye) == NULL)
+                    {
+                        employe = (Employe*)recupererUtilisateur(loginEmploye);
+                        gu->ajouterUtilisateur(employe);
+                    }
                 }
             }else{
                 employe = (Employe*)u;
                 if(loginClient != NULL){
-                    client = (Client*)recupererUtilisateur(loginClient);
-                    gu->ajouterUtilisateur(client);
+                    if(gu->getUtilisateur(loginClient) == NULL)
+                    {
+                        client = (Client*)recupererUtilisateur(loginClient);
+                        gu->ajouterUtilisateur(client);
+                    }
                 }
             }
 

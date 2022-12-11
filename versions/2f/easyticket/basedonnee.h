@@ -77,6 +77,13 @@ public:
     void ajouterTicket(Ticket * t);
 
     /**
+     * @brief fonction qui récupère les employes
+     * @param utilisateur déjà présent dans le gestionnaire
+     * @param gu gestionnaire auquel ajouter les employes
+     */
+    void recupererEmployes(Utilisateur* utilisateur, GestionnaireUtilisateurs* gu);
+
+    /**
      * @brief fonction qui modifier un Ticket dans sa table
      * @param identifiant
      * @param status

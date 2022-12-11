@@ -42,6 +42,10 @@ void DetailsTicket::chargerMessages(){
     {
         ui->labelPrisEnCharge->setText("Pris en charge par\n" + ticket->getEmploye()->getNom() + " " + ticket->getEmploye()->getPrenom() + "\n" + ticket->getDatePriseEnCharge());
     }
+    else{
+        if(ticket->getStatut() != OUVERT)
+            ui->labelPrisEnCharge->setText("Personne n'a pris en charge ce ticket");
+    }
 
     if(((EcranPrincipal*)this->parent())->getUtilisateur()->estUnEmploye())
     {
@@ -57,6 +61,7 @@ void DetailsTicket::chargerMessages(){
         ui->boutonCloturer->setEnabled(false);
         ui->inputReponse->setEnabled(false);
         ui->boutonEnvoyer->setEnabled(false);
+        ui->boutonModifierAttribution->setEnabled(false);
     }
 
     QMap<int, Message*> messages = ticket->getMessages();
@@ -133,6 +138,7 @@ void DetailsTicket::on_boutonModifierAttribution_clicked()
         gd->modifierTicket(ticket);
     }
     delete dialog;
+    ((EcranPrincipal*)this->parent())->chargerTickets();
 }
 
 void DetailsTicket::on_boutonEnvoyer_clicked()

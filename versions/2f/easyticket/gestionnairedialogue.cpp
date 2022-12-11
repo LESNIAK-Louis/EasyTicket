@@ -12,6 +12,12 @@ bool GestionnaireDialogue::tentativeConnexion(QString login, QString mdp){
 
     if(utilisateurActuel != NULL){
         gu->ajouterUtilisateur(utilisateurActuel);
+
+        if(utilisateurActuel->estUnEmploye()){
+            bd->recupererEmployes(utilisateurActuel, gu);
+        }
+
+
         chargerTickets(utilisateurActuel, gu);
     }
 
