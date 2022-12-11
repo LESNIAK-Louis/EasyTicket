@@ -94,15 +94,18 @@ void DetailsTicket::on_boutonModifierCateg_clicked()
     dialog->setMessage("Choisissez une catégorie à affecter au ticket");
     dialog->exec();
 
-    ticket->setCategorie(dialog->getStringResult());
+    if(dialog->getStringResult() != ""){
+        ticket->setCategorie(dialog->getStringResult());
 
-    GestionnaireDialogue* gd =((MainWindow*)(this->parent()->parent()))->getGD();
-    gd->modifierTicket(ticket);
+        GestionnaireDialogue* gd =((MainWindow*)(this->parent()->parent()))->getGD();
+        gd->modifierTicket(ticket);
+
+        ui->labelCategorie->setText("Catégorie\n" + ticket->getCategorie());
+        ((EcranPrincipal*)this->parent())->chargerTickets();
+    }
 
     delete dialog;
 
-    ui->labelCategorie->setText("Catégorie\n" + ticket->getCategorie());
-    ((EcranPrincipal*)this->parent())->chargerTickets();
 }
 
 void DetailsTicket::on_boutonModifierAttribution_clicked()
@@ -167,8 +170,12 @@ void DetailsTicket::on_boutonCloturer_clicked(){
 
     motifCloture->exec();
 
-    GestionnaireDialogue* gd =((MainWindow*)(this->parent()->parent()))->getGD();
-    gd->modifierTicket(ticket);
+    if(motifCloture->getEstValide()){
+        GestionnaireDialogue* gd =((MainWindow*)(this->parent()->parent()))->getGD();
+        gd->modifierTicket(ticket);
+    }
+
+    delete motifCloture;
 }
 
 DetailsTicket::~DetailsTicket()

@@ -10,7 +10,6 @@ MotifCloture::MotifCloture(QWidget *parent, Ticket* ticket) :
 {
     ui->setupUi(this);
 
-    setAttribute(Qt::WA_DeleteOnClose);
     this->setFixedSize(this->width(),this->height());
     setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
     setWindowTitle("Clôture du ticket");
@@ -18,7 +17,7 @@ MotifCloture::MotifCloture(QWidget *parent, Ticket* ticket) :
     this->ticket = ticket;
     ui->comboBoxStatut->addItem("RESOLU");
     ui->comboBoxStatut->addItem("INSOLUBLE");
-
+    this->estValide = false;
 }
 
 MotifCloture::~MotifCloture()
@@ -36,5 +35,5 @@ void MotifCloture::on_comboBoxResultat_accepted()
     gd->cloturerTicket(ticket, ui->comboBoxStatut->currentText() , ui->champMessage->toPlainText());
     ecranPrincipal->chargerTickets();
     detailTicket->chargerMessages();
-
+    this->estValide = true;
 }

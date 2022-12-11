@@ -14,6 +14,7 @@ class MotifCloture : public QDialog
 
 public:
     explicit MotifCloture(QWidget *parent = nullptr, Ticket* ticket = nullptr);
+    inline bool getEstValide() const {return this->estValide;}
     ~MotifCloture();
 
 private slots:
@@ -22,6 +23,7 @@ private slots:
 private:
     Ui::MotifCloture *ui;
     Ticket* ticket;
+    bool estValide;
 };
 
 

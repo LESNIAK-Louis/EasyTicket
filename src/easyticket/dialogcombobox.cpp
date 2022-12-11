@@ -9,6 +9,7 @@ DialogComboBox::DialogComboBox(QWidget *parent) :
 
     this->setFixedSize(this->width(),this->height());
     setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
+    this->result = "";
 }
 
 void DialogComboBox::addItem(QString item) const{
