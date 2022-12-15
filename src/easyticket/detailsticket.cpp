@@ -128,10 +128,12 @@ void DetailsTicket::on_boutonModifierAttribution_clicked()
     QString result = dialog->getStringResult();
 
 
+    // Regexp utilisée pour extraire le login de la QString affichée dans la ComboBox
     QRegularExpression regex("\\((.*?)\\)", QRegularExpression::MultilineOption);
     QRegularExpressionMatch match = regex.match(result);
     QString captured = match.captured(1);
 
+    // Modification de l'employé qui prend en charge le message
     Utilisateur* utilisateur = &(gu.getUtilisateur(captured));
     if(utilisateur != NULL)
     {
@@ -148,6 +150,7 @@ void DetailsTicket::on_boutonEnvoyer_clicked()
 {
     GestionnaireDialogue& gd = ((MainWindow*)(this->parent()->parent()))->getGD();
 
+    // Envoi du message
     if(ui->inputReponse->toPlainText() != ""){
         Message& m = ticket->ajouterMessage(ui->inputReponse->toPlainText(),
                                gd.getUtilisateur().getPrenom() + " " +
