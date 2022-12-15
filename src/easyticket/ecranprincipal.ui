@@ -62,6 +62,19 @@
     </rect>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButtonDeco">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>10</y>
+     <width>101</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Déconnexion</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

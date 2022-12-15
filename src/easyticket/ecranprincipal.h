@@ -44,6 +44,12 @@ private slots:
      */
     void on_pushButtonCreationTicket_clicked();
 
+    /**
+     * @brief fonction qui déconnecte l'utilisateur actuel quand le bouton prévu à cet effet est cliqué
+     */
+    void on_pushButtonDeco_clicked();
+
+
     void on_listeTickets_itemClicked(QListWidgetItem *item);
 
 private:

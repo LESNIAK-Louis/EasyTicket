@@ -67,9 +67,17 @@ void GestionnaireDialogue::cloturerTicket(Ticket* ticket, QString statut, QStrin
         ajouterMessage(m);
 }
 
+void GestionnaireDialogue::nouveauDialogue(){
+    delete this->gu;
+
+    this->gu = new GestionnaireUtilisateurs();
+    this->utilisateurActuel = nullptr;
+}
+
 
 GestionnaireDialogue::~GestionnaireDialogue(){
 
     delete gu;
+    delete bd;
 }
 

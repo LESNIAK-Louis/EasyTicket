@@ -17,6 +17,12 @@ QString const Login::getLogin(){ return this->ui->champLogin->text(); }
 
 QString const Login::getPassword(){ return this->ui->champMdp->text(); }
 
+void Login::deconnexion(){
+    delete ecranPrincipal;
+    ((MainWindow*)(this->parent()))->setFixedSize(this->width(),this->height());
+    this->show();
+}
+
 Login::~Login()
 {
     delete ui;
@@ -31,6 +37,9 @@ void Login::on_boutonLogin_clicked()
         ecranPrincipal->show();
         ecranPrincipal->chargerTickets();
         this->hide();
+        ui->champLogin->setText("");
+        ui->champMdp->setText("");
+        ui->labelErreur->setText("");
     }else{
         ui->labelErreur->setText("Erreur : utilisateur inconnu");
         ui->labelErreur->setStyleSheet("QLabel { color : red; }");

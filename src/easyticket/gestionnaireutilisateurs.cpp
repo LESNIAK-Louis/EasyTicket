@@ -23,7 +23,6 @@ void GestionnaireUtilisateurs::ajouterUtilisateur(Utilisateur* u){
 
 GestionnaireUtilisateurs::~GestionnaireUtilisateurs(){
 
-    foreach(Utilisateur* u, utilisateurs.values()){
-        delete u;
-    }
+    qDeleteAll(utilisateurs);
+    utilisateurs.clear();
 }

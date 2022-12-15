@@ -47,6 +47,11 @@ public:
     inline GestionnaireDialogue* getGD() const { return gd; }
 
     /**
+     * Déconnecte l'utilisateur en cours et réaffiche la page de login
+     */
+    void deconnexion();
+
+    /**
      * @brief Destructeur de la MainWindow
      */
     ~MainWindow();

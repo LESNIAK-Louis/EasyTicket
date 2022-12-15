@@ -76,6 +76,11 @@ public:
     Utilisateur* getUtilisateur() { return utilisateurActuel; }
 
     /**
+     * @brief supprime tous les utilisateur et son gestionnaire et en instancie de nouveau le gestionnaire
+     */
+    void nouveauDialogue();
+
+    /**
       * destructeur de la classe
       */
     ~GestionnaireDialogue();

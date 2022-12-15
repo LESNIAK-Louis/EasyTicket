@@ -14,6 +14,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     login = new Login(this);
 }
 
+void MainWindow::deconnexion(){
+    gd->nouveauDialogue();
+    login->deconnexion();
+}
+
 MainWindow::~MainWindow()
 {
     delete login;

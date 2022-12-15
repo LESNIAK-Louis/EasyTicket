@@ -31,7 +31,6 @@ void GestionnaireTickets::ajouterTicket(Ticket* ticket){
 
 GestionnaireTickets::~GestionnaireTickets()
 {
-    foreach(Ticket* t, tickets.values()){
-        delete t;
-    }
+    qDeleteAll(tickets);
+    tickets.clear();
 }

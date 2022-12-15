@@ -43,6 +43,10 @@ void EcranPrincipal::on_pushButtonCreationTicket_clicked(){
     creationTicket->exec();
 }
 
+void EcranPrincipal::on_pushButtonDeco_clicked(){
+   ((MainWindow*)(this->parent()))->deconnexion();
+}
+
 
 EcranPrincipal::~EcranPrincipal(){
     delete ui;

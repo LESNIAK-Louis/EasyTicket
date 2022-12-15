@@ -46,6 +46,11 @@ public:
     QString const getPassword();
 
     /**
+     * @brief Réaffiche cette page prêt pour une nouvelle connexion
+     */
+    void deconnexion();
+
+    /**
      * @brief Destructeur du Widget Login
      */
     ~Login();

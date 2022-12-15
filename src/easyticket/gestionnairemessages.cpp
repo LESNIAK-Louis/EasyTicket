@@ -18,7 +18,6 @@ void GestionnaireMessages::ajouterMessage(Message* msg){
 
 GestionnaireMessages::~GestionnaireMessages(){
 
-    foreach(Message* m, messages.values()){
-        delete m;
-    }
+    qDeleteAll(messages);
+    messages.clear();
 }
