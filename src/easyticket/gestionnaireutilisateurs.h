@@ -10,6 +10,7 @@
 
 /**
  * @brief Gestionnaire des utilisateurs
+ * @authors Théo JOFFROY, Aboubacar HASSANE CHEKOU KORE
  */
 class GestionnaireUtilisateurs
 {
@@ -30,7 +31,7 @@ public:
      * @param login
      * @return pointeur vers l'utilisateur trouvé, NULL sinon
      */
-    Utilisateur* getUtilisateur(QString login);
+    Utilisateur& getUtilisateur(QString login);
 
     /**
      * @brief Getter de la QMAP d'utilisateurs
@@ -42,7 +43,7 @@ public:
      * @brief Ajout d'un utilisateur
      * @param u Utilisateur à ajouter
      */
-    void ajouterUtilisateur(Utilisateur* u);
+    void ajouterUtilisateur(Utilisateur& u);
 
 
     /**

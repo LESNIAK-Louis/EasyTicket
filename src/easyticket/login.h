@@ -11,6 +11,7 @@ QT_END_NAMESPACE
 
 /**
  * @brief Fenêtre de Login, permet à l'utilisateur de se connecter
+ * @authors Théo JOFFROY, Louis LESNIAK
  */
 class Login : public QWidget
 {
@@ -47,6 +48,7 @@ public:
 
     /**
      * @brief Réaffiche cette page prêt pour une nouvelle connexion
+     * @author Louis LESNIAK
      */
     void deconnexion();
 

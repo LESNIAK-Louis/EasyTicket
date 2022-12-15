@@ -10,6 +10,7 @@ class MessageInfosTicket;
 
 /**
  * @brief Widget d'un message
+ * @author Théo JOFFROY
  */
 class MessageInfosTicket : public QWidget
 {

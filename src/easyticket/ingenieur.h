@@ -5,6 +5,7 @@
 
 /**
  * @brief la classe qui represente un ingénieur
+ * @author Aboubacar HASSANE CHEKOU KORE
  */
 class Ingenieur :  public Employe
 {

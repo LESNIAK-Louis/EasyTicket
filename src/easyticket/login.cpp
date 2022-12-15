@@ -30,8 +30,8 @@ Login::~Login()
 
 void Login::on_boutonLogin_clicked()
 {
-    GestionnaireDialogue* gd = ((MainWindow*)(this->parent()))->getGD();
-    bool b = gd->tentativeConnexion(getLogin(), getPassword());
+    GestionnaireDialogue& gd = ((MainWindow*)(this->parent()))->getGD();
+    bool b = gd.tentativeConnexion(getLogin(), getPassword());
     if(b){
         ecranPrincipal = new EcranPrincipal((MainWindow*)this->parent());
         ecranPrincipal->show();

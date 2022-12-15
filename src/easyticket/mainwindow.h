@@ -16,6 +16,7 @@ QT_END_NAMESPACE
 
 /**
  * @brief Fenêtre de démarrage de l'interface graphique
+ * @authors Théo JOFFROY, Aboubacar HASSANE CHEKOU KORE, Louis LESNIAK
  */
 class MainWindow : public QMainWindow
 {
@@ -44,7 +45,7 @@ public:
      * @brief Constructeur de la MainWindow
      * @return gd Le gestionnaire de dialogue
      */
-    inline GestionnaireDialogue* getGD() const { return gd; }
+    inline GestionnaireDialogue& getGD() const { return *gd; }
 
     /**
      * Déconnecte l'utilisateur en cours et réaffiche la page de login

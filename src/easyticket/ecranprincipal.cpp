@@ -14,11 +14,9 @@ EcranPrincipal::EcranPrincipal(QWidget *parent) :
     ((MainWindow*)(this->parent()))->setFixedSize(this->width(),this->height());
     setWindowFlags(this->windowFlags() | Qt::MSWindowsFixedSizeDialogHint);
 
-    utilisateur = ((MainWindow*)(this->parent()))->getGD()->getUtilisateur();
+    utilisateur = &(((MainWindow*)(this->parent()))->getGD().getUtilisateur());
     ui->labelNom->setText("Bienvenue " + utilisateur->getPrenom() + " " + utilisateur->getNom());
     ui->pushButtonCreationTicket->setVisible(utilisateur->estUnClient());
-
-    //chargerTickets();
 }
 
 void EcranPrincipal::chargerTickets(){
@@ -55,9 +53,9 @@ EcranPrincipal::~EcranPrincipal(){
 void EcranPrincipal::on_listeTickets_itemClicked(QListWidgetItem *item)
 {
     int index = ui->listeTickets->row(item);
-    Ticket* t = utilisateur->getTickets().value(corresId.at(index));
-    ((MainWindow*)(this->parent()))->getGD()->chargerMessages(t);
-    DetailsTicket* detailsTicket = new DetailsTicket(this, t);
+    Ticket& t = *(utilisateur->getTickets().value(corresId.at(index)));
+    ((MainWindow*)(this->parent()))->getGD().chargerMessages(t);
+    DetailsTicket* detailsTicket = new DetailsTicket(this, &t);
 
     detailsTicket->exec();
 }

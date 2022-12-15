@@ -10,15 +10,15 @@ GestionnaireUtilisateurs::GestionnaireUtilisateurs()
     */
 }
 
-Utilisateur* GestionnaireUtilisateurs::getUtilisateur(QString login){
+Utilisateur& GestionnaireUtilisateurs::getUtilisateur(QString login){
 
-    return utilisateurs.value(login);
+    return *(utilisateurs.value(login));
 }
 
-void GestionnaireUtilisateurs::ajouterUtilisateur(Utilisateur* u){
+void GestionnaireUtilisateurs::ajouterUtilisateur(Utilisateur& u){
 
-    if(!utilisateurs.contains(u->getLogin()))
-        utilisateurs.insert(u->getLogin(), u);
+    if(!utilisateurs.contains(u.getLogin()))
+        utilisateurs.insert(u.getLogin(), &u);
 }
 
 GestionnaireUtilisateurs::~GestionnaireUtilisateurs(){

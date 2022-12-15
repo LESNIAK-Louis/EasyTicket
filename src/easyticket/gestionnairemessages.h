@@ -6,7 +6,8 @@
 #include "message.h"
 
 /**
- * @brief classe qui gerent les messsages d'un ticket
+ * @brief classe qui gere les messsages d'un ticket
+ * @authors Théo JOFFROY, Aboubacar HASSANE CHEKOU KORE
  */
 class GestionnaireMessages
 {
@@ -32,13 +33,13 @@ public:
      * @param id du message a acceder
      * @return retourne le messages
      */
-    Message* getMessage(int id);
+    Message& getMessage(int id);
 
     /**
      * @brief ajoute un messages dans son gestionnaire
      * @param message a ajouter
      */
-    void ajouterMessage(Message* msg);
+    void ajouterMessage(Message& msg);
 
     /**
       * destructeur de la classe

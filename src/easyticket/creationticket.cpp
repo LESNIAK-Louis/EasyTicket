@@ -33,8 +33,8 @@ CreationTicket::~CreationTicket()
 void CreationTicket::on_comboBoxResultat_accepted()
 {
     if(ui->champTitre->text() != "" &&  ui->champMessage->toPlainText() != ""){
-        GestionnaireDialogue* gd = ((MainWindow*)(this->parent()->parent()))->getGD();
-        gd->creerTicket(ui->champTitre->text(), ui->comboBoxCategorie->currentText(),
+        GestionnaireDialogue& gd = ((MainWindow*)(this->parent()->parent()))->getGD();
+        gd.creerTicket(ui->champTitre->text(), ui->comboBoxCategorie->currentText(),
                         ui->comboBoxLogiciel->currentText(), ui->champMessage->toPlainText());
         ((EcranPrincipal*)(this->parent()))->chargerTickets();
     }

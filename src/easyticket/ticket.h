@@ -9,6 +9,7 @@ class Employe;
 
 /**
 * @brief Enumération du status d'un Ticket
+* @author Louis LESNIAK
 */
 enum statutTicket {
     OUVERT = 1,
@@ -18,6 +19,7 @@ enum statutTicket {
 
 /**
 * @brief Un ticket
+* @authors Aboubacar HASSANE CHEKOU KORE, Louis LESNIAK, Théo JOFFROY
 */
 class Ticket
 {
@@ -94,6 +96,7 @@ public:
 
     /**
     * @brief Constructeur d'un Ticket pour récupération depuis la bdd
+    * @author Théo JOFFROY
     * @param titre Titre du ticket
     * @param categorie Catégorie du ticket
     * @param logiciel Logiciel concerné par le ticket
@@ -158,6 +161,7 @@ public:
 
     /**
     * @brief Getter du statut du ticket
+    * @author Louis LESNIAK
     * @return statut en QString
     */
     inline QString getStatutString() {
@@ -186,13 +190,13 @@ public:
     * @brief Getter du client qui a déposé le ticket
     * @return client
     */
-    inline Client* getClient() const { return client; }
+    inline Client& getClient() const { return *client; }
 
     /**
     * @brief Getter de l'employé qui prend en charge le ticket
     * @return employe
     */
-    inline Employe* getEmploye() const { return employe; }
+    inline Employe& getEmploye() const { return *employe; }
 
     /**
     * @brief Setter de l'id du ticket
@@ -243,28 +247,31 @@ public:
     * @brief Setter de l'employé qui prend en charge le ticket
     * @param employe Employé qui prend en charge le ticket
     */
-    inline void setEmploye(Employe* employe) { this->employe = employe; }
+    inline void setEmploye(Employe& employe) { this->employe = &employe; }
     /**
     * @brief Cloture le ticket
+    * @author Louis LESNIAK
     * @param statut Statut à mettre
     * @param msg motif de cloture
     * @param redacteur nom de l'utilisateur qui cloture le ticket
     * @return Message contenant le motif de clôture
     */
-    Message* cloturerTicket(statutTicket statut, QString msg, QString redacteur);
+    Message& cloturerTicket(statutTicket statut, QString msg, QString redacteur);
     /**
     * @brief Ajoute une message au ticket
+    * @author Théo JOFFROY
     * @param msg Message à ajouter
     * @param redacteur Nom du rédacteur du message
     * @return Message ajouté
     */
-    Message* ajouterMessage(QString msg, QString redacteur);
+    Message& ajouterMessage(QString msg, QString redacteur);
 
     /**
      * @brief Charge les messages du ticket
+     * @author Théo JOFFROY
      * @param messages Messages
      */
-    void chargerMessages(GestionnaireMessages* messages);
+    void chargerMessages(GestionnaireMessages& messages);
 
 
 

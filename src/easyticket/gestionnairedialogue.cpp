@@ -8,23 +8,23 @@ GestionnaireDialogue::GestionnaireDialogue()
 
 bool GestionnaireDialogue::tentativeConnexion(QString login, QString mdp){
 
-    utilisateurActuel = bd->recupererUtilisateur(login, mdp);
+    utilisateurActuel = &(bd->recupererUtilisateur(login, mdp));
 
     if(utilisateurActuel != NULL){
-        gu->ajouterUtilisateur(utilisateurActuel);
+        gu->ajouterUtilisateur(*utilisateurActuel);
 
         if(utilisateurActuel->estUnEmploye()){
-            bd->recupererEmployes(utilisateurActuel, gu);
+            bd->recupererEmployes(*utilisateurActuel, *gu);
         }
 
 
-        chargerTickets(utilisateurActuel, gu);
+        chargerTickets(*utilisateurActuel, *gu);
     }
 
     return utilisateurActuel != NULL;
 }
 
-void GestionnaireDialogue::chargerTickets(Utilisateur* u, GestionnaireUtilisateurs* gu){
+void GestionnaireDialogue::chargerTickets(Utilisateur& u, GestionnaireUtilisateurs& gu){
 
     FabriqueIdentifiant *fi = fi->getInstance();
     fi->setIdTicket(bd->getNombreTickets());
@@ -33,27 +33,27 @@ void GestionnaireDialogue::chargerTickets(Utilisateur* u, GestionnaireUtilisateu
     utilisateurActuel->chargerTickets(bd->recupererTickets(u, gu));
 }
 
-void GestionnaireDialogue::chargerMessages(Ticket* t){
+void GestionnaireDialogue::chargerMessages(Ticket& t){
 
-    t->chargerMessages(bd->recupererMessages(t));
+    t.chargerMessages(bd->recupererMessages(t));
 }
 
 void GestionnaireDialogue::creerTicket(QString titre, QString categorie, QString logiciel, QString message){
-    Ticket* t = ((Client*)utilisateurActuel)->creerTicket(titre, categorie, logiciel, message);
+    Ticket& t = ((Client*)utilisateurActuel)->creerTicket(titre, categorie, logiciel, message);
     bd->ajouterTicket(t);
-    ajouterMessage(t->getMessages().first());
+    ajouterMessage(*(t.getMessages().first()));
 
 }
 
-void GestionnaireDialogue::ajouterMessage(Message* m){
+void GestionnaireDialogue::ajouterMessage(Message& m){
     bd->ajouterMessage(m);
 }
 
-void GestionnaireDialogue::modifierTicket(Ticket* t){
+void GestionnaireDialogue::modifierTicket(Ticket& t){
     bd->modifierTicket(t);
 }
 
-void GestionnaireDialogue::cloturerTicket(Ticket* ticket, QString statut, QString motif){
+void GestionnaireDialogue::cloturerTicket(Ticket& ticket, QString statut, QString motif){
     statutTicket statutT;
     if(statut == "RESOLU")
         statutT = RESOLU;
@@ -62,8 +62,8 @@ void GestionnaireDialogue::cloturerTicket(Ticket* ticket, QString statut, QStrin
     else
         statutT = OUVERT;
 
-    Message* m = ((Utilisateur*)utilisateurActuel)->cloturerTicket(ticket, statutT, motif);
-    if(m != NULL)
+    Message& m = *(((Utilisateur*)utilisateurActuel)->cloturerTicket(ticket, statutT, motif));
+    if(&m != NULL)
         ajouterMessage(m);
 }
 

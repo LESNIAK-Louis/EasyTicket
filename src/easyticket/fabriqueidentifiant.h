@@ -2,7 +2,8 @@
 #define FABRIQUEIDENTIFIANT_H
 
 /**
- * @brief Fabrique qui retourne de maniére unique des identifiant pour Messages et Tickets
+ * @brief Fabrique qui retourne de manière unique des identifiants pour Messages et Tickets
+ * @author Louis LESNIAK
  */
 class FabriqueIdentifiant
 {

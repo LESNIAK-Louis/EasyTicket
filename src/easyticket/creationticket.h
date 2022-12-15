@@ -8,7 +8,8 @@ namespace Ui {
 class CreationTicket;
 }
 /**
- * @brief classe qui permet de crer un ticket dans le GIU
+ * @brief classe qui permet de créer un ticket dans le GUI
+ * @author Louis LESNIAK
  */
 class CreationTicket : public QDialog
 {

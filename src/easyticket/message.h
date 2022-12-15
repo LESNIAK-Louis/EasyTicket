@@ -6,6 +6,7 @@
 class Ticket;
 /**
  * @brief Classe d'un Message
+ * @authors Théo JOFFROY, Aboubacar HASSANE CHEKOU KORE, Louis LESNIAK
  */
 class Message
 {

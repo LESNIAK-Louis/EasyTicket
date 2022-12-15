@@ -10,7 +10,8 @@ class EcranPrincipal;
 }
 
 /**
- * @brief la classe pour l'ecran principale
+ * @brief Classe qui contrôle l'écran principal
+ * @authors Théo JOFFROY, Louis LESNIAK
  */
 class EcranPrincipal : public QWidget
 {
@@ -25,6 +26,7 @@ public:
 
     /**
      * @brief Charge les tickets de l'utilisateur et les affiche à l'écran
+     * @author Théo JOFFROY
      * @param utilisateur Utilisateur dont on veut charger les tickets
      */
     void chargerTickets();
@@ -33,7 +35,7 @@ public:
      * @brief Getter de l'utilisateur
      * @return utilisateur
      */
-    inline Utilisateur* getUtilisateur() const {return utilisateur;}
+    inline Utilisateur& getUtilisateur() const {return *utilisateur;}
 
     ~EcranPrincipal();
 
@@ -57,7 +59,15 @@ private:
      * @brief interface de l'ecran principale
      */
     Ui::EcranPrincipal *ui;
+
+    /**
+     * @brief Utilisateur actuellement connecté
+     */
     Utilisateur* utilisateur;
+
+    /**
+     * @brief Liste de correspondance entre les positions des tickets dans la liste view et leur identifiant
+     */
     QList<int> corresId;
 };
 

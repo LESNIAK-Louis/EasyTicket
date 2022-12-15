@@ -5,6 +5,7 @@
 
 /**
  * @brief c'est la superclasse de toutes types de personnes (employé, tecnhicien, ingenieur, client)
+ * @authors Aboubacar HASSANE CHEKOU KORE, Louis LESNIAK, Théo JOFFROY
  */
 class Utilisateur {
 
@@ -78,7 +79,7 @@ public:
      * @brief return les tickets de l'utilisateur
      * @return tickets
      */
-    inline Ticket* getTicket(int id) { return getTickets().value(id); }
+    inline Ticket& getTicket(int id) { return *(getTickets().value(id)); }
 
     /**
      * @brief retourne vrai si l'utilisateur est un client
@@ -112,18 +113,20 @@ public:
 
     /**
      * @brief Permet a l'utilisateur de clôturer un ticket
+     * @author Louis LESNIAK
      * @param ticket
      * @param statut
      * @param motif
      * @return Message contenant le motif de clôture
      */
-    Message* cloturerTicket(Ticket* ticket, statutTicket statut, QString motif);
+    Message* cloturerTicket(Ticket& ticket, statutTicket statut, QString motif);
 
     /**
      * @brief Charge les tickets de l'utilisateur
+     * @author Théo JOFFROY
      * @param tickets Tickets
      */
-    void chargerTickets(GestionnaireTickets* tickets);
+    void chargerTickets(GestionnaireTickets& tickets);
 
     /**
      * destructeur de l'Utilisateur

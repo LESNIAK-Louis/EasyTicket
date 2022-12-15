@@ -38,16 +38,16 @@ void DetailsTicket::chargerMessages(){
     ui->labelCategorie->setText("Catégorie\n" + ticket->getCategorie());
     ui->labelLogiciel->setText("Logiciel\n" + ticket->getLogiciel());
 
-    if(ticket->getEmploye() != NULL)
+    if(&(ticket->getEmploye()) != NULL)
     {
-        ui->labelPrisEnCharge->setText("Pris en charge par\n" + ticket->getEmploye()->getNom() + " " + ticket->getEmploye()->getPrenom() + "\n" + ticket->getDatePriseEnCharge());
+        ui->labelPrisEnCharge->setText("Pris en charge par\n" + ticket->getEmploye().getNom() + " " + ticket->getEmploye().getPrenom() + "\n" + ticket->getDatePriseEnCharge());
     }
     else{
         if(ticket->getStatut() != OUVERT)
             ui->labelPrisEnCharge->setText("Personne n'a pris en charge ce ticket");
     }
 
-    if(((EcranPrincipal*)this->parent())->getUtilisateur()->estUnEmploye())
+    if(((EcranPrincipal*)this->parent())->getUtilisateur().estUnEmploye())
     {
         ui->boutonModifierCateg->setVisible(true);
         ui->boutonModifierAttribution->setVisible(true);
@@ -97,8 +97,8 @@ void DetailsTicket::on_boutonModifierCateg_clicked()
     if(dialog->getStringResult() != ""){
         ticket->setCategorie(dialog->getStringResult());
 
-        GestionnaireDialogue* gd =((MainWindow*)(this->parent()->parent()))->getGD();
-        gd->modifierTicket(ticket);
+        GestionnaireDialogue& gd =((MainWindow*)(this->parent()->parent()))->getGD();
+        gd.modifierTicket(*ticket);
 
         ui->labelCategorie->setText("Catégorie\n" + ticket->getCategorie());
         ((EcranPrincipal*)this->parent())->chargerTickets();
@@ -112,9 +112,9 @@ void DetailsTicket::on_boutonModifierAttribution_clicked()
 {
     DialogComboBox* dialog = new DialogComboBox(this);
 
-    GestionnaireDialogue* gd =((MainWindow*)(this->parent()->parent()))->getGD();
-    GestionnaireUtilisateurs* gu = gd->getGestionnaireUtilisateur();
-    QMap<QString,Utilisateur*> utilisateurs = gu->getUtilisateurs();
+    GestionnaireDialogue& gd =((MainWindow*)(this->parent()->parent()))->getGD();
+    GestionnaireUtilisateurs& gu = gd.getGestionnaireUtilisateur();
+    QMap<QString,Utilisateur*> utilisateurs = gu.getUtilisateurs();
 
     foreach(Utilisateur* u, utilisateurs.values()){
         if(u->estUnEmploye())
@@ -132,13 +132,13 @@ void DetailsTicket::on_boutonModifierAttribution_clicked()
     QRegularExpressionMatch match = regex.match(result);
     QString captured = match.captured(1);
 
-    Utilisateur* utilisateur = gu->getUtilisateur(captured);
+    Utilisateur* utilisateur = &(gu.getUtilisateur(captured));
     if(utilisateur != NULL)
     {
-        ticket->setEmploye((Employe*)utilisateur);
+        ticket->setEmploye((Employe&)*utilisateur);
         ticket->setDatePriseEnCharge(getDateActuelle());
-        ui->labelPrisEnCharge->setText("Pris en charge par\n" + ticket->getEmploye()->getNom() + " " + ticket->getEmploye()->getPrenom() + "\n" + ticket->getDatePriseEnCharge());
-        gd->modifierTicket(ticket);
+        ui->labelPrisEnCharge->setText("Pris en charge par\n" + ticket->getEmploye().getNom() + " " + ticket->getEmploye().getPrenom() + "\n" + ticket->getDatePriseEnCharge());
+        gd.modifierTicket(*ticket);
     }
     delete dialog;
     ((EcranPrincipal*)this->parent())->chargerTickets();
@@ -146,18 +146,18 @@ void DetailsTicket::on_boutonModifierAttribution_clicked()
 
 void DetailsTicket::on_boutonEnvoyer_clicked()
 {
-    GestionnaireDialogue* gd = ((MainWindow*)(this->parent()->parent()))->getGD();
+    GestionnaireDialogue& gd = ((MainWindow*)(this->parent()->parent()))->getGD();
 
     if(ui->inputReponse->toPlainText() != ""){
-        Message* m = ticket->ajouterMessage(ui->inputReponse->toPlainText(),
-                               gd->getUtilisateur()->getPrenom() + " " +
-                               gd->getUtilisateur()->getNom());
+        Message& m = ticket->ajouterMessage(ui->inputReponse->toPlainText(),
+                               gd.getUtilisateur().getPrenom() + " " +
+                               gd.getUtilisateur().getNom());
 
-        if(gd->getUtilisateur()->estUnEmploye()){
-            ticket->setEmploye((Employe*)(gd->getUtilisateur()));
+        if(gd.getUtilisateur().estUnEmploye()){
+            ticket->setEmploye((Employe&)(gd.getUtilisateur()));
         }
-        gd->ajouterMessage(m);
-        gd->modifierTicket(ticket);
+        gd.ajouterMessage(m);
+        gd.modifierTicket(*ticket);
 
         chargerMessages();
 
@@ -171,8 +171,8 @@ void DetailsTicket::on_boutonCloturer_clicked(){
     motifCloture->exec();
 
     if(motifCloture->getEstValide()){
-        GestionnaireDialogue* gd =((MainWindow*)(this->parent()->parent()))->getGD();
-        gd->modifierTicket(ticket);
+        GestionnaireDialogue& gd =((MainWindow*)(this->parent()->parent()))->getGD();
+        gd.modifierTicket(*ticket);
     }
 
     delete motifCloture;

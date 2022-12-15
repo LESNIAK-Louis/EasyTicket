@@ -54,28 +54,28 @@ Ticket::Ticket(int id, QString titre, QString categorie,  QString logiciel, QStr
     gm = new GestionnaireMessages();
 }
 
-Message* Ticket::ajouterMessage(QString msg, QString redacteur){
+Message& Ticket::ajouterMessage(QString msg, QString redacteur){
 
-    Message* m = new Message(msg, redacteur, this);
+    Message& m = *(new Message(msg, redacteur, this));
     gm->ajouterMessage(m);
 
     return m;
 }
 
-Message* Ticket::cloturerTicket(statutTicket statut, QString msg, QString redacteur){
+Message& Ticket::cloturerTicket(statutTicket statut, QString msg, QString redacteur){
     setStatut(statut);
     setDateDerniereModification(getDateEtHeureActuelle());
     setDateCloture(getDateEtHeureActuelle());
-    Message* m = new Message(msg, redacteur, this);
+    Message& m = *(new Message(msg, redacteur, this));
     gm->ajouterMessage(m);
 
     return m;
 }
 
-void Ticket::chargerMessages(GestionnaireMessages* messages){
+void Ticket::chargerMessages(GestionnaireMessages& messages){
 
     delete gm;
-    gm = messages;
+    gm = &messages;
 }
 
 Ticket::~Ticket(){

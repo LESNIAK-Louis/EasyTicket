@@ -102,19 +102,19 @@ void BaseDonnee::ajouterUtilisateur(Utilisateur * u){
     }
 }
 
-void BaseDonnee::ajouterTicket(Ticket * t){
+void BaseDonnee::ajouterTicket(Ticket& t){
     QSqlQuery q;
     q.prepare("INSERT INTO Tickets (id, titre, categorie, logiciel, dateCreation, datePriseEnCharge, dateDerniereModification, dateCloture, statut, client, employe) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
-    q.addBindValue(t->getId());
-    q.addBindValue(t->getTitre());
-    q.addBindValue(t->getCategorie());
-    q.addBindValue(t->getLogiciel());
-    q.addBindValue(t->getDateCreation());
+    q.addBindValue(t.getId());
+    q.addBindValue(t.getTitre());
+    q.addBindValue(t.getCategorie());
+    q.addBindValue(t.getLogiciel());
+    q.addBindValue(t.getDateCreation());
     q.addBindValue(QVariant(QVariant::Date));
-    q.addBindValue(t->getDateDerniereModification());
+    q.addBindValue(t.getDateDerniereModification());
     q.addBindValue(QVariant(QVariant::Date));
-    q.addBindValue(t->getStatut());
-    q.addBindValue(t->getClient()->getLogin());
+    q.addBindValue(t.getStatut());
+    q.addBindValue(t.getClient().getLogin());
     q.addBindValue(QVariant(QVariant::String));
 
    bool result = q.exec();
@@ -124,14 +124,14 @@ void BaseDonnee::ajouterTicket(Ticket * t){
     }
 }
 
-void BaseDonnee::ajouterMessage(Message *m){
+void BaseDonnee::ajouterMessage(Message& m){
     QSqlQuery q;
     q.prepare("INSERT INTO Messages (id, idTicket, contenu, dateMessage, redacteur) VALUES (?,?,?,?,?)");
-    q.addBindValue(m->getId());
-    q.addBindValue(m->getTicket()->getId());
-    q.addBindValue(m->getContenu());
-    q.addBindValue(m->getDateMessage());
-    q.addBindValue(m->getRedacteur());
+    q.addBindValue(m.getId());
+    q.addBindValue(m.getTicket()->getId());
+    q.addBindValue(m.getContenu());
+    q.addBindValue(m.getDateMessage());
+    q.addBindValue(m.getRedacteur());
     bool result = q.exec();
     if(!result){
             qDebug() << "erreur de la requete ajoutMessage "
@@ -140,19 +140,19 @@ void BaseDonnee::ajouterMessage(Message *m){
 }
 
 
-void BaseDonnee::modifierTicket(Ticket * t){
+void BaseDonnee::modifierTicket(Ticket& t){
     QSqlQuery q;
      q.prepare("UPDATE Tickets SET statut=?, categorie=?, datePriseEnCharge=?, dateDerniereModification=?, dateCloture=?, employe=? WHERE id=?");
-     q.addBindValue(t->getStatut());
-     q.addBindValue(t->getCategorie());
-     q.addBindValue(t->getDatePriseEnCharge());
-     q.addBindValue(t->getDateDerniereModification());
-     q.addBindValue(t->getDateCloture());
-     if(t->getEmploye() != NULL)
-        q.addBindValue(t->getEmploye()->getLogin());
+     q.addBindValue(t.getStatut());
+     q.addBindValue(t.getCategorie());
+     q.addBindValue(t.getDatePriseEnCharge());
+     q.addBindValue(t.getDateDerniereModification());
+     q.addBindValue(t.getDateCloture());
+     if(&(t.getEmploye()) != NULL)
+        q.addBindValue(t.getEmploye().getLogin());
      else
         q.addBindValue(QVariant(QVariant::String));
-     q.addBindValue(t->getId());
+     q.addBindValue(t.getId());
      bool result = q.exec();
      if(!result){
          qDebug() << "erreur de la requete modifierTicket "
@@ -160,7 +160,7 @@ void BaseDonnee::modifierTicket(Ticket * t){
      }
 }
 
-Utilisateur* BaseDonnee::recupererUtilisateur(const QString login,const QString mdp){
+Utilisateur& BaseDonnee::recupererUtilisateur(const QString login,const QString mdp){
     QSqlQuery q;
 
     Utilisateur* u = NULL;
@@ -194,10 +194,10 @@ Utilisateur* BaseDonnee::recupererUtilisateur(const QString login,const QString 
         qDebug() << q.lastError();
         qDebug() << "Mission echoué";
     }
-    return u;
+    return *u;
 }
 
-Utilisateur* BaseDonnee::recupererUtilisateur(const QString login){
+Utilisateur& BaseDonnee::recupererUtilisateur(const QString login){
     QSqlQuery q;
 
     Utilisateur* u;
@@ -230,19 +230,19 @@ Utilisateur* BaseDonnee::recupererUtilisateur(const QString login){
         qDebug() << q.lastError();
         qDebug() << "Mission echoué";
     }
-    return u;
+    return *u;
 }
 
-void BaseDonnee::recupererEmployes(Utilisateur* utilisateur, GestionnaireUtilisateurs* gu){
+void BaseDonnee::recupererEmployes(Utilisateur& utilisateur, GestionnaireUtilisateurs& gu){
 
     Utilisateur* u = NULL;
-    if(utilisateur->estUnEmploye()){
+    if(utilisateur.estUnEmploye()){
          QSqlQuery q;
         q.prepare("Select *"
                   "From Utilisateurs u "
                   "where u.login is not ? and u.role=? or u.role=?");
 
-        q.addBindValue(utilisateur->getLogin());
+        q.addBindValue(utilisateur.getLogin());
         q.addBindValue("Ingénieur");
         q.addBindValue("Technicien");
         bool result = q.exec();
@@ -255,13 +255,13 @@ void BaseDonnee::recupererEmployes(Utilisateur* utilisateur, GestionnaireUtilisa
                 QString prenomR =  q.value(3).toString();
                 QString role = q.value(4).toString();
 
-                if(gu->getUtilisateur(loginR) == NULL)
+                if(&(gu.getUtilisateur(loginR)) == NULL)
                 {
                     if(role == "Ingénieur") u = new Ingenieur(loginR,nomR,prenomR);
                     else if(role == "Technicien") u = new Technicien(loginR,nomR,prenomR);
 
 
-                    gu->ajouterUtilisateur(u);
+                    gu.ajouterUtilisateur(*u);
                 }
         }
         }else {
@@ -271,11 +271,11 @@ void BaseDonnee::recupererEmployes(Utilisateur* utilisateur, GestionnaireUtilisa
     }
 }
 
-GestionnaireTickets* BaseDonnee::recupererTickets(Utilisateur* u, GestionnaireUtilisateurs* gu){
+GestionnaireTickets& BaseDonnee::recupererTickets(Utilisateur& u, GestionnaireUtilisateurs& gu){
     QSqlQuery q;
 
-    GestionnaireTickets* tickets = new GestionnaireTickets();
-    if(u->estUnClient()){
+    GestionnaireTickets& tickets = *(new GestionnaireTickets());
+    if(u.estUnClient()){
         q.prepare("Select t.id, t.titre, t.categorie, t.logiciel, t.dateCreation, t.datePriseEnCharge, t.dateDerniereModification, t.dateCloture, t.statut, t.client, t.employe "
                       "From Tickets t "
                       "Where t.client = ? "
@@ -287,7 +287,7 @@ GestionnaireTickets* BaseDonnee::recupererTickets(Utilisateur* u, GestionnaireUt
                       "Or t.employe IS NULL "
                       "Order by t.dateDerniereModification");
     }
-    q.addBindValue(u->getLogin());
+    q.addBindValue(u.getLogin());
     bool result = q.exec();
 
     if(result){
@@ -307,30 +307,30 @@ GestionnaireTickets* BaseDonnee::recupererTickets(Utilisateur* u, GestionnaireUt
 
             Client* client = NULL;
             Employe* employe = NULL;
-            if(loginClient == u->getLogin()){
-                client = (Client*)u;
+            if(loginClient == u.getLogin()){
+                client = (Client*)(&u);
                 if(loginEmploye != NULL){
-                    if(gu->getUtilisateur(loginEmploye) == NULL)
+                    if(&(gu.getUtilisateur(loginEmploye)) == NULL)
                     {
-                        employe = (Employe*)recupererUtilisateur(loginEmploye);
-                        gu->ajouterUtilisateur(employe);
+                        employe = (Employe*)&recupererUtilisateur(loginEmploye);
+                        gu.ajouterUtilisateur(*employe);
                     }
                 }
             }else{
-                employe = (Employe*)u;
+                employe = (Employe*)&u;
                 if(loginClient != NULL){
-                    if(gu->getUtilisateur(loginClient) == NULL)
+                    if(&(gu.getUtilisateur(loginClient)) == NULL)
                     {
-                        client = (Client*)recupererUtilisateur(loginClient);
-                        gu->ajouterUtilisateur(client);
+                        client = (Client*)&recupererUtilisateur(loginClient);
+                        gu.ajouterUtilisateur(*client);
                     }
                 }
             }
 
-            Ticket* t = new Ticket(id, titre, categorie, logiciel, dateCreation, datePriseEnCharge, dateDerniereModification,
-                                   dateCloture, statut, client, employe);
+            Ticket& t = *(new Ticket(id, titre, categorie, logiciel, dateCreation, datePriseEnCharge, dateDerniereModification,
+                                   dateCloture, statut, client, employe));
 
-            tickets->ajouterTicket(t);
+            tickets.ajouterTicket(t);
         }
     }else {
         qDebug() << q.lastError();
@@ -339,17 +339,17 @@ GestionnaireTickets* BaseDonnee::recupererTickets(Utilisateur* u, GestionnaireUt
     return tickets;
 }
 
-GestionnaireMessages* BaseDonnee::recupererMessages(Ticket* t){
+GestionnaireMessages& BaseDonnee::recupererMessages(Ticket& t){
     QSqlQuery q;
 
-    GestionnaireMessages* messages = new GestionnaireMessages();
+    GestionnaireMessages& messages = *(new GestionnaireMessages());
     q.prepare("Select m.id, m.contenu, m.dateMessage, m.redacteur "
                   "From Tickets t, Messages m "
                   "Where t.id = m.idTicket "
                   "And m.idTicket = ? "
                   "Order by m.dateMessage ASC");
 
-    q.addBindValue(t->getId());
+    q.addBindValue(t.getId());
     bool result = q.exec();
     if(result){
 
@@ -359,9 +359,9 @@ GestionnaireMessages* BaseDonnee::recupererMessages(Ticket* t){
             QString dateMessage = q.value(2).toString();
             QString redacteur = q.value(3).toString();
 
-            Message* m = new Message(id, contenu, dateMessage, redacteur);
+            Message& m = *(new Message(id, contenu, dateMessage, redacteur));
 
-            messages->ajouterMessage(m);
+            messages.ajouterMessage(m);
 
         }
     }else {

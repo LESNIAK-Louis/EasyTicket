@@ -5,6 +5,7 @@
 
 /**
  * @brief represente un technicien dans l'application
+ * @author Aboubacar HASSANE CHEKOU KORE
  */
 class Technicien : public Employe
 {

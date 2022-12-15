@@ -31,8 +31,8 @@ void MotifCloture::on_comboBoxResultat_accepted()
     EcranPrincipal* ecranPrincipal = (EcranPrincipal*)(detailTicket->parent());
     MainWindow* mainWindow = (MainWindow*)ecranPrincipal->parent();
 
-    GestionnaireDialogue* gd = mainWindow->getGD();
-    gd->cloturerTicket(ticket, ui->comboBoxStatut->currentText() , ui->champMessage->toPlainText());
+    GestionnaireDialogue& gd = mainWindow->getGD();
+    gd.cloturerTicket(*ticket, ui->comboBoxStatut->currentText() , ui->champMessage->toPlainText());
     ecranPrincipal->chargerTickets();
     detailTicket->chargerMessages();
     this->estValide = true;

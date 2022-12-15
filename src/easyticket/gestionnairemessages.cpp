@@ -4,16 +4,16 @@ GestionnaireMessages::GestionnaireMessages(){
 
 }
 
-Message* GestionnaireMessages::getMessage(int id){
-    return messages.value(id);
+Message& GestionnaireMessages::getMessage(int id){
+    return *(messages.value(id));
 }
 
 QMap<int,Message*> GestionnaireMessages::getMessages(){
     return messages;
 }
 
-void GestionnaireMessages::ajouterMessage(Message* msg){
-    messages.insert(msg->getId(), msg);
+void GestionnaireMessages::ajouterMessage(Message& msg){
+    messages.insert(msg.getId(), &msg);
 }
 
 GestionnaireMessages::~GestionnaireMessages(){

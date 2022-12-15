@@ -8,6 +8,7 @@ class Client;
 
 /**
  * @brief Gestionnaire des tickets concernés par un utilisateur
+ * @authors Théo JOFFROY, Aboubacar HASSANE CHEKOU KORE
  */
 class GestionnaireTickets
 {
@@ -37,18 +38,18 @@ public:
      * @param redacteur Redacteur
      * @return Ticket créé
      */
-    Ticket* ajouterTicket(QString titre, QString categorie, QString logiciel, QString message, Client* redacteur);
+    Ticket& ajouterTicket(QString titre, QString categorie, QString logiciel, QString message, Client& redacteur);
     /**
      * @brief Ajouter un ticket au gestionnaire de tickets
      * @param ticket Ticket
      */
-    void ajouterTicket(Ticket* ticket);
+    void ajouterTicket(Ticket& ticket);
     /**
      * @brief Getter d'un ticket via son identifiant
      * @param id
      * @return Ticket correspondant à l'id, NULL sinon
      */
-    Ticket* getTicket(int id);
+    Ticket& getTicket(int id);
 
     /**
       * @brief Destructeur du gestionnaire de tickets

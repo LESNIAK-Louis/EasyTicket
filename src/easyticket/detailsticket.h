@@ -6,6 +6,10 @@
 #include <QDialog>
 
 namespace Ui {
+/**
+ * @brief Classe qui contrôle le GUI des détails d'un ticket
+ * @author Théo JOFFROY, Louis LESNIAK
+ */
 class DetailsTicket;
 }
 
@@ -19,6 +23,7 @@ class DetailsTicket : public QDialog
 public:
     /**
      * @brief constructeur de la classe
+     * @author Théo JOFFROY
      * @param parent parent
      * @param ticket
      */
@@ -27,6 +32,7 @@ public:
 
     /**
      * @brief Affiche les messages correspondants au ticket
+     * @author Théo JOFFROY
      */
     void chargerMessages();
 

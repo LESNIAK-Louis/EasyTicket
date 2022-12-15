@@ -4,7 +4,8 @@
 #include "utilisateur.h"
 
 /**
- * @brief la classe qui represente un employée
+ * @brief la classe qui represente un employé
+ * @author Aboubacar HASSANE CHEKOU KORE
  */
 class Employe : public Utilisateur
 {

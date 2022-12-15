@@ -5,6 +5,7 @@
 
 /**
  * @brief represente un client dans l'application
+ * @authors Aboubacar HASSANE CHEKOU KORE, Louis LESNIAK, Théo JOFFROY
  */
 class Client : public Utilisateur
 {
@@ -48,22 +49,24 @@ public:
    inline QString getRole() const { return "Client"; }
 
     /**
-     * @brief createur d'un ticket sans categorie definie
+     * @brief Créateur d'un ticket sans categorie definie
+     * @author Théo JOFFROY
      * @param login d'un client
      * @param nom d'un client
      * @param prenom d'un client
      * @return Ticket créé
      */
-    Ticket* creerTicket(QString titre, QString categorie, QString message);
+    Ticket& creerTicket(QString titre, QString categorie, QString message);
 
     /**
-     * @brief createur d'un ticket sans categorie definie
+     * @brief Créateur d'un ticket sans categorie definie
+     * @author Théo JOFFROY
      * @param login d'un client
      * @param nom d'un client
      * @param prenom d'un client
      * @return Ticket créé
      */
-    Ticket* creerTicket(QString titre, QString categorie, QString logiciel, QString message);
+    Ticket& creerTicket(QString titre, QString categorie, QString logiciel, QString message);
 
     /**
      * @briefDestructeur de client
