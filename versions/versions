@@ -14,3 +14,5 @@ Historique des versions
 2d : Un employé peut maintenant modifier un ticket de catégorie
 2e : Un employé peut maintenant attribuer un ticket à un autre employé
 2f : Sauvegarde des données dans la base de données
+2g : Ajout d'un bouton de déconnexion sur l'écran principal qui permet de revenir au formulaire de connexion.
+2h : Suppression du ticket de la liste des tickets de l'employé après réattribution et suppression de la catégorie déjà sélectionnée de la liste des catégories.
