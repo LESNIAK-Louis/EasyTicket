@@ -1,6 +1,6 @@
 #include "gestionnaireutilisateurs.h"
 
-GestionnaireUtilisateurs::GestionnaireUtilisateurs()
+Gestionnaire<Utilisateur>::Gestionnaire()
 {
     /*
     utilisateurs.insert("louis", new Client("louis", "Lesniak", "Louis"));
@@ -10,18 +10,18 @@ GestionnaireUtilisateurs::GestionnaireUtilisateurs()
     */
 }
 
-Utilisateur& GestionnaireUtilisateurs::getUtilisateur(QString login){
+Utilisateur& Gestionnaire<Utilisateur>::getItem(QString login){
 
     return *(utilisateurs.value(login));
 }
 
-void GestionnaireUtilisateurs::ajouterUtilisateur(Utilisateur& u){
+void Gestionnaire<Utilisateur>::ajouterItem(Utilisateur& u){
 
     if(!utilisateurs.contains(u.getLogin()))
         utilisateurs.insert(u.getLogin(), &u);
 }
 
-GestionnaireUtilisateurs::~GestionnaireUtilisateurs(){
+Gestionnaire<Utilisateur>::~Gestionnaire(){
 
     qDeleteAll(utilisateurs);
     utilisateurs.clear();

@@ -21,7 +21,7 @@ public:
      * @brief retourne le gestionnaire utilisateurs
      * @return gu
      */
-    inline GestionnaireUtilisateurs& getGestionnaireUtilisateur() const { return *gu; }
+    inline Gestionnaire<Utilisateur>& getGestionnaireUtilisateur() const { return *gu; }
 
     /**
      * @brief tente de récupérer les informations d'un utilisateur depuis la base de données
@@ -37,7 +37,7 @@ public:
      * @param u Utilisateur
      * @param gu GestionnaireUtilisateurs
      */
-    void chargerTickets(Utilisateur& u, GestionnaireUtilisateurs& gu);
+    void chargerTickets(Utilisateur& u, Gestionnaire<Utilisateur>& gu);
     /**
      * @brief charge les messages d'un ticket depuis la base de données
      * @author Théo JOFFROY
@@ -102,7 +102,7 @@ private:
     /**
      * @brief gestionnaire utilisateur
      */
-    GestionnaireUtilisateurs* gu;
+    Gestionnaire<Utilisateur>* gu;
 
     /**
      * @brief l'utilsateur qui tente de se connecter

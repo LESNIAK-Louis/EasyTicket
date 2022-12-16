@@ -1,22 +1,22 @@
 #include "gestionnairemessages.h"
 
-GestionnaireMessages::GestionnaireMessages(){
+Gestionnaire<Message>::Gestionnaire(){
 
 }
 
-Message& GestionnaireMessages::getMessage(int id){
+Message& Gestionnaire<Message>::getItem(int id){
     return *(messages.value(id));
 }
 
-QMap<int,Message*> GestionnaireMessages::getMessages(){
+QMap<int,Message*> Gestionnaire<Message>::getCollection(){
     return messages;
 }
 
-void GestionnaireMessages::ajouterMessage(Message& msg){
+void Gestionnaire<Message>::ajouterItem(Message& msg){
     messages.insert(msg.getId(), &msg);
 }
 
-GestionnaireMessages::~GestionnaireMessages(){
+Gestionnaire<Message>::~Gestionnaire(){
 
     qDeleteAll(messages);
     messages.clear();

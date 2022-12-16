@@ -91,7 +91,7 @@ public:
      * @param utilisateur déjà présent dans le gestionnaire
      * @param gu gestionnaire auquel ajouter les employes
      */
-    void recupererEmployes(Utilisateur& utilisateur, GestionnaireUtilisateurs& gu);
+    void recupererEmployes(Utilisateur& utilisateur, Gestionnaire<Utilisateur>& gu);
 
     /**
      * @brief fonction qui modifier un Ticket dans sa table
@@ -126,7 +126,7 @@ public:
      * @param gu GestionnaireUtilisateurs
      * @return GestionnaireTickets
      */
-    GestionnaireTickets& recupererTickets(Utilisateur& u, GestionnaireUtilisateurs& gu);
+    GestionnaireTickets& recupererTickets(Utilisateur& u, Gestionnaire<Utilisateur>& gu);
 
     /**
      * @brief fonction qui récupère les messages d'un ticket
@@ -136,7 +136,7 @@ public:
      * @param gu GestionnaireUtilisateurs
      * @return GestionnaireMessages
      */
-    GestionnaireMessages& recupererMessages(Ticket& t);
+    Gestionnaire<Message>& recupererMessages(Ticket& t);
 
     ~BaseDonnee();
 

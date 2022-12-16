@@ -4,12 +4,13 @@
 #include <QObject>
 #include <QMap>
 #include "message.h"
+#include "gestionnaire.h"
 
 /**
- * @brief classe qui gere les messsages d'un ticket
+ * @brief classe qui gere les messages d'un ticket
  * @authors Théo JOFFROY, Aboubacar HASSANE CHEKOU KORE
  */
-class GestionnaireMessages
+template<> class Gestionnaire<Message>
 {
 private:
     /**
@@ -21,30 +22,30 @@ public:
     /**
      * @brief constructeur d'un message
      */
-    GestionnaireMessages();
+    Gestionnaire<Message>();
 
     /**
      * @brief renvoie la listes des messages
      * @return
      */
-    QMap<int,Message*> getMessages();
+    QMap<int,Message*> getCollection();
     /**
      * @brief renvoie un messages parti
      * @param id du message a acceder
      * @return retourne le messages
      */
-    Message& getMessage(int id);
+    Message& getItem(int id);
 
     /**
      * @brief ajoute un messages dans son gestionnaire
      * @param message a ajouter
      */
-    void ajouterMessage(Message& msg);
+    void ajouterItem(Message& msg);
 
     /**
       * destructeur de la classe
       */
-    ~GestionnaireMessages();
+    ~Gestionnaire<Message>();
 };
 
 #endif // GESTIONNAIREMESSAGES_H
