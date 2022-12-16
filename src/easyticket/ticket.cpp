@@ -17,7 +17,7 @@ Ticket::Ticket(QString mtitre, QString mcategorie, Client* client){
     statut = OUVERT;
     this->client = client;
 
-    gm = new GestionnaireMessages();
+    gm = new Gestionnaire<Message>();
 }
 
 Ticket::Ticket(QString mtitre, QString mcategorie, QString mlogiciel, Client* client){
@@ -33,7 +33,7 @@ Ticket::Ticket(QString mtitre, QString mcategorie, QString mlogiciel, Client* cl
     statut = OUVERT;
     this->client = client;
 
-    gm = new GestionnaireMessages();
+    gm = new Gestionnaire<Message>();
 }
 
 Ticket::Ticket(int id, QString titre, QString categorie,  QString logiciel, QString dateCreation,
@@ -51,13 +51,13 @@ Ticket::Ticket(int id, QString titre, QString categorie,  QString logiciel, QStr
     this->client = client;
     this->employe = employe;
 
-    gm = new GestionnaireMessages();
+    gm = new Gestionnaire<Message>();
 }
 
 Message& Ticket::ajouterMessage(QString msg, QString redacteur){
 
     Message& m = *(new Message(msg, redacteur, this));
-    gm->ajouterMessage(m);
+    gm->ajouterItem(m);
 
     return m;
 }
@@ -67,12 +67,12 @@ Message& Ticket::cloturerTicket(statutTicket statut, QString msg, QString redact
     setDateDerniereModification(getDateEtHeureActuelle());
     setDateCloture(getDateEtHeureActuelle());
     Message& m = *(new Message(msg, redacteur, this));
-    gm->ajouterMessage(m);
+    gm->ajouterItem(m);
 
     return m;
 }
 
-void Ticket::chargerMessages(GestionnaireMessages& messages){
+void Ticket::chargerMessages(Gestionnaire<Message>& messages){
 
     delete gm;
     gm = &messages;

@@ -24,6 +24,7 @@ SOURCES += \
     dialogcombobox.cpp \
     employe.cpp \
     erreur.cpp \
+    gestionnaire.cpp \
     gestionnairedialogue.cpp \
     gestionnairetickets.cpp \
     gestionnaireutilisateurs.cpp \
@@ -49,6 +50,7 @@ HEADERS += \
     dialogcombobox.h \
     employe.h \
     erreur.h \
+    gestionnaire.h \
     gestionnairedialogue.h \
     gestionnairetickets.h \
     gestionnaireutilisateurs.h \

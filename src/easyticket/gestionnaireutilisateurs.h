@@ -12,7 +12,7 @@
  * @brief Gestionnaire des utilisateurs
  * @authors Théo JOFFROY, Aboubacar HASSANE CHEKOU KORE
  */
-class GestionnaireUtilisateurs
+template <> class Gestionnaire<Utilisateur>
 {
 private:
     /**
@@ -24,32 +24,32 @@ public:
     /**
      * @brief Constructeur du gestionnaire d'utilisateurs
      */
-    GestionnaireUtilisateurs();
+    Gestionnaire<Utilisateur>();
 
     /**
      * @brief Getter d'un utilisateur via son login
-     * @param login
+     * @param id login de l'utilisateur
      * @return pointeur vers l'utilisateur trouvé, NULL sinon
      */
-    Utilisateur& getUtilisateur(QString login);
+    Utilisateur& getItem(QString id);
 
     /**
      * @brief Getter de la QMAP d'utilisateurs
      * @return pointeur vers l'utilisateur trouvé, NULL sinon
      */
-    inline QMap<QString,Utilisateur*> getUtilisateurs() const {return utilisateurs; }
+    inline QMap<QString,Utilisateur*> getCollection() const {return utilisateurs; }
 
     /**
      * @brief Ajout d'un utilisateur
      * @param u Utilisateur à ajouter
      */
-    void ajouterUtilisateur(Utilisateur& u);
+    void ajouterItem(Utilisateur& u);
 
 
     /**
      * @brief Destructeur du gestionnaire d'utilisateurs
      */
-    ~GestionnaireUtilisateurs();
+    ~Gestionnaire<Utilisateur>();
 };
 
 #endif // GESTIONNAIREUTILISATEURS_H

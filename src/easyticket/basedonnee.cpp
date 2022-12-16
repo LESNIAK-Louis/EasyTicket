@@ -233,7 +233,7 @@ Utilisateur& BaseDonnee::recupererUtilisateur(const QString login){
     return *u;
 }
 
-void BaseDonnee::recupererEmployes(Utilisateur& utilisateur, GestionnaireUtilisateurs& gu){
+void BaseDonnee::recupererEmployes(Utilisateur& utilisateur, Gestionnaire<Utilisateur>& gu){
 
     Utilisateur* u = NULL;
     if(utilisateur.estUnEmploye()){
@@ -255,13 +255,13 @@ void BaseDonnee::recupererEmployes(Utilisateur& utilisateur, GestionnaireUtilisa
                 QString prenomR =  q.value(3).toString();
                 QString role = q.value(4).toString();
 
-                if(&(gu.getUtilisateur(loginR)) == NULL)
+                if(&(gu.getItem(loginR)) == NULL)
                 {
                     if(role == "Ingénieur") u = new Ingenieur(loginR,nomR,prenomR);
                     else if(role == "Technicien") u = new Technicien(loginR,nomR,prenomR);
 
 
-                    gu.ajouterUtilisateur(*u);
+                    gu.ajouterItem(*u);
                 }
         }
         }else {
@@ -271,7 +271,7 @@ void BaseDonnee::recupererEmployes(Utilisateur& utilisateur, GestionnaireUtilisa
     }
 }
 
-GestionnaireTickets& BaseDonnee::recupererTickets(Utilisateur& u, GestionnaireUtilisateurs& gu){
+GestionnaireTickets& BaseDonnee::recupererTickets(Utilisateur& u, Gestionnaire<Utilisateur>& gu){
     QSqlQuery q;
 
     GestionnaireTickets& tickets = *(new GestionnaireTickets());
@@ -310,19 +310,19 @@ GestionnaireTickets& BaseDonnee::recupererTickets(Utilisateur& u, GestionnaireUt
             if(loginClient == u.getLogin()){
                 client = (Client*)(&u);
                 if(loginEmploye != NULL){
-                    if(&(gu.getUtilisateur(loginEmploye)) == NULL)
+                    if(&(gu.getItem(loginEmploye)) == NULL)
                     {
                         employe = (Employe*)&recupererUtilisateur(loginEmploye);
-                        gu.ajouterUtilisateur(*employe);
+                        gu.ajouterItem(*employe);
                     }
                 }
             }else{
                 employe = (Employe*)&u;
                 if(loginClient != NULL){
-                    if(&(gu.getUtilisateur(loginClient)) == NULL)
+                    if(&(gu.getItem(loginClient)) == NULL)
                     {
                         client = (Client*)&recupererUtilisateur(loginClient);
-                        gu.ajouterUtilisateur(*client);
+                        gu.ajouterItem(*client);
                     }
                 }
             }
@@ -339,10 +339,10 @@ GestionnaireTickets& BaseDonnee::recupererTickets(Utilisateur& u, GestionnaireUt
     return tickets;
 }
 
-GestionnaireMessages& BaseDonnee::recupererMessages(Ticket& t){
+Gestionnaire<Message>& BaseDonnee::recupererMessages(Ticket& t){
     QSqlQuery q;
 
-    GestionnaireMessages& messages = *(new GestionnaireMessages());
+    Gestionnaire<Message>& messages = *(new Gestionnaire<Message>());
     q.prepare("Select m.id, m.contenu, m.dateMessage, m.redacteur "
                   "From Tickets t, Messages m "
                   "Where t.id = m.idTicket "
@@ -361,7 +361,7 @@ GestionnaireMessages& BaseDonnee::recupererMessages(Ticket& t){
 
             Message& m = *(new Message(id, contenu, dateMessage, redacteur));
 
-            messages.ajouterMessage(m);
+            messages.ajouterItem(m);
 
         }
     }else {

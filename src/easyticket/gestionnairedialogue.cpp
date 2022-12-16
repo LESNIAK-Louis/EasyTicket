@@ -2,7 +2,7 @@
 
 GestionnaireDialogue::GestionnaireDialogue()
 {
-    gu = new GestionnaireUtilisateurs();
+    gu = new Gestionnaire<Utilisateur>();
     bd = new BaseDonnee();
 }
 
@@ -11,7 +11,7 @@ bool GestionnaireDialogue::tentativeConnexion(QString login, QString mdp){
     utilisateurActuel = &(bd->recupererUtilisateur(login, mdp));
 
     if(utilisateurActuel != NULL){
-        gu->ajouterUtilisateur(*utilisateurActuel);
+        gu->ajouterItem(*utilisateurActuel);
 
         if(utilisateurActuel->estUnEmploye()){
             bd->recupererEmployes(*utilisateurActuel, *gu);
@@ -24,7 +24,7 @@ bool GestionnaireDialogue::tentativeConnexion(QString login, QString mdp){
     return utilisateurActuel != NULL;
 }
 
-void GestionnaireDialogue::chargerTickets(Utilisateur& u, GestionnaireUtilisateurs& gu){
+void GestionnaireDialogue::chargerTickets(Utilisateur& u, Gestionnaire<Utilisateur>& gu){
 
     FabriqueIdentifiant *fi = fi->getInstance();
     fi->setIdTicket(bd->getNombreTickets());
@@ -70,7 +70,7 @@ void GestionnaireDialogue::cloturerTicket(Ticket& ticket, QString statut, QStrin
 void GestionnaireDialogue::nouveauDialogue(){
     delete this->gu;
 
-    this->gu = new GestionnaireUtilisateurs();
+    this->gu = new Gestionnaire<Utilisateur>();
     this->utilisateurActuel = nullptr;
 }
 

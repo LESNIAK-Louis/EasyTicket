@@ -113,8 +113,8 @@ void DetailsTicket::on_boutonModifierAttribution_clicked()
     DialogComboBox* dialog = new DialogComboBox(this);
 
     GestionnaireDialogue& gd =((MainWindow*)(this->parent()->parent()))->getGD();
-    GestionnaireUtilisateurs& gu = gd.getGestionnaireUtilisateur();
-    QMap<QString,Utilisateur*> utilisateurs = gu.getUtilisateurs();
+    Gestionnaire<Utilisateur>& gu = gd.getGestionnaireUtilisateur();
+    QMap<QString,Utilisateur*> utilisateurs = gu.getCollection();
 
     foreach(Utilisateur* u, utilisateurs.values()){
         if(u->estUnEmploye())
@@ -134,7 +134,7 @@ void DetailsTicket::on_boutonModifierAttribution_clicked()
     QString captured = match.captured(1);
 
     // Modification de l'employé qui prend en charge le message
-    Utilisateur* utilisateur = &(gu.getUtilisateur(captured));
+    Utilisateur* utilisateur = &(gu.getItem(captured));
     if(utilisateur != NULL)
     {
         ticket->setEmploye((Employe&)*utilisateur);

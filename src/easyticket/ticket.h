@@ -59,7 +59,7 @@ private:
     /**
      * @brief gestionnaire des messages du ticket
      */
-    GestionnaireMessages* gm;
+    Gestionnaire<Message>* gm;
 
     /**
      * @brief statut du ticket
@@ -184,7 +184,7 @@ public:
     * @brief Récupère la liste des messages
     * @return messages du ticket
     */
-    QMap<int, Message*> getMessages() const { return gm->getMessages(); }
+    QMap<int, Message*> getMessages() const { return gm->getCollection(); }
 
     /**
     * @brief Getter du client qui a déposé le ticket
@@ -271,7 +271,7 @@ public:
      * @author Théo JOFFROY
      * @param messages Messages
      */
-    void chargerMessages(GestionnaireMessages& messages);
+    void chargerMessages(Gestionnaire<Message>& messages);
 
 
 
