@@ -8,7 +8,7 @@ class Client;
 
 /**
  * @brief Gestionnaire des tickets concernés par un utilisateur
- * @authors Théo JOFFROY, Aboubacar HASSANE CHEKOU KORE
+ * @authors Théo JOFFROY, Aboubacar HASSANE CHEKOU KORE, LESNIAK Louis
  */
 class GestionnaireTickets
 {
@@ -44,6 +44,13 @@ public:
      * @param ticket Ticket
      */
     void ajouterTicket(Ticket& ticket);
+
+    /**
+     * @brief Supprime un ticket
+     * @param ticket Ticket à supprimer
+     */
+    void supprimerTicket(Ticket& ticket);
+
     /**
      * @brief Getter d'un ticket via son identifiant
      * @param id

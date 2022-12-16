@@ -82,6 +82,12 @@ public:
     inline Ticket& getTicket(int id) { return *(getTickets().value(id)); }
 
     /**
+     * @brief Getter du gestionnaire de tickets
+     * @return gestionnaireTickets
+     */
+    inline GestionnaireTickets& getGestionnaireTickets() { return *gestionnaireTickets; }
+
+    /**
      * @brief retourne vrai si l'utilisateur est un client
      * @return valeur du bool
      */
