@@ -29,6 +29,13 @@ void GestionnaireTickets::ajouterTicket(Ticket& ticket){
     tickets.insert(ticket.getId(), &ticket);
 }
 
+void GestionnaireTickets::supprimerTicket(Ticket& ticket){
+    int id = tickets.key(&ticket);
+    Ticket* t = tickets.value(id);
+    tickets.remove(id);
+    delete t;
+}
+
 GestionnaireTickets::~GestionnaireTickets()
 {
     qDeleteAll(tickets);
